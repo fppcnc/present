@@ -9,6 +9,7 @@
 </head>
 
 <body>
+<div class="limiter">
 Here you can Sign Up <br>
 <?php if (!empty($_SESSION['error'])) { ?>
     <div><?php echo $_SESSION['error']; ?></div><?php } ?><br>
@@ -25,6 +26,6 @@ Here you can Sign Up <br>
     <button type="reset" id="signUpReset">Reset</button>
     <button id="signUpBackToHome" onclick="window.location.href='index.php?choice=toHome';">Back to Home</button>
 </form>
-
+</div>
 </body>
 </html><?php

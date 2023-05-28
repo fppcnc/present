@@ -8,6 +8,8 @@
     <title>Reset Password</title>
 </head>
 <body>
+<div class="limiter">
 Here you can reset your password
+</div>
 </body>
 </html><?php

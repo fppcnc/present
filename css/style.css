@@ -1,0 +1,19 @@
+/* CSS reset. Different browsers use different default margins,*/
+/*The universal selector "*" sets all elements to have zero padding*/
+/*and zero margin, making them look the same in all browsers */
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    height: 100%;
+    font-family: Arial, serif;
+}
+
+/*set up a limiter. A mega container*/
+
+.limiter {
+    width: 100%;
+    margin: 0 auto;
+}

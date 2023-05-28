@@ -1,8 +1,12 @@
 <?php
+
+// 0p3
 //dbCredentials.php for db credentials
 include 'dbCredentials.php';
-//include class
+//include class User
 include 'class/User.php';
+//include CSS style
+include 'css/style.css';
 
 //get choice from hidden input from pages
 $choice = $_REQUEST['choice'] ?? 'toHome';
@@ -34,7 +38,7 @@ switch ($choice) {
         $page = 'toResetPasswd';
         break;
     case 'register':
-        //if password fields match, we store in database
+        //if password fields match, data is stored in database
         if ($password === $confirmPassword) {
             // check if email already exists in Db
             $checkEmail = (new User())->checkForEmail($email);
@@ -46,6 +50,7 @@ switch ($choice) {
                 $_SESSION['error'] = '';
                 $page = "toHome";
             } else {
+                // if email is found in Db
                 $_SESSION['error'] = 'This email is associated to another User';
                 $page = 'toSignUp';
             }

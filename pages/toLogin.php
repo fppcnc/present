@@ -7,10 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
 </head>
-
+<body>
+<div class="limiter">
 <form method="post">
     <input type="hidden" name="choice" value="login">
-    <body>
+
     Here you can login w your email<br>
     <?php if (!empty($_SESSION['error'])) { ?>
         <div><?php echo $_SESSION['error']; ?></div><?php } ?><br>
@@ -20,5 +21,6 @@
     <button type="submit" id="loginSubmit">Login</button>
     <button id="loginBackToHome" onclick="window.location.href='index.php?choice=toHome';">Back to Home</button>
 </form>
+</div>
 </body>
 </html><?php

@@ -9,6 +9,8 @@
 </head>
 <input type="hidden" name="choice" value="register">
 <body>
+<!--everything inside body element is enclosed in a limiter-->
+<div class="limiter">
 Primary HomePage <br>
 
 <button type="button" id="homeToSignUp" onclick="window.location.href='index.php?choice=toSignUp';">
@@ -18,5 +20,6 @@ Primary HomePage <br>
 <button type="button" id="homeToLogin" onclick="window.location.href='index.php?choice=toLogin';">
     Login
 </button>
+</div>
 </body>
 </html><?php

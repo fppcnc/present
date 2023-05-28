@@ -8,6 +8,8 @@
     <title>Document</title>
 </head>
 <body>
+<div class="limiter">
 Here you just Logged In
+</div>
 </body>
 </html><?php
