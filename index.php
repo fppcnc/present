@@ -2,11 +2,10 @@
 
 // 0p3
 //dbCredentials.php for db credentials
-include 'dbCredentials.php';
+include 'includes/dbCredentials.php';
 //include class User
 include 'class/User.php';
-//include CSS style
-include 'css/style.css';
+
 
 //get choice from hidden input from pages
 $choice = $_REQUEST['choice'] ?? 'toHome';

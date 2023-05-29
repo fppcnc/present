@@ -38,6 +38,19 @@ body {
     flex-direction: row-reverse;
 
 }
-.welcome-img-container {
 
+.welcome {
+    width: 600px;
+    min-height: 100vh;
+    display: block;
+    padding: 150px 55px 55px 55px;
 }
+
+.welcome-form {
+    width: 600px;
+    min-height: 100vh;
+    display: block;
+    padding: 150px 55px 55px 55px;
+}
+
+

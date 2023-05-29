@@ -6,16 +6,16 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sign Up</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 <div class="limiter">
     <div class="mainContainer">
         <div class="wrapContainer">
-Here you can Sign Up <br>
 <?php if (!empty($_SESSION['error'])) { ?>
-    <div><?php echo $_SESSION['error']; ?></div><?php } ?><br>
-<form method="post">
+    <div><?php echo $_SESSION['error']; ?></div><?php } ?>
+<form class="welcome-form" method="post">
     <input type="hidden" name="choice" value="register">
     First Name <input type="text" id="signUpFirstName" name="firstName" required><br>
     Last Name <input type="text" id="signUpLastName" name="lastName" required><br>
@@ -26,11 +26,14 @@ Here you can Sign Up <br>
 
     <input type="submit" id="signUpSubmit" value="Submit">
     <button type="reset" id="signUpReset">Reset</button>
+    <button type="button" onclick="window.location.href='index.php?choice=toHome';">
+        Back to Home
+    </button>
 </form>
-    <a href="index.php?choice=toHome">
-    <button id="signUpBackToHome">Back to Home</button>
-    </a>
-</div>
+
+        </div>
+
+
 </div>
 </div>
 </body>
