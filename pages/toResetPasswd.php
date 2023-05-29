@@ -9,11 +9,15 @@
 </head>
 <body>
 <div class="limiter">
+    <div class="mainContainer">
+        <div class="wrapContainer">
     Here you can reset your password
     <a href="index.php?choice=toHome">
         <button id="resetPasswdBackToHome">Back to Home</button>
     </a>
 
+</div>
+</div>
 </div>
 </body>
 </html><?php

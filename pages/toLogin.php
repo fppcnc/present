@@ -9,6 +9,8 @@
 </head>
 <body>
 <div class="limiter">
+    <div class="mainContainer">
+    <div class="wrapContainer">
 <form method="post">
     <input type="hidden" name="choice" value="login">
 
@@ -23,7 +25,8 @@
     <a href="index.php?choice=toHome">
     <button id="loginBackToHome">Back to Home</button>
     </a>
-
+    </div>
+    </div>
 </div>
 </body>
 </html><?php

@@ -11,17 +11,21 @@
 <body>
 <!--everything inside body element is enclosed in a limiter-->
 <div class="limiter">
-Primary HomePage <br>
-<a href="index.php?choice=toSignUp">
-<button type="button" id="homeToSignUp">
-    Sign Up
-</button>
-</a>
-<a href="index.php?choice=toLogin">
-<button type="button" id="homeToLogin">
-    Login
-</button>
-</a>
+    <div class="mainContainer">
+        <div class="wrapContainer">
+            Primary HomePage <br>
+            <a href="index.php?choice=toSignUp">
+                <button type="button" id="homeToSignUp">
+                    Sign Up
+                </button>
+            </a>
+            <a href="index.php?choice=toLogin">
+                <button type="button" id="homeToLogin">
+                    Login
+                </button>
+            </a>
+        </div>
+    </div>
 </div>
 </body>
 </html><?php

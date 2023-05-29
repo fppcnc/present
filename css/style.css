@@ -18,4 +18,26 @@ body {
     margin: 0 auto;
 }
 
-/**/
+/*enclose everything in a container*/
+.mainContainer {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background: #f2f2f2;
+}
+
+/*wrap container sets up wrapping rules*/
+.wrapContainer {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    flex-direction: row-reverse;
+
+}
+.welcome-img-container {
+
+}

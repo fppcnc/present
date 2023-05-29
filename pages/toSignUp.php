@@ -10,6 +10,8 @@
 
 <body>
 <div class="limiter">
+    <div class="mainContainer">
+        <div class="wrapContainer">
 Here you can Sign Up <br>
 <?php if (!empty($_SESSION['error'])) { ?>
     <div><?php echo $_SESSION['error']; ?></div><?php } ?><br>
@@ -28,6 +30,8 @@ Here you can Sign Up <br>
     <a href="index.php?choice=toHome">
     <button id="signUpBackToHome">Back to Home</button>
     </a>
+</div>
+</div>
 </div>
 </body>
 </html><?php

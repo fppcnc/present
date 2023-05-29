@@ -9,10 +9,14 @@
 </head>
 <body>
 <div class="limiter">
+    <div class="mainContainer">
+        <div class="wrapContainer">
 Here you just Logged In
     <a href="index.php?choice=toHome">
         <button id="welcomeBackToHome">Back to Home</button>
     </a>
+</div>
+</div>
 </div>
 </body>
 </html><?php
