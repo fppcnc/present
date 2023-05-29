@@ -19,8 +19,11 @@
     Email<input type="email" id="loginEmail" name="email"><br>
     Passwd<input type="password" id="loginPassword" name="password"><br>
     <button type="submit" id="loginSubmit">Login</button>
-    <button id="loginBackToHome" onclick="window.location.href='index.php?choice=toHome';">Back to Home</button>
 </form>
+    <a href="index.php?choice=toHome">
+    <button id="loginBackToHome">Back to Home</button>
+    </a>
+
 </div>
 </body>
 </html><?php

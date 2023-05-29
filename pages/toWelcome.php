@@ -10,6 +10,9 @@
 <body>
 <div class="limiter">
 Here you just Logged In
+    <a href="index.php?choice=toHome">
+        <button id="welcomeBackToHome">Back to Home</button>
+    </a>
 </div>
 </body>
 </html><?php

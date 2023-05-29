@@ -12,14 +12,16 @@
 <!--everything inside body element is enclosed in a limiter-->
 <div class="limiter">
 Primary HomePage <br>
-
-<button type="button" id="homeToSignUp" onclick="window.location.href='index.php?choice=toSignUp';">
+<a href="index.php?choice=toSignUp">
+<button type="button" id="homeToSignUp">
     Sign Up
 </button>
-
-<button type="button" id="homeToLogin" onclick="window.location.href='index.php?choice=toLogin';">
+</a>
+<a href="index.php?choice=toLogin">
+<button type="button" id="homeToLogin">
     Login
 </button>
+</a>
 </div>
 </body>
 </html><?php

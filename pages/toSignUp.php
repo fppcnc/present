@@ -24,8 +24,10 @@ Here you can Sign Up <br>
 
     <input type="submit" id="signUpSubmit" value="Submit">
     <button type="reset" id="signUpReset">Reset</button>
-    <button id="signUpBackToHome" onclick="window.location.href='index.php?choice=toHome';">Back to Home</button>
 </form>
+    <a href="index.php?choice=toHome">
+    <button id="signUpBackToHome">Back to Home</button>
+    </a>
 </div>
 </body>
 </html><?php

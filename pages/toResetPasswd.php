@@ -9,7 +9,11 @@
 </head>
 <body>
 <div class="limiter">
-Here you can reset your password
+    Here you can reset your password
+    <a href="index.php?choice=toHome">
+        <button id="resetPasswdBackToHome">Back to Home</button>
+    </a>
+
 </div>
 </body>
 </html><?php

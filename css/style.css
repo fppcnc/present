@@ -6,14 +6,16 @@
     padding: 0px;
 }
 
+/*body limits height*/
 body {
     height: 100%;
-    font-family: Arial, serif;
+    font-family: Verdana, Geneva, sans-serif;
 }
 
-/*set up a limiter. A mega container*/
-
+/*limiter limits width*/
 .limiter {
     width: 100%;
     margin: 0 auto;
 }
+
+/**/
