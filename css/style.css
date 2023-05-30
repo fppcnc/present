@@ -9,8 +9,59 @@
 /*body limits height*/
 body {
     height: 100%;
-    font-family: Verdana, Geneva, sans-serif;
+    /*font-family: Verdana, Geneva, sans-serif;*/
 }
+
+/*___________________________________
+Text
+___________________________________*/
+
+/*sets up how Present logo should be displayed*/
+.presentBigTitle {
+    width: 100%;
+    display: block;
+    font-size: 80px;
+    color: #333333;
+    line-height: 1.2;
+    text-align: center;
+    font-family: "alex_brushregular", Arial, sans-serif;
+}
+
+.presentSubTitle {
+    width: 100%;
+    display: block;
+    font-size: 35px;
+    color: #333333;
+    line-height: 1.2;
+    text-align: center;
+    font-family: "alex_brushregular", Arial, sans-serif;
+}
+
+.presentSlogan {
+    width: 100%;
+    display: block;
+    font-size: 25px;
+    color: #333333;
+    line-height: 1.2;
+    text-align: center;
+    font-family: "alex_brushregular", Arial, sans-serif;
+}
+
+.presentText {
+    width: 100%;
+    display: block;
+    color: #333333;
+    line-height: 1.2;
+    text-align: center;
+    /*font-family: "alex_brushregular", Arial, sans-serif;*/
+}
+
+
+
+/*__________________________
+Limiter and containers
+__________________________*/
+
 
 /*limiter limits width*/
 .limiter {
@@ -29,7 +80,7 @@ body {
     background: #f2f2f2;
 }
 
-/*wrap container sets up wrapping rules*/
+/*wrap container define wrapping rules*/
 .wrapContainer {
     width: 100%;
     display: flex;
@@ -39,11 +90,36 @@ body {
 
 }
 
-.welcome {
+.homeSelection {
     width: 600px;
-    min-height: 100vh;
+    max-height: calc(100vh);
     display: block;
     padding: 150px 55px 55px 55px;
+    background: #ffffff;
+}
+
+
+.welcome-leftAreaImg {
+    width: calc(100% - 710px);
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    flex-wrap: wrap;
+    align-items: stretch;
+    position: relative;
+
+}
+
+.welcome-leftArea {
+    width: calc(100% - 820px);
+    max-height: calc(100vh);
+    padding: 150px 55px 55px 55px;
+    display: flex;
+    background-position: center;
+    flex-wrap: wrap;
+    align-items: stretch;
+    position: relative;
 }
 
 .welcome-form {
@@ -51,6 +127,32 @@ body {
     min-height: 100vh;
     display: block;
     padding: 150px 55px 55px 55px;
+    background: #fff;
 }
 
+/*___________________________________
+Elements used for JS
+___________________________________*/
+
+.hidden {
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+.delayedTransition {
+    transition-delay: 1s;
+}
+
+.visible {
+    opacity: 1;
+}
+/*___________________________________
+Fonts
+___________________________________*/
+
+
+@font-face {
+    font-family: 'alex_brushregular';
+    src: url('fonts/AlexBrush-Regular.ttf');
+}
 

@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/utility.css">
 </head>
 <input type="hidden" name="choice" value="register">
 <body>
@@ -14,19 +15,44 @@
 <div class="limiter">
     <div class="mainContainer">
         <div class="wrapContainer">
-            Primary HomePage <br>
-            <a href="index.php?choice=toSignUp">
-                <button type="button" id="homeToSignUp">
-                    Sign Up
-                </button>
-            </a>
-            <a href="index.php?choice=toLogin">
-                <button type="button" id="homeToLogin">
-                    Login
-                </button>
-            </a>
+            <div class="homeSelection">
+                <div class="presentBigTitle">
+                Present
+                </div>
+                <div class="hidden presentSubTitle p-t-25" id="homeSubTitle">
+                    Makes your Wishes come True
+                </div>
+                <div class="hidden presentSlogan p-t-15" id="homeSlogan">
+                    Planning an event can be hard.
+                    Knowing the right present shouldn't be.
+                </div>
+                <div class="hidden presentText fs-25 p-t-40" id="homeText1">
+                    Introducing Present!
+                </div>
+                    <div class="hidden presentText fs-15 p-t-40" id="homeText2">
+                    Your ultimate companion for creating unique occasions and sharing your desires with loved ones.
+                    Whether it's a birthday, anniversary, graduation, or any milestone worth celebrating,
+                    let others know exactly what would make your day truly special.
+                        <div class="fs-20 p-t-20">
+                            Guessing Games and Unwanted Presents belong now to the past
+                        </div>
+                    </div>
+                <a href="index.php?choice=toSignUp">
+                    <button type="button" id="homeToSignUp">
+                        Sign Up
+                    </button>
+                </a>
+                <a href="index.php?choice=toLogin">
+                    <button type="button" id="homeToLogin">
+                        Login
+                    </button>
+                </a>
+            </div>
+            <div class="welcome-leftAreaImg" style="background-image: url('img/gifts.jpeg');">
+            </div>
         </div>
     </div>
 </div>
+<script src="../js/js.js"></script>
 </body>
 </html><?php
