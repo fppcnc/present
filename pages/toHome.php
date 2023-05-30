@@ -33,9 +33,7 @@
                     Your ultimate companion for creating unique occasions and sharing your desires with loved ones.
                     Whether it's a birthday, anniversary, graduation, or any milestone worth celebrating,
                     let others know exactly what would make your day truly special.
-                        <div class="fs-20 p-t-20">
-                            Guessing Games and Unwanted Presents belong now to the past
-                        </div>
+
                     </div>
                 <a href="index.php?choice=toSignUp">
                     <button type="button" id="homeToSignUp">
@@ -47,8 +45,14 @@
                         Login
                     </button>
                 </a>
+
             </div>
             <div class="welcome-leftAreaImg" style="background-image: url('img/gifts.jpeg');">
+                <div class="flEnd ">
+                    <div class="presentSlogan" style="color: black; font-weight: 700;">
+                    "Guessing Games and Unwanted Presents belong now to the past"
+                    </div>
+                </div>
             </div>
         </div>
     </div>

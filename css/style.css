@@ -156,3 +156,17 @@ ___________________________________*/
     src: url('fonts/AlexBrush-Regular.ttf');
 }
 
+
+
+/*______________________________________
+Misc
+______________________________________*/
+
+.flEnd {
+    display: flex;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -30%)
+}
