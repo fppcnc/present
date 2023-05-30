@@ -50,7 +50,7 @@
             <div class="welcome-leftAreaImg" style="background-image: url('img/gifts.jpeg');">
                 <div class="flEnd ">
                     <div class="presentSlogan" style="color: black; font-weight: 700;">
-                    "Guessing Games and Unwanted Presents belong now to the past"
+                    Guessing Games and Unwanted Presents belong now to the past
                     </div>
                 </div>
             </div>
