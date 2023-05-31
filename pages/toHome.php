@@ -13,25 +13,57 @@
 <body>
 <!--everything inside body element is enclosed in a limiter-->
 <div class="limiter">
-<!--    mainContainer contains everything-->
+    <!--    mainContainer contains everything-->
     <div class="mainContainer" id="homeMainContainer">
-<!--        loginPopup is called by JS. change display from none to flex-->
-        <div class="homeLoginPopUp bordersRules" id="homeLogin">
-            <div class="homeLoginPopUp-content ">
+        <!--        loginPopup is called by JS. change display from none to flex-->
+        <div class="homePopUp bordersRules" id="homeLogin">
+            <div class="homeLoginPopUp-content">
                 <form class="welcome-form" method="post" action="index.php">
                     <div class="homeInputsContainer">
-                    <input type="hidden" name="choice" value="login">
-                    <?php if (!empty($_SESSION['error'])) { ?>
-                        <div><?php echo $_SESSION['error']; ?></div><?php } ?>
-                    <input type="email" id="loginEmail" class="input-home bordersRules" name="email" placeholder="Email" required>
-                    <input type="password" id="loginPassword" class="input-home bordersRules" placeholder="Password" name="password" required>
+                        <input type="hidden" name="choice" value="login">
+                        <?php if (!empty($_SESSION['error'])) { ?>
+                            <div><?php echo $_SESSION['error']; ?></div><?php } ?>
+                        <div class="presentBigTitle">
+                            Login
+                        </div>
+                        <input type="email" id="loginEmail" class="input-home bordersRules" name="email"
+                               placeholder="Email" required>
+                        <input type="password" id="loginPassword" class="input-home bordersRules" placeholder="Password"
+                               name="password" required>
                     </div>
                     <div class="homeButtonsContainer">
-                    <button type="submit" class="button-home bordersRules" sstyle id="loginSubmit">Login</button>
-                    <button type="button" class="button-home bordersRules" id="homeBack">Back to Home</button>
+                        <button type="submit" class="button-home bordersRules" id="loginSubmit">Login</button>
+                        <button type="button" class="button-home bordersRules" id="homeLoginBack">Back to Home</button>
+                    </div>
                 </form>
-
             </div>
+        </div>
+        <div class="homePopUp bordersRules " id="homeSignUp">
+            <div class="homeSignUpPopUp-content">
+                <form class="welcome-form" method="post" action="index.php">
+                    <div class="homeInputsContainer">
+                        <input type="hidden" name="choice" value="register">
+                        <div class="presentBigTitle">
+                            Create a new Account
+                        </div>
+                        <input type="text" id="homeSignUpFirstName" class="input-home bordersRules"
+                               placeholder="First Name" name="firstName" required>
+                        <input type="text" id="homeSignUpLastName" class="input-home bordersRules"
+                               placeholder="Last Name" name="lastName" required>
+                        <input type="date" id="homeSignUpDateOfBirth" class="input-home bordersRules" name="dateOfBirth"
+                               required>
+                        <input type="email" id="homeSignUpEmail" class="input-home bordersRules" placeholder="Email"
+                               name="email" required>
+                        <input type="password" id="homeSignUpPassword" class="input-home bordersRules"
+                               placeholder="Password" name="password" required>
+                        <input type="password" id="homeSignUpConfirmPassword" class="input-home bordersRules"
+                               placeholder="Confirm Password" name="confirmPassword" required>
+                    </div>
+                    <div class="homeButtonsContainer">
+                        <button type="submit" class="button-home bordersRules" id="homeSignUpSubmit">Sign Up</button>
+                        <button type="button" class="button-home bordersRules" id="homeSignUpBack">Back to Home</button>
+                    </div>
+                </form>
             </div>
         </div>
         <div class="wrapContainer" id="homeWrapContainer">
@@ -43,14 +75,12 @@
                     Your companion for creating unique occasions and sharing your desires with loved ones.
                     Whether it's a birthday, anniversary, graduation, or any milestone worth celebrating,
                     let others know exactly what would make your day truly special.
-
                 </div>
                 <div class="homeButtonsContainer">
                     <button type="button" class="button-home bordersRules" id="homeToLogin">
                         Login
                     </button>
-                    <button type="button" class="button-home bordersRules" id="homeToSignUp"
-                            onclick="window.location.href='index.php?choice=toSignUp';">
+                    <button type="button" class="button-home bordersRules" id="homeToSignUp">
                         Sign Up
                     </button>
                 </div>
