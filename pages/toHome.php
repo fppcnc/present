@@ -13,45 +13,63 @@
 <body>
 <!--everything inside body element is enclosed in a limiter-->
 <div class="limiter">
-    <div class="mainContainer">
-        <div class="wrapContainer">
-            <div class="homeSelection">
-                <div class="presentBigTitle">
-                Present
-                </div>
-                <div class="hidden presentSubTitle p-t-25" id="homeSubTitle">
-                    Makes your Wishes come True
-                </div>
-                <div class="hidden presentSlogan p-t-15" id="homeSlogan">
-                    Planning an event can be hard.
-                    Knowing the right present shouldn't be.
-                </div>
-                <div class="hidden presentText fs-25 p-t-40" id="homeText1">
+<!--    mainContainer contains everything-->
+    <div class="mainContainer" id="homeMainContainer">
+<!--        loginPopup is called by JS. change display from none to flex-->
+        <div class="homeLoginPopUp bordersRules" id="homeLogin">
+            <div class="homeLoginPopUp-content ">
+                <form class="welcome-form" method="post" action="index.php">
+                    <div class="homeInputsContainer">
+                    <input type="hidden" name="choice" value="login">
+                    <?php if (!empty($_SESSION['error'])) { ?>
+                        <div><?php echo $_SESSION['error']; ?></div><?php } ?>
+                    <input type="email" id="loginEmail" class="input-home bordersRules" name="email" placeholder="Email" required>
+                    <input type="password" id="loginPassword" class="input-home bordersRules" placeholder="Password" name="password" required>
+                    </div>
+                    <div class="homeButtonsContainer">
+                    <button type="submit" class="button-home bordersRules" sstyle id="loginSubmit">Login</button>
+                    <button type="button" class="button-home bordersRules" id="homeBack">Back to Home</button>
+                </form>
+
+            </div>
+            </div>
+        </div>
+        <div class="wrapContainer" id="homeWrapContainer">
+            <div class="homeSelection bordersRules">
+                <div class="presentText fs-25" id="homeText1">
                     Introducing Present!
                 </div>
-                    <div class="hidden presentText fs-15 p-t-40" id="homeText2">
-                    Your ultimate companion for creating unique occasions and sharing your desires with loved ones.
+                <div class="presentText fs-15 p-t-40" id="homeText2">
+                    Your companion for creating unique occasions and sharing your desires with loved ones.
                     Whether it's a birthday, anniversary, graduation, or any milestone worth celebrating,
                     let others know exactly what would make your day truly special.
 
-                    </div>
-                <a href="index.php?choice=toSignUp">
-                    <button type="button" id="homeToSignUp">
-                        Sign Up
-                    </button>
-                </a>
-                <a href="index.php?choice=toLogin">
-                    <button type="button" id="homeToLogin">
+                </div>
+                <div class="homeButtonsContainer">
+                    <button type="button" class="button-home bordersRules" id="homeToLogin">
                         Login
                     </button>
-                </a>
-
+                    <button type="button" class="button-home bordersRules" id="homeToSignUp"
+                            onclick="window.location.href='index.php?choice=toSignUp';">
+                        Sign Up
+                    </button>
+                </div>
+                <div class="presentText fs-15 p-t-20">
+                    <a href="index.php?choice=toResetPasswd">
+                        Forgot your password?
+                    </a>
+                </div>
             </div>
-            <div class="welcome-leftAreaImg" style="background-image: url('img/gifts.jpeg');">
-                <div class="flEnd ">
-                    <div class="presentSlogan" style="color: black; font-weight: 700;">
-                    Guessing Games and Unwanted Presents belong now to the past
-                    </div>
+            <div class="welcome-leftArea">
+                <div class="presentBigTitle">
+                    Present
+                </div>
+                <div class="hidden presentSubTitle" id="homeSubTitle">
+                    Makes your Wishes come True
+                </div>
+                <div class="hidden presentSlogan" id="homeSlogan">
+                    Planning an event can be hard.
+                    Knowing the right present shouldn't be.
                 </div>
             </div>
         </div>
