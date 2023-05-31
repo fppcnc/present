@@ -17,7 +17,7 @@
     <div class="mainContainer" id="homeMainContainer">
         <!--        loginPopup is called by JS. change display from none to flex-->
         <div class="homePopUp bordersRules" id="homeLogin">
-            <div class="homeLoginPopUp-content">
+            <div class="homeLogin-content">
                 <form class="welcome-form" method="post" action="index.php">
                     <div class="homeInputsContainer">
                         <input type="hidden" name="choice" value="login">
@@ -39,12 +39,12 @@
             </div>
         </div>
         <div class="homePopUp bordersRules " id="homeSignUp">
-            <div class="homeSignUpPopUp-content">
+            <div class="homeSignUp-content">
                 <form class="welcome-form" method="post" action="index.php">
                     <div class="homeInputsContainer">
                         <input type="hidden" name="choice" value="register">
                         <div class="presentBigTitle">
-                            Create a new Account
+                            Sign Up
                         </div>
                         <input type="text" id="homeSignUpFirstName" class="input-home bordersRules"
                                placeholder="First Name" name="firstName" required>

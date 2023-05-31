@@ -108,20 +108,16 @@ __________________________*/
     z-index: 1;
 }
 
-.homeLoginPopUp-content {
-    width: 450px;
-    height: 400px;
-    display: block;
+.homeLogin-content {
+    display: inline-block;
     background: #fff;
     padding: 5px;
     justify-content: center;
     align-items: center;
 }
 
-.homeSignUpPopUp-content {
-    width: 700px;
-    height: 700px;
-    display: block;
+.homeSignUp-content {
+    display: inline-block;
     background: #fff;
     padding: 5px;
     justify-content: center;
@@ -130,7 +126,10 @@ __________________________*/
 
 .homeInputsContainer {
     display: flex;
+    align-content: center;
     align-items: center;
+    justify-content: center;
+    justify-items: center;
     flex-direction: column;
     gap: 20px;
 }
@@ -138,7 +137,12 @@ __________________________*/
 .homeButtonsContainer {
     padding-top: 50px;
     display: flex;
-    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    flex-direction: row;
+    gap: 20px;
 }
 
 .welcome-leftArea {

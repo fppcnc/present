@@ -47,7 +47,7 @@ switch ($choice) {
                 $_SESSION['error'] = '';
                 (new User())->registerNewUser($firstName, $lastName, $dateOfBirth, $email, $password);
                 $_SESSION['error'] = '';
-                $page = "toHome";
+                $page = "toWelcome";
             } else {
                 // if email is found in Db
                 $_SESSION['error'] = 'This email is associated to another User';

@@ -14,28 +14,40 @@
 <div class="limiter">
     <div class="mainContainer">
         <div class="wrapContainer">
-<?php if (!empty($_SESSION['error'])) { ?>
-    <div><?php echo $_SESSION['error']; ?></div><?php } ?>
-<form class="welcome-form" method="post">
-    <input type="hidden" name="choice" value="register">
-    First Name <input type="text" id="signUpFirstName" name="firstName" required><br>
-    Last Name <input type="text" id="signUpLastName" name="lastName" required><br>
-    Date of Birth <input type="date" id="signUpDateOfBirth" name="dateOfBirth" required><br>
-    Email <input type="email" id="signUpEmail" name="email" required><br>
-    Password <input type="password" id="signUpPassword" name="password" required><br>
-    Confirm Password <input type="password" id="signUpConfirmPassword" name="confirmPassword" required><br>
-
-    <input type="submit" id="signUpSubmit" value="Submit">
-    <button type="reset" id="signUpReset">Reset</button>
-    <button type="button" onclick="window.location.href='index.php?choice=toHome';">
-        Back to Home
-    </button>
-</form>
-
+            <div class="homeSignUp-content bordersRules">
+                <form class="welcome-form" method="post" action="index.php">
+                    <div class="homeInputsContainer">
+                        <input type="hidden" name="choice" value="register">
+                        <div class="presentBigTitle">
+                            Sign Up
+                        </div>
+                        <?php if (!empty($_SESSION['error'])) { ?>
+                            <div><?php echo $_SESSION['error']; ?></div><?php } ?>
+                        <input type="text" id="homeSignUpFirstName" class="input-home bordersRules"
+                               placeholder="First Name" name="firstName" required>
+                        <input type="text" id="homeSignUpLastName" class="input-home bordersRules"
+                               placeholder="Last Name" name="lastName" required>
+                        <input type="date" id="homeSignUpDateOfBirth" class="input-home bordersRules" name="dateOfBirth"
+                               required>
+                        <input type="email" id="homeSignUpEmail" class="input-home bordersRules" placeholder="Email"
+                               name="email" required>
+                        <input type="password" id="homeSignUpPassword" class="input-home bordersRules"
+                               placeholder="Password" name="password" required>
+                        <input type="password" id="homeSignUpConfirmPassword" class="input-home bordersRules"
+                               placeholder="Confirm Password" name="confirmPassword" required>
+                    </div>
+                    <div class="homeButtonsContainer">
+                        <button type="submit" class="button-home bordersRules" id="homeSignUpSubmit">Sign Up</button>
+                        <button type="button" class="button-home bordersRules"
+                                onclick="window.location.href='index.php?choice=toHome';">Back to Home
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
 
 
-</div>
+    </div>
 </div>
 </body>
 </html><?php
