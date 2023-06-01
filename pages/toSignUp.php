@@ -36,8 +36,14 @@
                         <input type="password" id="homeSignUpConfirmPassword" class="input-home bordersRules"
                                placeholder="Confirm Password" name="confirmPassword" required>
                     </div>
-                    <div class="homeButtonsContainer">
-                        <button type="submit" class="button-home bordersRules" id="homeSignUpSubmit">Sign Up</button>
+                    <div class="tAndC">
+                        By clicking "Register", you agree to our <a href="index.php?choice=toLegalTerms"> Terms of Use</a>.
+                    </div>
+                    <div class="tAndC p-t-0">
+                        Our <a href="index.php?choice=toLegalTerms"> Privacy Policy </a> explains how we collect, use, and share your information.
+                    </div>
+                    <div class="homeButtonsContainer p-t-5">
+                        <button type="submit" class="button-home bordersRules" id="homeSignUpSubmit">Register</button>
                         <button type="button" class="button-home bordersRules"
                                 onclick="window.location.href='index.php?choice=toHome';">Back to Home
                         </button>

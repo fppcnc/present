@@ -17,6 +17,7 @@ $dateOfBirth = $_POST['dateOfBirth'] ?? '';
 $email = $_POST['email'] ?? '';
 $password = $_POST['password'] ?? '';
 $confirmPassword = $_POST['confirmPassword'] ?? '';
+
 //echo '<pre>';
 //print_r($_POST);
 //echo '</pre>';
@@ -35,6 +36,9 @@ switch ($choice) {
         break;
     case 'toResetPasswd':
         $page = 'toResetPasswd';
+        break;
+    case 'toLegalTerms':
+        $page = 'toLegalTerms';
         break;
     case 'register':
         //if password fields match, data is stored in database
@@ -66,6 +70,8 @@ switch ($choice) {
             $_SESSION['error'] = "Email and Password dont´t match";
         } else {
             $_SESSION['error'] = '';
+            $userInfos = (new User())->getAllAsObject($email);
+            $_SESSION['user'] = $userInfos[0];
             $page = 'toWelcome';
         }
         break;

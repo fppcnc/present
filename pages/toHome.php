@@ -19,6 +19,10 @@
         <div class="homePopUp bordersRules" id="homeLogin">
             <div class="homeLogin-content">
                 <form class="welcome-form" method="post" action="index.php">
+                    <div class="x">
+                        <input type="image" id="homeLoginBack" class="image-button"
+                               src="../img/transparent-x-logo.png" alt="Back">
+                    </div>
                     <div class="homeInputsContainer">
 
                         <div class="presentBigTitle">
@@ -32,10 +36,8 @@
                         <input type="password" id="loginPassword" class="input-home bordersRules" placeholder="Password"
                                name="password" required>
                     </div>
-                    <div class="homeButtonsContainer">
+                    <div class="homeButtonsContainer p-t-50">
                         <button type="submit" class="button-home bordersRules" id="loginSubmit">Login</button>
-                        <button type="button" class="button-home bordersRules" id="homeLoginBack">Back to Home</button>
-
                     </div>
                     <div class="presentText fs-15 p-t-20">
                         <a href="index.php?choice=toResetPasswd">
@@ -48,6 +50,10 @@
         <div class="homePopUp bordersRules " id="homeSignUp">
             <div class="homeSignUp-content">
                 <form class="welcome-form" method="post" action="index.php">
+                    <div class="x">
+                        <input type="image" id="homeSignUpBack" class="image-button"
+                        src="../img/transparent-x-logo.png" alt="Back">
+                    </div>
                     <div class="homeInputsContainer">
                         <input type="hidden" name="choice" value="register">
                         <div class="presentBigTitle">
@@ -66,9 +72,14 @@
                         <input type="password" id="homeSignUpConfirmPassword" class="input-home bordersRules"
                                placeholder="Confirm Password" name="confirmPassword" required>
                     </div>
+                    <div class="tAndC">
+                        By clicking "Register", you agree to our <a href="index.php?choice=toLegalTerms"> Terms of Use</a>.
+                    </div>
+                    <div class="tAndC">
+                        Our <a href="index.php?choice=toLegalTerms"> Privacy Policy </a> explains how we collect, use, and share your information.
+                    </div>
                     <div class="homeButtonsContainer">
-                        <button type="submit" class="button-home bordersRules" id="homeSignUpSubmit">Sign Up</button>
-                        <button type="button" class="button-home bordersRules" id="homeSignUpBack">Back to Home</button>
+                        <button type="submit" class="button-home bordersRules" id="homeSignUpSubmit">Register</button>
                     </div>
                 </form>
             </div>
@@ -83,7 +94,7 @@
                     Whether it's a birthday, anniversary, graduation, or any milestone worth celebrating,
                     let others know exactly what would make your day truly special.
                 </div>
-                <div class="homeButtonsContainer">
+                <div class="homeButtonsContainer p-t-50">
                     <button type="button" class="button-home bordersRules" id="homeToLogin">
                         Login
                     </button>

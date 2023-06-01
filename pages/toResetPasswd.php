@@ -29,7 +29,7 @@
                         <input type="password" id="resetPasswdConfirmPassword" class="input-home bordersRules"
                                placeholder="Confirm New Password" name="confirmPassword" required>
                     </div>
-                    <div class="homeButtonsContainer">
+                    <div class="homeButtonsContainer p-t-50">
                         <button type="submit" class="button-home bordersRules" id="resetPasswdSubmit">Reset Password</button>
                         <button type="button" class="button-home bordersRules"
                                 onclick="window.location.href='index.php?choice=toHome';">Back to Home

@@ -27,7 +27,7 @@
                 <input type="password" id="loginPassword" class="input-home bordersRules" placeholder="Password"
                        name="password" required>
             </div>
-            <div class="homeButtonsContainer">
+            <div class="homeButtonsContainer p-t-50">
                 <button type="submit" class="button-home bordersRules" id="loginSubmit">Login</button>
                 <button type="button" class="button-home bordersRules"
                         onclick="window.location.href='index.php?choice=toHome';">Back to Home

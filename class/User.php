@@ -11,6 +11,26 @@ class User
     private string $registrationTime;
 
     /**
+     * @param $email
+     * @return array
+     */
+    public function getAllAsObject($email): array
+    {
+        $dbh = new PDO (DB_DNS, DB_USER_SELECT, DB_PASSWD_SELECT);
+        $sql = "SELECT * from user WHERE email = :email";
+        $stmt = $dbh->prepare($sql);
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+        $result = $stmt;
+        $userInfo = [];
+        while ($row = $result->fetchObject('User')) {
+            $userInfo[] = $row;
+        }
+        $dbh = null;
+        return $userInfo;
+    }
+
+    /**
      * @param string $firstName
      * @param string $lastName
      * @param string $dateOfBirth
@@ -119,6 +139,7 @@ class User
         }
         return $validity;
     }
+
 
 
     /**
