@@ -13,10 +13,30 @@
 <div class="limiter">
     <div class="mainContainer">
         <div class="wrapContainer">
-    Here you can reset your password
-            <button type="button" onclick="window.location.href='index.php?choice=toHome';">
-                Back to Home
-            </button>
+            <div class="homeSignUp-content bordersRules">
+                <form class="welcome-form" method="post" action="index.php">
+                    <div class="homeInputsContainer">
+                        <input type="hidden" name="choice" value="resetPasswd">
+                        <div class="presentBigTitle">
+                            Password Reset
+                        </div>
+                        <?php if (!empty($_SESSION['error'])) { ?>
+                            <div><?php echo $_SESSION['error']; ?></div><?php } ?>
+                        <input type="email" id="resetPasswdEmail" class="input-home bordersRules" placeholder="Email"
+                               name="email" required>
+                        <input type="password" id="resetPasswdPassword" class="input-home bordersRules"
+                               placeholder="New Password" name="password" required>
+                        <input type="password" id="resetPasswdConfirmPassword" class="input-home bordersRules"
+                               placeholder="Confirm New Password" name="confirmPassword" required>
+                    </div>
+                    <div class="homeButtonsContainer">
+                        <button type="submit" class="button-home bordersRules" id="resetPasswdSubmit">Reset Password</button>
+                        <button type="button" class="button-home bordersRules"
+                                onclick="window.location.href='index.php?choice=toHome';">Back to Home
+                        </button>
+                    </div>
+                </form>
+            </div>
 
 </div>
 </div>

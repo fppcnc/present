@@ -46,7 +46,6 @@ switch ($choice) {
             if ($checkEmail === false) {
                 $_SESSION['error'] = '';
                 (new User())->registerNewUser($firstName, $lastName, $dateOfBirth, $email, $password);
-                $_SESSION['error'] = '';
                 $page = "toWelcome";
             } else {
                 // if email is found in Db
@@ -68,6 +67,24 @@ switch ($choice) {
         } else {
             $_SESSION['error'] = '';
             $page = 'toWelcome';
+        }
+        break;
+    case 'resetPasswd':
+        //if password fields match, data is stored in database
+        if ($password === $confirmPassword) {
+            $resPwd = (new User())->updateInfo($email, $password);
+            //updateInfo returns true if email is found in Db
+            if ($resPwd === true) {
+                $_SESSION['error'] = '';
+                $page = 'toHome';
+                //if updateInfo return false then no email is found in Db
+            } else {
+                $_SESSION['error'] = 'Email not found';
+                $page = 'toResetPasswd';
+            }
+        } else {
+            $_SESSION['error'] = "Given Passwords don´t match";
+            $page = 'toResetPasswd';
         }
         break;
     default :

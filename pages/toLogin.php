@@ -16,7 +16,6 @@
         <div class="homeLogin-content bordersRules">
         <form class="welcome-form" method="post" action="index.php">
             <div class="homeInputsContainer">
-
                 <div class="presentBigTitle">
                     Login
                 </div>
@@ -33,6 +32,11 @@
                 <button type="button" class="button-home bordersRules"
                         onclick="window.location.href='index.php?choice=toHome';">Back to Home
                 </button>
+            </div>
+            <div class="presentText fs-15 p-t-20">
+                <a href="index.php?choice=toResetPasswd">
+                    Forgot your password?
+                </a>
             </div>
         </form>
     </div>

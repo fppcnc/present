@@ -76,13 +76,11 @@ class User
 
     public function grantAccess(string $email, string $password): bool
     {
-        // check if email exists in Db
-        $dbh = new PDO (DB_DNS, DB_USER_SELECT, DB_PASSWD_SELECT);
-        $this->email = $email;
         $checkEmail = (new User())->checkForEmail($email);
-        // if check forForEmail finds something, then stores it in $checkEmail
+        // if checkForEmail finds something, then stores it in $checkEmail
         if ($checkEmail === true) {
             // search if input passwd matches the one associated to email in Db
+            $dbh = new PDO (DB_DNS, DB_USER_SELECT, DB_PASSWD_SELECT);
             $sql = "SELECT password FROM user WHERE email =:email";
             $stmt = $dbh->prepare($sql);
             $stmt->bindParam(':email', $email);
@@ -90,6 +88,32 @@ class User
             $hash_password = $stmt->fetch();
             $this->password = $password;
             $validity = password_verify($password, $hash_password['password']);
+        } else {
+            $validity = false;
+        }
+        return $validity;
+    }
+
+    /**
+     * @param string $email
+     * @param string $password
+     * @return bool
+     */
+    public function updateInfo(string $email, string $password): bool
+    {
+        // check if email exists in Db
+        $checkEmail = (new User())->checkForEmail($email);
+        // if checkForEmail finds something, then stores it in $checkEmail
+        if ($checkEmail === true) {
+//          handle Db using user_update, which can only update data
+            $dbh = new PDO (DB_DNS, DB_USER_UPDATE, DB_PASSWD_UPDATE);
+            $sql = "UPDATE user SET password =:password WHERE email =:email";
+            $stmt = $dbh->prepare($sql);
+            $password = password_hash($password, PASSWORD_DEFAULT);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':password', $password);
+            $stmt->execute();
+            $validity = true;
         } else {
             $validity = false;
         }
