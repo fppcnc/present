@@ -1,6 +1,9 @@
 <?php
 
 // 0p3
+
+//start session and carry values over next pages
+session_start();
 //dbCredentials.php for db credentials
 include 'includes/dbCredentials.php';
 //include class User
@@ -18,9 +21,6 @@ $email = $_POST['email'] ?? '';
 $password = $_POST['password'] ?? '';
 $confirmPassword = $_POST['confirmPassword'] ?? '';
 
-//echo '<pre>';
-//print_r($_POST);
-//echo '</pre>';
 
 //access toHome.php
 switch ($choice) {
@@ -50,7 +50,7 @@ switch ($choice) {
             if ($checkEmail === false) {
                 $_SESSION['error'] = '';
                 (new User())->registerNewUser($firstName, $lastName, $dateOfBirth, $email, $password);
-                $page = "toWelcome";
+                $page = "toHome";
             } else {
                 // if email is found in Db
                 $_SESSION['error'] = 'This email is associated to another User';
@@ -60,19 +60,6 @@ switch ($choice) {
         } else {
             $_SESSION['error'] = "Given Passwords don´t match";
             $page = 'toSignUp';
-        }
-        break;
-    case 'login':
-        //grant access to next page if email and password match data in Db
-        $log = (new User())->grantAccess($email, $password);
-        if ($log === false) {
-            $page = 'toLogin';
-            $_SESSION['error'] = "Email and Password dont´t match";
-        } else {
-            $_SESSION['error'] = '';
-            $userInfos = (new User())->getAllAsObject($email);
-            $_SESSION['user'] = $userInfos[0];
-            $page = 'toWelcome';
         }
         break;
     case 'resetPasswd':
@@ -93,8 +80,38 @@ switch ($choice) {
             $page = 'toResetPasswd';
         }
         break;
+    case 'login':
+        //grant access to next page if email and password match data in Db
+        $log = (new User())->grantAccess($email, $password);
+        if ($log === false) {
+            $page = 'toLogin';
+            $_SESSION['error'] = "Email and Password dont´t match";
+        } else {
+            // here user is logged in
+            $_SESSION['error'] = '';
+            $_SESSION['user'] = (new User())->getAllAsObject($email);
+            $page = 'toWelcome';
+        }
+        break;
+    case 'toWelcome':
+        if (isset($userInfos)) {
+            $_SESSION['error'] = '';
+            $page = 'toWelcome';
+        } else {
+            $page = 'toHome';
+            $_SESSION['error'] = 'Your session has expired. Please try again';
+        }
+        break;
+    case 'logout':
+        session_unset();
+        $page = 'toHome';
+        break;
     default :
         $page = $choice;
         break;
 }
+
+//echo '<pre>';
+//print_r($_SESSION);
+//echo '</pre>';
 include 'pages/' . $page . '.php';
