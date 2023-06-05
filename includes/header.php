@@ -17,7 +17,7 @@
                         </button>
                         <div id="areaDropdown" class="dropdown-content">
                             <a href="index.php?choice=toProfile" class="button-nav">Edit Profile</a>
-                            <a href="index.php?choice=logout" class="button-nav">Logout</a>
+                            <a href="index.php?choice=logout" class="button-nav" style="color: darkred">Logout</a>
                         </div>
                     </div>
                 </div>

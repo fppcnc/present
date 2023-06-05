@@ -139,11 +139,18 @@ __________________________*/
 }
 
 .personalArea-sideBar {
-    display: block;
+    display: inline-block;
+    background: #fff;
     flex-basis: auto;
     position:relative;
     justify-self: flex-start;
     align-self: flex-start;
+    border-radius: 8px;
+    margin-right: -3px;
+    z-index: 1;
+    box-shadow: rgba(255, 235, 205, .5) 0 -1px 0 0 inset, rgba(0, 44, 97, .1) 0 3px 0 0;
+    min-width: 100px;
+    padding: 10px 13px 10px 10px;
 }
 
 .homeInputsContainer {

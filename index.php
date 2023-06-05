@@ -80,28 +80,26 @@ switch ($choice) {
     case 'resetPasswd':
         //if password fields match, data is stored in database
         if ($password === $confirmPassword) {
-            // check if email exists in Db
-            $checkEmail = (new User())->checkForEmail($email);
-            // if checkForEmail finds something, then stores it in $checkEmail
-            if ($checkEmail === true) {
-                // reset password
-                $password = password_hash($password, PASSWORD_DEFAULT);
-                $resPwd = (new User())->updateInfo('password', $password);
-                if ($resPwd === true) {
-                    $_SESSION['error'] = '';
-                    $page = 'toHome';
-                    //if updateInfo return false then no email is found in Db
-                } else {
-                    $_SESSION['error'] = 'Email not found';
-                    $page = 'toResetPasswd';
-                }
-            }
+            // reset password
+            $u = new User();
+            $column = $_POST['column'];
+            $newValue = $_POST["$column"];
+            $resPwd = $u->updateInfo($column, $newValue);
+//            if ($resPwd === true) {
+//                $_SESSION['error'] = '';
+//                $page = 'toHome';
+//                //if updateInfo return false then no email is found in Db
+//            } else {
+//                $_SESSION['error'] = 'Email not found';
+//                $page = 'toResetPasswd';
+//            }
         } else {
             $_SESSION['error'] = "Given Passwords don´t match";
             $page = 'toResetPasswd';
         }
         break;
-    case 'login':
+    case
+    'login':
         //grant access to next page if email and password match data in Db
         $log = (new User())->grantAccess($email, $password);
         if ($log === false) {
@@ -112,15 +110,14 @@ switch ($choice) {
             $_SESSION['error'] = '';
             $user = $log->getObject();
             $_SESSION['user'] = $user;
-            print_r($_SESSION);
             $page = 'toWelcome';
         }
         break;
     case 'updateInfo':
         $u = new User();
         $u = $_SESSION['user'];
-        $column=$_POST['column'];
-        $newValue=$_POST["$column"];
+        $column = $_POST['column'];
+        $newValue = $_POST["$column"];
 //        $u->updateInfo($firstName, $lastName, $dateOfBirth, $email);
         $u->updateInfo($column, $newValue);
         $user = $u->getObject();

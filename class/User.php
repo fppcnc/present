@@ -114,7 +114,7 @@ class User
     {
         $checkEmail = (new User())->checkForEmail($this->email);
         // if checkForEmail finds something, then stores it in $checkEmail
-        if ($checkEmail === false) {
+        if ($checkEmail === true) {
 //          handle Db using user_update, which can only update data
             $dbh = new PDO (DB_DNS, DB_USER_UPDATE, DB_PASSWD_UPDATE);
             $sql = "UPDATE user SET $column=:newValue WHERE id =:id";
@@ -128,6 +128,7 @@ class User
             $stmt->execute();
         }
     }
+
 
     /**
      * @param int|null $id
