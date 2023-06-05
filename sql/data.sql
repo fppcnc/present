@@ -5,8 +5,6 @@ CREATE DATABASE present;
 USE present;
 
 
-
-
 CREATE TABLE user
 (
     id       INT PRIMARY KEY AUTO_INCREMENT,

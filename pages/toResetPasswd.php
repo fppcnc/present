@@ -30,7 +30,10 @@
                                placeholder="Confirm New Password" name="confirmPassword" required>
                     </div>
                     <div class="homeButtonsContainer p-t-50">
-                        <button type="submit" class="button-home bordersRules" id="resetPasswdSubmit">Reset Password</button>
+                        <button type="submit" class="button-home bordersRules" id="resetPasswdSubmit" name="column"
+                                value="password">
+                            Reset Password
+                        </button>
                         <button type="button" class="button-home bordersRules"
                                 onclick="window.location.href='index.php?choice=toHome';">Back to Home
                         </button>
@@ -38,8 +41,8 @@
                 </form>
             </div>
 
-</div>
-</div>
+        </div>
+    </div>
 </div>
 </body>
 </html><?php

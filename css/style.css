@@ -124,6 +124,28 @@ __________________________*/
     align-items: center;
 }
 
+.personalArea-container {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.personalArea-content {
+    display: block;
+    background: #fff;
+    padding: 5px;
+    height: 500px;
+    width: 400px;
+}
+
+.personalArea-sideBar {
+    display: block;
+    flex-basis: auto;
+    position:relative;
+    justify-self: flex-start;
+    align-self: flex-start;
+}
+
 .homeInputsContainer {
     display: flex;
     align-content: center;
@@ -144,22 +166,22 @@ __________________________*/
     gap: 20px;
 }
 
+.submitButtonsContainer {
+    display: inline-block;
+    align-content: end;
+    align-items: end;
+    justify-content: end;
+}
+
 .welcome-leftArea {
     width: calc(100% - 820px);
     max-height: 100vh;
-    padding: 0px 55px 55px 55px;
+    padding: 0 55px 55px 55px;
     display: flex;
     background-position: center;
     flex-wrap: wrap;
     align-items: stretch;
     position: relative;
-}
-
-.welcome-form {
-    max-height: 100vh;
-    display: block;
-    padding: 20px;
-    background: #fff;
 }
 
 .tAndC {
@@ -171,6 +193,7 @@ __________________________*/
     justify-items: center;
     font-size: 10px;
 }
+
 .dropdown {
     position: relative;
     display: inline-block;
@@ -197,190 +220,6 @@ __________________________*/
 
 /* show the dropdown menu  */
 .show {display:block;}
-
-
-/*__________________________________
-Single Elements
-__________________________________*/
-
-.button-home {
-    background-color: #FFEBCD;
-    box-sizing: border-box;
-    color: #000;
-    cursor: pointer;
-    display: inherit;
-    font-size: 13px;
-    font-weight: 700;
-    line-height: 24px;
-    margin: 0;
-    min-height: 56px;
-    min-width: 120px;
-    padding: 16px 20px;
-    position: relative;
-    text-align: center;
-    touch-action: manipulation;
-    vertical-align: baseline;
-    transition: all .2s cubic-bezier(.22, .61, .36, 1);
-}
-
-.button-home:hover {
-    background-color: #FFE4C4;
-    transform: translateY(-2px) translateX(-2px);
-}
-
-.button-home:focus {
-    background-color: #FFE4C4;
-}
-
-@media (min-width: 768px) {
-    .button-home {
-        padding: 16px 44px;
-        min-width: 150px;
-    }
-}
-
-.button-nav {
-    background-color: #FFEBCD;
-    box-sizing: border-box;
-    color: #000;
-    cursor: pointer;
-    display: inherit;
-    font-size: 13px;
-    font-weight: 700;
-    line-height: 24px;
-    margin: 0;
-    min-height: 56px;
-    min-width: 120px;
-    padding: 16px 20px;
-    position: relative;
-    text-align: center;
-    touch-action: manipulation;
-    vertical-align: baseline;
-    transition: all .2s cubic-bezier(.22, .61, .36, 1);
-}
-
-.button-nav:hover, .button-nav:focus {
-    background-color: #FFE4C4;
-}
-
-
-.input-home {
-    background-color: #FFEBCD;
-    box-sizing: border-box;
-    color: #000;
-    cursor: pointer;
-    display: inherit;
-    font-size: 17px;
-    font-weight: 500;
-    line-height: 20px;
-    margin: 0;
-    min-height: 20px;
-    width: 100%;
-    padding: 16px 20px;
-    position: relative;
-    text-align: center;
-    touch-action: manipulation;
-    vertical-align: baseline;
-    transition: all .2s cubic-bezier(.22, .61, .36, 1);
-}
-
-.input-home:focus {
-    opacity: 0.4;
-}
-
-@media (min-width: 768px) {
-    .input-home {
-        padding: 16px 44px;
-        min-width: 150px;
-    }
-}
-
-/*___________________________________
-Elements used for JS
-___________________________________*/
-
-.hidden {
-    opacity: 0;
-    transition: opacity 2s;
-}
-
-.delayedTransition {
-    transition-delay: 1s;
-}
-
-.visible {
-    opacity: 1;
-}
-
-/*___________________________________
-Fonts
-___________________________________*/
-
-
-@font-face {
-    font-family: 'alex_brushregular';
-    src: url('fonts/AlexBrush-Regular.ttf');
-}
-
-
-/*______________________________________
-Misc
-______________________________________*/
-
-/*borders rules*/
-.bordersRules {
-    border-radius: 8px;
-    border: 0;
-    box-shadow: rgba(255, 235, 205, .5) 0 -1px 3px 0 inset, rgba(0, 44, 97, .1) 0 3px 6px 0;
-}
-
-.x {
-    position: absolute;
-    left: 88%;
-    top: 0;
-    padding-top: 10px;
-}
-
-.image-button {
-    width: 30px;
-    height: 30px;
-    padding: 0;
-    background-color: inherit;
-    border: none;
-}
-
-/*.flEnd {*/
-/*    display: flex;*/
-/*    position: absolute;*/
-/*    top: 90%;*/
-/*    left: 20%;*/
-/*    margin-right: 60%;*/
-/*    transform: translate(-80%, -10%)*/
-/*}*/
-
-
-/*.welcome-leftAreaImg {*/
-/*    width: calc(100% - 710px);*/
-/*    min-height: 100vh;*/
-/*    background-repeat: no-repeat;*/
-/*    background-size: cover;*/
-/*    background-position: center;*/
-/*    flex-wrap: wrap;*/
-/*    align-items: stretch;*/
-/*    position: relative;*/
-/*}*/
-
-
-/***/
-/** * The Header Media Queries * **/
-/** * Tweak as per your needs * **/
-/***/
-
-
-
-
-
-
 
 .site-header {
     position: absolute;
@@ -451,6 +290,139 @@ ______________________________________*/
     margin-right: 0.5rem;
 }
 
+
+/*__________________________________
+Single Elements
+__________________________________*/
+
+.button-home {
+    background-color: #FFEBCD;
+    box-sizing: border-box;
+    color: #000;
+    cursor: pointer;
+    display: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 24px;
+    margin: 0;
+    min-height: 56px;
+    min-width: 120px;
+    padding: 16px 20px;
+    position: relative;
+    text-align: center;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    transition: all .2s cubic-bezier(.22, .61, .36, 1);
+}
+
+.button-home:hover {
+    background-color: #FFE4C4;
+    transform: translateY(-2px) translateX(-2px);
+}
+
+.button-home:focus {
+    background-color: #FFE4C4;
+}
+
+@media (min-width: 768px) {
+    .button-home {
+        padding: 16px 44px;
+        min-width: 150px;
+        justify-content: center;
+    }
+}
+
+.button-nav {
+    background-color: #FFEBCD;
+    box-sizing: border-box;
+    color: #000;
+    cursor: pointer;
+    display: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 24px;
+    margin: 0;
+    min-height: 56px;
+    min-width: 120px;
+    padding: 16px 20px;
+    position: relative;
+    text-align: center;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    transition: all .2s cubic-bezier(.22, .61, .36, 1);
+}
+
+.button-nav:hover, .button-nav:focus {
+    background-color: #FFE4C4;
+}
+
+.button-personalArea {
+    background-color: #FFEBCD;
+    box-sizing: border-box;
+    color: #000;
+    cursor: pointer;
+    display: flex;
+    font-size: 10px;
+    font-weight: 700;
+    margin: 0;
+    align-content: end;
+    align-items: end;
+    justify-content: end;
+    position: relative;
+    text-align: center;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    transition: all .2s cubic-bezier(.22, .61, .36, 1);
+}
+
+.button-personalArea:hover {
+    background-color: #FFE4C4;
+    transform: translateY(-2px) translateX(-2px);
+}
+
+.button-personalArea:focus {
+    background-color: #FFE4C4;
+}
+
+@media (min-width: 768px) {
+    .button-personalArea {
+        padding: 5px 7px;
+        justify-content: center;
+        justify-self: end;
+    }
+}
+
+.input-home {
+    background-color: #FFEBCD;
+    box-sizing: border-box;
+    color: #000;
+    cursor: pointer;
+    display: inherit;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 20px;
+    margin: 0;
+    min-height: 20px;
+    width: 100%;
+    padding: 16px 20px;
+    position: relative;
+    text-align: center;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    transition: all .2s cubic-bezier(.22, .61, .36, 1);
+}
+
+.input-home:focus {
+    opacity: 0.4;
+}
+
+@media (min-width: 768px) {
+    .input-home {
+        padding: 16px 44px;
+        min-width: 150px;
+    }
+}
+
 .nav__item a {
     display: block;
     padding: 1rem;
@@ -465,21 +437,6 @@ ______________________________________*/
     }
 }
 
-.nav__item svg {
-    display: inline-block;
-    vertical-align: middle;
-    width: 28px;
-    height: 28px;
-    margin-right: 1rem;
-}
-
-@media (min-width: 800px) {
-    .nav__item svg {
-        display: block;
-        margin: 0 auto 0.5rem;
-    }
-}
-
 .nav__item.active a {
     border-left-color: #222;
 }
@@ -488,6 +445,16 @@ ______________________________________*/
     .nav__item.active a {
         border-bottom-color: #222;
     }
+}
+/*___________________________________
+Inputs and Forms
+___________________________________*/
+
+.welcome-form {
+    max-height: 100vh;
+    display: block;
+    padding: 20px;
+    background: #fff;
 }
 
 .search {
@@ -533,6 +500,71 @@ ______________________________________*/
     }
 }
 
+/*___________________________________
+Elements used for JS
+___________________________________*/
+
+.hidden {
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+.delayedTransition {
+    transition-delay: 1s;
+}
+
+.visible {
+    opacity: 1;
+}
+
 .inactive-item {
     opacity: 0;
 }
+/*___________________________________
+Fonts
+___________________________________*/
+
+
+@font-face {
+    font-family: 'alex_brushregular';
+    src: url('fonts/AlexBrush-Regular.ttf');
+}
+
+
+/*______________________________________
+Misc
+______________________________________*/
+
+/*borders rules*/
+.bordersRules {
+    border-radius: 8px;
+    border: 0;
+    box-shadow: rgba(255, 235, 205, .5) 0 -1px 3px 0 inset, rgba(0, 44, 97, .1) 0 3px 6px 0;
+}
+
+.x {
+    position: absolute;
+    left: 88%;
+    top: 0;
+    padding-top: 10px;
+}
+
+.image-button {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    background-color: inherit;
+    border: none;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    top:50%;
+    left:50%;
+}
+
+
+
+
+
+

@@ -2,16 +2,18 @@
 
 // 0p3
 
-//start session and carry values over next pages
-session_start();
+
 //dbCredentials.php for db credentials
 include 'includes/dbCredentials.php';
 //include class User
 include 'class/User.php';
-
+//start session and carry values over next pages
+session_start();
 
 //get choice from hidden input from pages
 $choice = $_REQUEST['choice'] ?? 'toHome';
+
+$id = $_REQUEST['id'] ?? '';
 
 //get data from signup page
 $firstName = $_POST['firstName'] ?? '';
@@ -37,8 +39,21 @@ switch ($choice) {
     case 'toResetPasswd':
         $page = 'toResetPasswd';
         break;
+    case 'toProfile':
+        $page = 'toProfile';
+        break;
     case 'toLegalTerms':
         $page = 'toLegalTerms';
+        break;
+    case 'toWelcome':
+//        if session is lost for any reason trying to reach toWelcome, user is redirected to homepage
+        if (isset($_SESSION['user'])) {
+            $_SESSION['error'] = '';
+            $page = 'toWelcome';
+        } else {
+            $page = 'toHome';
+            $_SESSION['error'] = 'Your session has expired. Please try again';
+        }
         break;
     case 'register':
         //if password fields match, data is stored in database
@@ -65,15 +80,21 @@ switch ($choice) {
     case 'resetPasswd':
         //if password fields match, data is stored in database
         if ($password === $confirmPassword) {
-            $resPwd = (new User())->updateInfo($email, $password);
-            //updateInfo returns true if email is found in Db
-            if ($resPwd === true) {
-                $_SESSION['error'] = '';
-                $page = 'toHome';
-                //if updateInfo return false then no email is found in Db
-            } else {
-                $_SESSION['error'] = 'Email not found';
-                $page = 'toResetPasswd';
+            // check if email exists in Db
+            $checkEmail = (new User())->checkForEmail($email);
+            // if checkForEmail finds something, then stores it in $checkEmail
+            if ($checkEmail === true) {
+                // reset password
+                $password = password_hash($password, PASSWORD_DEFAULT);
+                $resPwd = (new User())->updateInfo('password', $password);
+                if ($resPwd === true) {
+                    $_SESSION['error'] = '';
+                    $page = 'toHome';
+                    //if updateInfo return false then no email is found in Db
+                } else {
+                    $_SESSION['error'] = 'Email not found';
+                    $page = 'toResetPasswd';
+                }
             }
         } else {
             $_SESSION['error'] = "Given Passwords don´t match";
@@ -89,20 +110,19 @@ switch ($choice) {
         } else {
             // here user is logged in
             $_SESSION['error'] = '';
-            $_SESSION['user'] = (new User())->getAllAsObject($email);
+            $user = (new User())->getObject($id);
+            print_r($user);
+            $_SESSION['user'] = $user;
             $page = 'toWelcome';
         }
         break;
-    case 'toWelcome':
-        if (isset($userInfos)) {
-            $_SESSION['error'] = '';
-            $page = 'toWelcome';
-        } else {
-            $page = 'toHome';
-            $_SESSION['error'] = 'Your session has expired. Please try again';
-        }
+    case 'updateInfo':
+        $user = new User($id, $firstName, $lastName, $dateOfBirth, $email, $password);
+        $user->updateInfo();
+        $page = 'toWelcome';
         break;
-    case 'logout':
+    case
+    'logout':
         session_unset();
         $page = 'toHome';
         break;

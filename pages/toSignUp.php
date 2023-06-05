@@ -45,8 +45,7 @@
                     <div class="homeButtonsContainer p-t-5">
                         <button type="submit" class="button-home bordersRules" id="homeSignUpSubmit">Register</button>
                         <button type="button" class="button-home bordersRules"
-                                onclick="window.location.href='index.php?choice=toHome';">Back to Home
-                        </button>
+                                onclick="window.location.href='index.php?choice=toHome';">Back to Home</button>
                     </div>
                 </form>
             </div>

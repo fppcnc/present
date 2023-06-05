@@ -95,11 +95,9 @@
                     let others know exactly what would make your day truly special.
                 </div>
                 <div class="homeButtonsContainer p-t-50">
-                    <button type="button" class="button-home bordersRules" id="homeToLogin">
-                        Login
+                    <button type="button" class="button-home bordersRules" id="homeToLogin">Login
                     </button>
-                    <button type="button" class="button-home bordersRules" id="homeToSignUp">
-                        Sign Up
+                    <button type="button" class="button-home bordersRules" id="homeToSignUp">Sign Up
                     </button>
                 </div>
                 <div class="presentText fs-15 p-t-20">
