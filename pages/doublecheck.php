@@ -9,7 +9,7 @@ echo '</pre>';
 $column=$_POST['column'];
 echo $_POST['column'];
 
-print_r ($_SESSION['user']);
+//print_r ($_SESSION['user']);
 
 //echo $_REQUEST['column'];
 

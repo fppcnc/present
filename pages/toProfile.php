@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<?php $userInfos = $_SESSION['user'][0]; ?>
+<?php $userInfos = $_SESSION['user']; ?>
 <div class="limiter">
     <div class="mainContainer">
         <?php include "includes/header.php"; ?>
@@ -26,18 +26,18 @@
                             <span><label for="personalAreaFirstName">First Name</label>
                             <input type="text" id="personalAreaFirstName" class="input-home bordersRules"
                                    name="firstName" value="<?php echo $userInfos->getFirstName() ?>" required>
-<!--                                <button type="submit" class="button-personalArea bordersRules m-t-5" id="updateFirstName" name="column" value="firstName">Update</button>-->
+<button type="submit" class="button-personalArea bordersRules m-t-5" id="updateFirstName" name="column" value="firstName">Update</button>
                             </span>
-                            <span><label for="personalAreaFirstName">Last Name</label>
+                            <span><label for="personalAreaLastName">Last Name</label>
                         <input type="text" id="personalAreaLastName" class="input-home bordersRules"
                                name="lastName" value="<?php echo $userInfos->getLastName() ?>" required>
-<!--                                <button type="submit" class="button-personalArea bordersRules m-t-5" id="updateLastName" name="column" value="lastName">Update</button>-->
+<button type="submit" class="button-personalArea bordersRules m-t-5" id="updateLastName" name="column" value="lastName">Update</button>
                             </span>
-                            <span><label for="personalAreaFirstName">Email</label>
+                            <span><label for="personalAreaEmail">Email</label>
                         <input type="email" id="personalAreaEmail" class="input-home bordersRules"
                                name="email" value="<?php echo $userInfos->getEmail() ?>" required>
-
-                            </span><button type="submit" class="button-personalArea bordersRules m-t-5" id="update">Update</button>
+<button type="submit" class="button-personalArea bordersRules m-t-5" id="update" name="column" value="email">Update</button>
+                            </span>
                         </div>
                     </form>
                 </div>

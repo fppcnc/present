@@ -110,20 +110,30 @@ switch ($choice) {
         } else {
             // here user is logged in
             $_SESSION['error'] = '';
-            $user = (new User())->getObject($id);
-            print_r($user);
+            $user = $log->getObject();
             $_SESSION['user'] = $user;
+            print_r($_SESSION);
             $page = 'toWelcome';
         }
         break;
     case 'updateInfo':
-        $user = new User($id, $firstName, $lastName, $dateOfBirth, $email, $password);
-        $user->updateInfo();
-        $page = 'toWelcome';
+        $u = new User();
+        $u = $_SESSION['user'];
+        $column=$_POST['column'];
+        $newValue=$_POST["$column"];
+//        $u->updateInfo($firstName, $lastName, $dateOfBirth, $email);
+        $u->updateInfo($column, $newValue);
+        $user = $u->getObject();
+        $_SESSION['user'] = $user;
+        print_r($user);
+        $page = 'toProfile';
         break;
     case
     'logout':
+// unset all of the session variables
         session_unset();
+        // destroy the session.
+        session_destroy();
         $page = 'toHome';
         break;
     default :
