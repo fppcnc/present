@@ -12,14 +12,14 @@ CREATE TABLE user
     lastName         VARCHAR(45),
     dateOfBirth      DATE,
     password         VARCHAR(255),
-    email            VARCHAR(255),
+    email            VARCHAR(255) UNIQUE,
     registrationTime DATE
 );
 
 CREATE TABLE place
 (
     id       INT PRIMARY KEY AUTO_INCREMENT,
-    country  INT PRIMARY KEY,
+    country  VARCHAR(255),
     city     VARCHAR(255),
     postcode VARCHAR(5),
     streetNr VARCHAR(10),
@@ -39,8 +39,8 @@ CREATE TABLE event
 
 CREATE TABLE wishlist
 (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    createdBy  INT PRIMARY KEY,
+    id           INT PRIMARY KEY AUTO_INCREMENT,
+    createdBy    INT,
     FOREIGN KEY (createdBy) REFERENCES user (id),
     creationTime DATE
 );
@@ -48,19 +48,35 @@ CREATE TABLE wishlist
 CREATE TABLE wishlistItems
 (
     id           INT PRIMARY KEY AUTO_INCREMENT,
-    wishlistId INT,
-    FOREIGN KEY (wishlistId) REFERENCES wishlist(id),
+    wishlistId   INT,
+    FOREIGN KEY (wishlistId) REFERENCES wishlist (id),
     description  LONGTEXT NULL,
     externalLink LONGTEXT NULL
 );
 
 CREATE TABLE connections
 (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    userId INT,
-    FOREIGN KEY (userId) REFERENCES user(id),
+    id          INT PRIMARY KEY AUTO_INCREMENT,
+    userId      INT,
+    FOREIGN KEY (userId) REFERENCES user (id),
     connectedTo INT,
-    FOREIGN KEY (connectedTo) REFERENCES user(id)
+    FOREIGN KEY (connectedTo) REFERENCES user (id)
+);
+
+CREATE TABLE fullEvent
+(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    wishlistId INT,
+    FOREIGN KEY (wishlistId) REFERENCES wishlist(id),
+    eventId INT,
+    FOREIGN KEY (eventId) REFERENCES event(id)
+);
+
+CREATE TABLE invitees
+(
+connectedToId INT,
+fullEventId INT,
+PRIMARY KEY (connectedToId, fullEventId),
+FOREIGN KEY (connectedToId) REFERENCES  connections(connectedTo),
+FOREIGN KEY (fullEventId) REFERENCES  fullEvent(id)
 )
-
-
