@@ -27,7 +27,7 @@
     </div>
     <div class="eventMaker-zone bordersRules">
         <h1>More Details</h1>
-        <h3>Additional Info</h3>
+        <h3>Additional Infoo</h3>
     </div>
 </div>
         </div>
