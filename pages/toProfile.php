@@ -20,7 +20,10 @@
                 <nav class="personalArea-sideBar">
                     <button class="button-nav bordersRules m-b-5" onclick="toggleDisplay('zone1')">Personal Data</button>
                     <button class="button-nav bordersRules m-b-5" onclick="toggleDisplay('zone2')">Set New Password</button>
-                    <button class="button-nav bordersRules m-b-5" onclick="toggleDisplay('zone3')">CCC</button>
+                    <button class="button-nav bordersRules m-b-5 m-t-50" onclick="toggleDisplay('zone3')">CCC</button>
+                </nav>
+                <nav class="personalArea-sideBarBottom">
+
                 </nav>
                 <!--zone 1-->
                 <div class="personalArea-content bordersRules" id="zone1">

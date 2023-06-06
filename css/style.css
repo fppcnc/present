@@ -130,15 +130,15 @@ __________________________*/
     align-items: center;
 }
 
+
 .personalArea-content {
     background: #fff;
     padding: 5px;
-    height: 500px;
-    width: 400px;
+    min-height: 500px;
+    min-width: 400px;
 }
 
 .personalArea-sideBar {
-
     display: inline-block;
     background: #fff;
     position:relative;
@@ -146,7 +146,6 @@ __________________________*/
     align-self: flex-start;
     border-radius: 8px;
     margin-right: -3px;
-
     z-index: 1;
     box-shadow: rgba(255, 235, 205, .5) 0 -1px 0 0 inset, rgba(0, 44, 97, .1) 0 3px 0 0;
     min-width: 100px;

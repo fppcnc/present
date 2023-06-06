@@ -16,24 +16,17 @@ CREATE TABLE user
     registrationTime DATE
 );
 
-CREATE TABLE place
-(
-    id       INT PRIMARY KEY AUTO_INCREMENT,
-    country  VARCHAR(255),
-    city     VARCHAR(255),
-    postcode VARCHAR(5),
-    streetNr VARCHAR(10),
-    street   VARCHAR(255)
-);
-
 CREATE TABLE event
 (
     id           INT PRIMARY KEY AUTO_INCREMENT,
     organizedBy  INT,
     FOREIGN KEY (organizedBy) REFERENCES user (id),
     date         DATE,
-    placeId      INT,
-    FOREIGN KEY (placeId) REFERENCES place (id),
+    country      VARCHAR(255),
+    city         VARCHAR(255),
+    postcode     VARCHAR(5),
+    streetNr     VARCHAR(10),
+    street       VARCHAR(255),
     creationTime DATE
 );
 
@@ -65,18 +58,18 @@ CREATE TABLE connections
 
 CREATE TABLE fullEvent
 (
-    id INT PRIMARY KEY AUTO_INCREMENT,
+    id         INT PRIMARY KEY AUTO_INCREMENT,
     wishlistId INT,
-    FOREIGN KEY (wishlistId) REFERENCES wishlist(id),
-    eventId INT,
-    FOREIGN KEY (eventId) REFERENCES event(id)
+    FOREIGN KEY (wishlistId) REFERENCES wishlist (id),
+    eventId    INT,
+    FOREIGN KEY (eventId) REFERENCES event (id)
 );
 
-CREATE TABLE invitees
+CREATE TABLE guests
 (
-connectedToId INT,
-fullEventId INT,
-PRIMARY KEY (connectedToId, fullEventId),
-FOREIGN KEY (connectedToId) REFERENCES  connections(connectedTo),
-FOREIGN KEY (fullEventId) REFERENCES  fullEvent(id)
+    connectedToId INT,
+    fullEventId   INT,
+    PRIMARY KEY (connectedToId, fullEventId),
+    FOREIGN KEY (connectedToId) REFERENCES connections (connectedTo),
+    FOREIGN KEY (fullEventId) REFERENCES fullEvent (id)
 )
