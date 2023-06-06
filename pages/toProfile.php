@@ -91,6 +91,7 @@ Zone 3
         </div>
     </div>
 </div>
+<?php include "includes/footer.php";?>
 <script src="js/welcome.js"></script>
 <script src="js/personalArea.js"></script>
 </body>

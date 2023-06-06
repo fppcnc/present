@@ -51,6 +51,9 @@ switch ($choice) {
     case 'toLegalTerms':
         $page = 'toLegalTerms';
         break;
+        case 'toEventMaker':
+        $page = 'toEventMaker';
+        break;
     case 'toWelcome':
 //        if session is lost for any reason trying to reach toWelcome, user is redirected to homepage
         if (isset($_SESSION['user'])) {
