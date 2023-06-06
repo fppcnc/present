@@ -78,8 +78,8 @@ class User
         $stmt = $dbh->prepare($sql);
         $stmt->bindParam(':email', $email);
         $stmt->execute();
+        // return true or false if find something or not
         return $stmt->rowCount() > 0;
-
     }
 
     public
@@ -96,7 +96,6 @@ class User
             $stmt->bindParam(':password', $password);
             $stmt->execute();
             return $stmt->fetchObject('User');
-
         } else {
             return false;
         }
@@ -112,21 +111,13 @@ class User
     public
     function updateInfo($column, $newValue): void
     {
-        $checkEmail = (new User())->checkForEmail($this->email);
-        // if checkForEmail finds something, then stores it in $checkEmail
-        if ($checkEmail === true) {
 //          handle Db using user_update, which can only update data
             $dbh = new PDO (DB_DNS, DB_USER_UPDATE, DB_PASSWD_UPDATE);
             $sql = "UPDATE user SET $column=:newValue WHERE id =:id";
             $stmt = $dbh->prepare($sql);
             $stmt->bindParam(':id', $this->id);
             $stmt->bindParam(':newValue', $newValue);
-//        $stmt->bindParam(':firstName', $firstName);
-//        $stmt->bindParam(':lastName', $lastName);
-//        $stmt->bindParam(':dateOfBirth', $dateOfBirth);
-//        $stmt->bindParam(':email', $email);
             $stmt->execute();
-        }
     }
 
 

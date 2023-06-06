@@ -131,7 +131,6 @@ __________________________*/
 }
 
 .personalArea-content {
-    display: block;
     background: #fff;
     padding: 5px;
     height: 500px;
@@ -139,14 +138,15 @@ __________________________*/
 }
 
 .personalArea-sideBar {
+
     display: inline-block;
     background: #fff;
-    flex-basis: auto;
     position:relative;
     justify-self: flex-start;
     align-self: flex-start;
     border-radius: 8px;
     margin-right: -3px;
+
     z-index: 1;
     box-shadow: rgba(255, 235, 205, .5) 0 -1px 0 0 inset, rgba(0, 44, 97, .1) 0 3px 0 0;
     min-width: 100px;
@@ -349,8 +349,9 @@ __________________________________*/
     font-weight: 700;
     line-height: 24px;
     margin: 0;
+    align-items: stretch;
     min-height: 56px;
-    min-width: 120px;
+    min-width: 160px;
     padding: 16px 20px;
     position: relative;
     text-align: center;
@@ -527,6 +528,7 @@ ___________________________________*/
 .inactive-item {
     opacity: 0;
 }
+
 /*___________________________________
 Fonts
 ___________________________________*/

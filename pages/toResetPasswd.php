@@ -17,6 +17,7 @@
                 <form class="welcome-form" method="post" action="index.php">
                     <div class="homeInputsContainer">
                         <input type="hidden" name="choice" value="resetPasswd">
+                        <input type="hidden" name="loggedIn" value="false">
                         <div class="presentBigTitle">
                             Password Reset
                         </div>

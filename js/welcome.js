@@ -6,7 +6,6 @@ function toggleDropdown() {
 
 // close the dropdown if the user clicks outside of it
 window.onclick = function(event) {
-    console.log('LOL');
     if (!event.target.matches('.button-nav')) {
         let dropdowns = document.getElementsByClassName("dropdown-content");
         let i;

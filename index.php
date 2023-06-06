@@ -12,7 +12,9 @@ session_start();
 
 //get choice from hidden input from pages
 $choice = $_REQUEST['choice'] ?? 'toHome';
-
+//check logged In state
+$loggedIn = $_REQUEST['loggedIn'] ?? 'false';
+// get UserId
 $id = $_REQUEST['id'] ?? '';
 
 //get data from signup page
@@ -22,6 +24,10 @@ $dateOfBirth = $_POST['dateOfBirth'] ?? '';
 $email = $_POST['email'] ?? '';
 $password = $_POST['password'] ?? '';
 $confirmPassword = $_POST['confirmPassword'] ?? '';
+
+// parameters to upload info
+$column = $_POST['column'] ?? '';
+$newValue = $_POST["$column"] ?? '';
 
 
 //access toHome.php
@@ -77,29 +83,7 @@ switch ($choice) {
             $page = 'toSignUp';
         }
         break;
-    case 'resetPasswd':
-        //if password fields match, data is stored in database
-        if ($password === $confirmPassword) {
-            // reset password
-            $u = new User();
-            $column = $_POST['column'];
-            $newValue = $_POST["$column"];
-            $resPwd = $u->updateInfo($column, $newValue);
-//            if ($resPwd === true) {
-//                $_SESSION['error'] = '';
-//                $page = 'toHome';
-//                //if updateInfo return false then no email is found in Db
-//            } else {
-//                $_SESSION['error'] = 'Email not found';
-//                $page = 'toResetPasswd';
-//            }
-        } else {
-            $_SESSION['error'] = "Given Passwords don´t match";
-            $page = 'toResetPasswd';
-        }
-        break;
-    case
-    'login':
+    case 'login':
         //grant access to next page if email and password match data in Db
         $log = (new User())->grantAccess($email, $password);
         if ($log === false) {
@@ -113,21 +97,48 @@ switch ($choice) {
             $page = 'toWelcome';
         }
         break;
+    case 'resetPasswd':
+        if ($loggedIn === true) {
+            $u = new User();
+            $u = $_SESSION['user'];
+            if ($password === $confirmPassword) {
+                $u->updateInfo($column, $newValue);
+                $user = $u->getObject();
+                $_SESSION['user'] = $user;
+                $_SESSION['error'] = '';
+                $page = 'toProfile';
+            } else {
+                $_SESSION['error'] = "Given Passwords don´t match";
+                $page = 'toWelcome';
+            }
+        } elseif ($loggedIn === false) {
+            if ($password === $confirmPassword) {
+                $resPwd = new User();
+                $u = $resPwd->grantAccess($email, $password);
+                if ($u === false) {
+                    $_SESSION['error'] = 'Email not found';
+                    $page = 'toResetPasswd';
+                } else {
+                    $u->updateInfo($column, $newValue);
+                    $_SESSION['error'] = '';
+                    $page = 'toHome';
+                }
+            } else {
+                $_SESSION['error'] = "Given Passwords don´t match";
+                $page = 'toResetPasswd';
+            }
+        }
+        break;
     case 'updateInfo':
         $u = new User();
         $u = $_SESSION['user'];
-        $column = $_POST['column'];
-        $newValue = $_POST["$column"];
-//        $u->updateInfo($firstName, $lastName, $dateOfBirth, $email);
         $u->updateInfo($column, $newValue);
         $user = $u->getObject();
         $_SESSION['user'] = $user;
-        print_r($user);
         $page = 'toProfile';
         break;
-    case
-    'logout':
-// unset all of the session variables
+    case 'logout':
+// unset all the session variables
         session_unset();
         // destroy the session.
         session_destroy();
