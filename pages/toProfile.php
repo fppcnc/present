@@ -16,6 +16,8 @@
     <div class="mainContainer">
         <?php include "includes/header.php"; ?>
         <div class="wrapContainer">
+            <?php include "includes/sideMenu.php";?>
+            <?php include "includes/sidebarSearch.php";?>
             <div class="personalArea-container">
                 <nav class="personalArea-sideBar">
                     <button class="button-nav bordersRules m-b-5" onclick="toggleDisplay('zone1')">Personal Data</button>

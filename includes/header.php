@@ -2,11 +2,6 @@
     <div class="site-header__wrapper">
         <div class="site-header__start">
             <a href="index.php?choice=toWelcome" class="presentSubTitle">Present</a>
-            <div class="search">
-                <form class="search__form p-l-15" action="">
-                    <input type="search" name="" id="search" placeholder="Looking for someone?">
-                </form>
-            </div>
         </div>
         <div class="site-header__end">
             <nav class="nav__wrapper">

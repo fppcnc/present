@@ -12,6 +12,10 @@ body {
     font-family: Arial, Geneva, sans-serif;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+}
+
 /*___________________________________
 Text
 ___________________________________*/
@@ -141,7 +145,7 @@ __________________________*/
 .personalArea-sideBar {
     display: inline-block;
     background: #fff;
-    position:relative;
+    position: relative;
     justify-self: flex-start;
     align-self: flex-start;
     border-radius: 8px;
@@ -200,6 +204,10 @@ __________________________*/
     font-size: 10px;
 }
 
+/*___________________________
+Header
+_____________________________*/
+
 .dropdown {
     position: relative;
     display: inline-block;
@@ -209,7 +217,7 @@ __________________________*/
     display: none;
     position: absolute;
     background-color: #f1f1f1;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
@@ -222,10 +230,14 @@ __________________________*/
 }
 
 /* change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
 
 /* show the dropdown menu  */
-.show {display:block;}
+.show {
+    display: block;
+}
 
 .site-header {
     position: absolute;
@@ -298,6 +310,7 @@ __________________________*/
 
 .eventMaker-container {
     display: flex;
+    min-width: 900px;
 }
 
 .eventMaker-zone {
@@ -305,32 +318,112 @@ __________________________*/
     padding: 20px;
     justify-content: center;
     align-content: center;
-
+    background-color: #FFC0C7;
+    width: calc(33%);
+    margin: 10px;
 }
 
 /*__________________________________
 Footer
 __________________________________*/
 
-footer{
+footer {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    background: lightgray;
+    background: #ffffff;
     height: auto;
     width: 100vw;
     padding-top: 40px;
     color: black;
+    border-top: 1px solid black;
 }
 
-.footer-content{
+.footer-content {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     text-align: center;
+
 }
+
+
+/*__________________________________
+Sidebar Menu
+__________________________________*/
+
+.menu {
+    /*background: #fff;*/
+    height: 100vh;
+    width: 10%;
+    position: fixed;
+    display: flex;
+    top: 67px;
+    left: 0;
+    flex-direction: column;
+    /*z-index: 5;*/
+    outline: none;
+    background-color: #faf2e6;
+    border-right: 1px solid #e09a5b;
+}
+
+/*__________________________________
+Sidebar Search
+__________________________________*/
+
+.search-sideBar {
+    background: #fff;
+    height: 100vh;
+    width: 15%;
+    position: fixed;
+    display: flex;
+    top: 67px;
+    left: 85%;
+    flex-direction: column;
+    /*z-index: 5;*/
+    outline: none;
+    /*background-color: #faf2e6;*/
+    border-left: 1px solid black;
+}
+
+.search-wrapper {
+    display:flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+
+/*input {*/
+/*    font-size: 1rem;*/
+/*}*/
+
+.user-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: .25rem;
+    margin-top: 1rem;
+}
+
+.card {
+    border: 1px solid black;
+    background-color: white;
+    padding: .5rem;
+}
+
+.card > .header {
+    margin-bottom: .25rem;
+}
+
+.card > .body {
+    font-size: .8rem;
+    color: #777;
+}
+
+.hide {
+    display: none;
+}
+
 /*__________________________________
 Single Elements
 __________________________________*/
@@ -487,6 +580,7 @@ __________________________________*/
         border-bottom-color: #222;
     }
 }
+
 /*___________________________________
 Inputs and Forms
 ___________________________________*/
@@ -498,48 +592,48 @@ ___________________________________*/
     background: #fff;
 }
 
-.search {
-    display: flex;
-    margin-left: 1rem;
-}
+/*.search {*/
+/*    display: flex;*/
+/*    margin-left: 1rem;*/
+/*}*/
 
-.search__form {
-    display: block;
+/*.search__form {*/
+/*    display: block;*/
 
-}
+/*}*/
 
-.search__form.active {
-    display: block;
-}
+/*.search__form.active {*/
+/*    display: block;*/
+/*}*/
 
-@media (max-width: 799px) {
-    .search__form {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 100%;
-    }
+/*@media (max-width: 799px) {*/
+/*    .search__form {*/
+/*        position: absolute;*/
+/*        left: 0;*/
+/*        right: 0;*/
+/*        top: 100%;*/
+/*    }*/
 
-    .search__form input {
-        width: 100%;
-    }
-}
+/*    .search__form input {*/
+/*        width: 100%;*/
+/*    }*/
+/*}*/
 
-.search__form input {
-    min-width: 200px;
-    appearance: none;
-    border: 0;
-    background-color: #fff;
-    border-radius: 0;
-    font-size: 16px;
-    padding: 0.5rem;
-}
+/*.search__form input {*/
+/*    min-width: 200px;*/
+/*    appearance: none;*/
+/*    border: 0;*/
+/*    background-color: #fff;*/
+/*    border-radius: 0;*/
+/*    font-size: 16px;*/
+/*    padding: 0.5rem;*/
+/*}*/
 
-@media (max-width: 799px) {
-    .search__form input {
-        border-bottom: 1px solid #979797;
-    }
-}
+/*@media (max-width: 799px) {*/
+/*    .search__form input {*/
+/*        border-bottom: 1px solid #979797;*/
+/*    }*/
+/*}*/
 
 /*___________________________________
 Elements used for JS
@@ -601,8 +695,8 @@ ______________________________________*/
     align-content: center;
     align-items: center;
     justify-items: center;
-    top:50%;
-    left:50%;
+    top: 50%;
+    left: 50%;
 }
 
 
