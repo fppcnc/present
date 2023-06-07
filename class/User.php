@@ -1,6 +1,6 @@
 <?php
 
-class User
+class User implements JsonSerializable
 {
     private int $id;
     private string $firstName;
@@ -118,6 +118,13 @@ class User
             $stmt->bindParam(':id', $this->id);
             $stmt->bindParam(':newValue', $newValue);
             $stmt->execute();
+    }
+
+    public function jsonSerialize() {
+        return ['firstName' => $this->firstName,
+            'lastName' => $this->lastName,
+            'dateOfBirth' => $this->dateOfBirth,
+            'email' => $this->email];
     }
 
 

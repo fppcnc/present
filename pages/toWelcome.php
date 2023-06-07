@@ -15,6 +15,8 @@
     <div class="mainContainer">
         <?php include "includes/header.php";?>
         <div class="wrapContainer">
+            <?php include "includes/sideMenu.php";?>
+            <?php include "includes/sidebarSearch.php";?>
         </div>
     </div>
 </div>

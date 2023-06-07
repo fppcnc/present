@@ -16,18 +16,20 @@
     <div class="mainContainer">
         <?php include "includes/header.php"; ?>
         <div class="wrapContainer">
+            <?php include "includes/sideMenu.php";?>
+            <?php include "includes/sidebarSearch.php";?>
 <div class="eventMaker-container">
     <div class="eventMaker-zone bordersRules">
         <h1>Event</h1>
-        <h3>What are we Celebrating?</h3>
+        <h3>What are you celebrating?</h3>
     </div>
     <div class="eventMaker-zone bordersRules">
         <h1>Wishlist</h1>
-        <h3></h3>
+        <h3>What´s in your mind?</h3>
     </div>
     <div class="eventMaker-zone bordersRules">
         <h1>More Details</h1>
-        <h3></h3>
+        <h3>AAA</h3>
     </div>
 </div>
         </div>
