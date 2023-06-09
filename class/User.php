@@ -16,7 +16,7 @@ class User implements JsonSerializable
      */
     public function getObject(): User|false
     {
-        $dbh = new PDO (DB_DNS, DB_USER_SELECT, DB_PASSWD_SELECT);
+        $dbh = Db::getConnectionSelect();
         $sql = "SELECT * from user WHERE id = :id";
         $stmt = $dbh->prepare($sql);
         $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
@@ -39,7 +39,7 @@ class User implements JsonSerializable
     function registerNewUser(string $firstName, string $lastName, string $dateOfBirth, string $email, string $password): User
     {
         // handle DB using strictly privileges we need. INSERT in this case
-        $dbh = new PDO (DB_DNS, DB_USER_INSERT, DB_PASSWD_INSERT);
+        $dbh = Db::getConnectionInsert();
         //query
         $sql = "INSERT INTO user (id, firstName, lastName, dateOfBirth, email, password, registrationTime)
                 VALUES (NULL, :firstName, :lastName, :dateOfBirth, :email, :password, :registrationTime)";
@@ -72,7 +72,7 @@ class User implements JsonSerializable
     function checkForEmail(string $email): bool
     {
         // handle DB using strictly privileges we need. SELECT in this case
-        $dbh = new PDO (DB_DNS, DB_USER_SELECT, DB_PASSWD_SELECT);
+        $dbh = Db::getConnectionSelect();
         // Check if email already exists in database
         $sql = "SELECT id FROM user WHERE email = :email";
         $stmt = $dbh->prepare($sql);
@@ -83,17 +83,24 @@ class User implements JsonSerializable
     }
 
     public
-    function grantAccess(string $email, string $password): User|false
+    function grantAccess(string $email, string|null $password): User|false
     {
         $checkEmail = (new User())->checkForEmail($email);
         // if checkForEmail finds something, then stores it in $checkEmail
-        if ($checkEmail === true) {
+        if ($checkEmail === true && isset($password)) {
             // search if input passwd matches the one associated to email in Db
-            $dbh = new PDO (DB_DNS, DB_USER_SELECT, DB_PASSWD_SELECT);
+            $dbh = Db::getConnectionSelect();
             $sql = "SELECT * FROM user WHERE email =:email AND password = :password";
             $stmt = $dbh->prepare($sql);
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':password', $password);
+            $stmt->execute();
+            return $stmt->fetchObject('User');
+        } elseif ($checkEmail === true && !isset($password)) {
+            $dbh = Db::getConnectionSelect();
+            $sql = "SELECT * FROM user WHERE email =:email";
+            $stmt = $dbh->prepare($sql);
+            $stmt->bindParam(':email', $email);
             $stmt->execute();
             return $stmt->fetchObject('User');
         } else {
@@ -102,17 +109,15 @@ class User implements JsonSerializable
     }
 
     /**
-     * @param $firstName
-     * @param $lastName
-     * @param $dateOfBirth
-     * @param $email
+     * @param $column
+     * @param $newValue
      * @return void
      */
     public
     function updateInfo($column, $newValue): void
     {
 //          handle Db using user_update, which can only update data
-            $dbh = new PDO (DB_DNS, DB_USER_UPDATE, DB_PASSWD_UPDATE);
+            $dbh = Db::getConnectionSelect();
             $sql = "UPDATE user SET $column=:newValue WHERE id =:id";
             $stmt = $dbh->prepare($sql);
             $stmt->bindParam(':id', $this->id);

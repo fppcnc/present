@@ -73,3 +73,16 @@ CREATE TABLE guests
     FOREIGN KEY (connectedToId) REFERENCES connections (connectedTo),
     FOREIGN KEY (fullEventId) REFERENCES fullEvent (id)
 )
+
+
+
+
+
+-- INSERT INTO present.user (firstName, lastName, dateOfBirth, password, email, registrationTime) VALUES ('ddd', 'ddd', '1994-04-04', 'ddd', 'ddd@ddd.ddd', '2023-05-06')
+-- INSERT INTO present.user (firstName, lastName, dateOfBirth, password, email, registrationTime) VALUES ('eee', 'eee', '1995-05-05', 'eee', 'eee@eee.eee', '2023-06-05')
+-- INSERT INTO present.user (firstName, lastName, dateOfBirth, password, email, registrationTime) VALUES ('fff', 'fff', '1996-06-06', 'fff', 'fff@fff.fff', '2023-06-05')
+-- INSERT INTO present.user (firstName, lastName, dateOfBirth, password, email, registrationTime) VALUES ('ggg', 'ggg', '1997-07-07', 'ggg', 'ggg@ggg.ggg', '2023-06-04')
+-- INSERT INTO present.user (firstName, lastName, dateOfBirth, password, email, registrationTime) VALUES ('hhh', 'hhh', '1998-08-08', 'hhh', 'hhh@hhh.hhh', '2023-06-04')
+-- INSERT INTO present.user (firstName, lastName, dateOfBirth, password, email, registrationTime) VALUES ('iii', 'iii', '1999-09-09', 'iii', 'iii@iii.iii', '2023-06-04')
+-- INSERT INTO present.user (firstName, lastName, dateOfBirth, password, email, registrationTime) VALUES ('lll', 'lll', '2000-10-10', 'lll', 'lll@lll.lll', '2023-06-04')
+-- INSERT INTO present.user (firstName, lastName, dateOfBirth, password, email, registrationTime) VALUES ('mmm', 'mmm', '2001-11-11', 'mmm', 'mmm@mmm.mmm', '2023-06-04')

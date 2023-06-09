@@ -1,6 +1,6 @@
 <?php
 // connection to DB
-const DB_DNS = 'mysql:host=localhost;dbname=present';
+const DB_DSN = 'mysql:host=localhost;dbname=present';
 
 // root privileges. Better avoid using this to prevent irreversible actions
 const DB_USER_ROOT = 'root';

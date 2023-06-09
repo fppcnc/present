@@ -6,7 +6,11 @@
 //dbCredentials.php for db credentials
 include 'includes/dbCredentials.php';
 //include class User
-include 'class/User.php';
+//include 'class/User.php';
+//include used class
+spl_autoload_register(function ($class) {
+    include 'class/' . $class . '.php';
+});
 //start session and carry values over next pages
 session_start();
 
@@ -29,6 +33,12 @@ $confirmPassword = $_POST['confirmPassword'] ?? '';
 $column = $_POST['column'] ?? '';
 $newValue = $_POST["$column"] ?? '';
 
+//echo '<pre>';
+//print_r($_POST);
+//echo '</pre>';
+//echo '<pre>';
+//print_r($_REQUEST);
+//echo '</pre>';
 
 //access toHome.php
 switch ($choice) {
@@ -101,7 +111,7 @@ switch ($choice) {
         }
         break;
     case 'resetPasswd':
-        if ($loggedIn === true) {
+        if ($loggedIn === 'true') {
             $u = new User();
             $u = $_SESSION['user'];
             if ($password === $confirmPassword) {
@@ -114,10 +124,10 @@ switch ($choice) {
                 $_SESSION['error'] = "Given Passwords don´t match";
                 $page = 'toWelcome';
             }
-        } elseif ($loggedIn === false) {
+        } elseif ($loggedIn === 'false') {
             if ($password === $confirmPassword) {
                 $resPwd = new User();
-                $u = $resPwd->grantAccess($email, $password);
+                $u = $resPwd->grantAccess($email, null);
                 if ($u === false) {
                     $_SESSION['error'] = 'Email not found';
                     $page = 'toResetPasswd';

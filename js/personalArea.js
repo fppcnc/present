@@ -2,10 +2,16 @@ function setInitialDisplay() {
     let zone1 = document.getElementById('zone1');
     let zone2 = document.getElementById('zone2');
     let zone3 = document.getElementById('zone3');
+    let zone4 = document.getElementById('zone4');
 
     zone1.style.display = 'block';
     zone2.style.display = 'none';
     zone3.style.display = 'none';
+    zone4.style.display = 'none';
+
+    let button1 = document.getElementById('btn-1');
+    button1.focus();
+    button1.style.outline = '0';
 }
 
 window.onload = setInitialDisplay;

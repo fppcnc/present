@@ -20,9 +20,11 @@
             <?php include "includes/sidebarSearch.php";?>
             <div class="personalArea-container">
                 <nav class="personalArea-sideBar">
-                    <button class="button-nav bordersRules m-b-5" onclick="toggleDisplay('zone1')">Personal Data</button>
-                    <button class="button-nav bordersRules m-b-5" onclick="toggleDisplay('zone2')">Set New Password</button>
-                    <button class="button-nav bordersRules m-b-5 m-t-50" onclick="toggleDisplay('zone3')">CCC</button>
+                    <button class="button-nav-white bordersRules m-b-5" onclick="toggleDisplay('zone1')" id="btn-1" autofocus>Personal Data</button>
+                    <button class="button-nav-white bordersRules m-b-5" onclick="toggleDisplay('zone2')" id="btn-2">Set New Password</button>
+                    <button class="button-nav-white bordersRules m-b-5 m-t-50" onclick="toggleDisplay('zone3')" id="btn-3">T&C</button>
+                    <button class="button-nav-white bordersRules m-b-5 m-t-50" style="color:darkred" onclick="toggleDisplay('zone4')" id="btn-4">Delete Account</button>
+                    <button class="button-nav-white bordersRules m-b-5" onclick="location.href='index.php?choice=logout';" style="color:darkred" id="btn-5">LogOut</button>
                 </nav>
                 <nav class="personalArea-sideBarBottom">
 
@@ -73,9 +75,7 @@
                                 <input type="password" id="personalAreaConfirmPassword" class="input-home bordersRules"
                                        name="confirmPassword" required>
                                 <button type="submit" class="button-personalArea bordersRules m-t-5" id="updatePassword"
-                                    name="column" value="password">
-                                    Update
-                                </button>
+                                    name="column" value="password">Update</button>
                             </span>
                             </div>
                         </form>
@@ -85,6 +85,14 @@
                     <form class="welcome-form" method="post" action="index.php">
                         <div class="homeInputsContainer">
 Zone 3
+                        </div>
+                    </form>
+
+                </div>
+                <div class="personalArea-content bordersRules" id="zone4">
+                    <form class="welcome-form" method="post" action="index.php">
+                        <div class="homeInputsContainer">
+Zone 4
                         </div>
                     </form>
 

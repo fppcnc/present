@@ -16,19 +16,24 @@
     <div class="mainContainer">
         <?php include "includes/header.php"; ?>
         <div class="wrapContainer">
+            <?php include "includes/sideMenu.php";?>
+            <?php include "includes/sidebarSearch.php";?>
 <div class="eventMaker-container">
-    <div class="eventMaker-zone bordersRules">
-        <h1>Event</h1>
-        <h3>What are we Celebrating?</h3>
-    </div>
-    <div class="eventMaker-zone bordersRules">
-        <h1>Wishlist</h1>
-        <h3></h3>
-    </div>
-    <div class="eventMaker-zone bordersRules">
-        <h1>More Details</h1>
-        <h3></h3>
-    </div>
+    <div class="presentText">With Present EventMaker you can create events for all occasions and
+        share it with your friends. Let everyone know the next time there will be something to celebrate
+        and help them in making this day truly special!</div>
+<!--    <div class="eventMaker-zone bordersRules">-->
+<!--        <h1>Event</h1>-->
+<!--        <h3>What are we Celebrating?</h3>-->
+<!--    </div>-->
+<!--    <div class="eventMaker-zone bordersRules">-->
+<!--        <h1>Wishlist</h1>-->
+<!--        <h3>What´s in your mind?</h3>-->
+<!--    </div>-->
+<!--    <div class="eventMaker-zone bordersRules">-->
+<!--        <h1>More Details</h1>-->
+<!--        <h3></h3>-->
+<!--    </div>-->
 </div>
         </div>
     </div>

@@ -2,12 +2,12 @@
 
 const userCardTemplate = document.querySelector("[data-user-template]");
 const userCardContainer = document.querySelector("[data-user-cards-container]");
-// const searchInput = document.querySelector("[data-search]");
+const searchInput = document.querySelector("[data-search]");
 
 let users = [];
 
 // load results matching input
-searchInput.addEventListener("input", (e) => {
+searchInput.addEventListener("input", e => {
     const value = e.target.value.toLowerCase();
     users.forEach(user => {
         const isVisible = user.firstName.toLowerCase().includes(value) ||
