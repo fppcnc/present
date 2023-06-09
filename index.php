@@ -18,6 +18,8 @@ session_start();
 $choice = $_REQUEST['choice'] ?? 'toHome';
 //check logged In state
 $loggedIn = $_REQUEST['loggedIn'] ?? 'false';
+//personal area or someone else´s
+$area = $_REQUEST['area'] ?? '';
 // get UserId
 $id = $_REQUEST['id'] ?? '';
 
@@ -56,7 +58,9 @@ switch ($choice) {
         $page = 'toResetPasswd';
         break;
     case 'toProfile':
-        $page = 'toProfile';
+        if ($area === 'personal') {
+            $page = 'toProfile';
+        }
         break;
     case 'toLegalTerms':
         $page = 'toLegalTerms';
