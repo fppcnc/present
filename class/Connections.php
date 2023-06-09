@@ -2,23 +2,36 @@
 
 class Connections
 {
-private int $id;
-private int $userId;
-private int $connectedToId;
-private string $connectedOn;
+    private int $id;
+    private int $userId;
+    private int $connectedToId;
+    private string $connectedOn;
+
+    public function getConnections(User $user): array
+    {
+        $dbh = Db::getConnectionSelect();
+        $sql = "SELECT * FROM connections WHERE userId =:userId";
+        $stmt = $dbh->prepare($sql);
+        $uId = $user->getId();
+        $stmt->bindParam(':userId', $uId);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, 'User');
+    }
 
     /**
-     * @param int $id
-     * @param int $userId
-     * @param int $connectedToId
-     * @param string $connectedOn
+     * @param int|null $id
+     * @param int|null $userId
+     * @param int|null $connectedToId
+     * @param string|null $connectedOn
      */
-    public function __construct(int $id, int $userId, int $connectedToId, string $connectedOn)
+    public function __construct(int|null $id = null, int|null $userId = null, int|null $connectedToId = null, string|null $connectedOn = null)
     {
-        $this->id = $id;
-        $this->userId = $userId;
-        $this->connectedToId = $connectedToId;
-        $this->connectedOn = $connectedOn;
+        if (isset ($id) && isset($this->userId) && isset($connectedToId) && isset($this->connectedOn)) {
+            $this->id = $id;
+            $this->userId = $userId;
+            $this->connectedToId = $connectedToId;
+            $this->connectedOn = $connectedOn;
+        }
     }
 
     /**

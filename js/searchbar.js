@@ -16,7 +16,7 @@ searchInput.addEventListener("input", e => {
     })
 })
 
-fetch("http://localhost:60771/present/js/search.php")
+fetch("js/search.php")
     .then(res => res.json())
     .then(data => {
         users = data.map(user => {

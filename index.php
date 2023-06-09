@@ -44,6 +44,9 @@ $newValue = $_POST["$column"] ?? '';
 
 //access toHome.php
 switch ($choice) {
+    case 'doublecheck':
+        $page = 'doublecheck';
+        break;
 //connected to pages
     case 'toHome':
         $page = 'toHome';
