@@ -16,15 +16,17 @@ searchInput.addEventListener("input", e => {
     })
 })
 
-fetch("#")
+fetch("http://localhost:60771/present/js/search.php")
     .then(res => res.json())
     .then(data => {
         users = data.map(user => {
             const card = userCardTemplate.content.cloneNode(true).children[0];
             const header = card.querySelector("[data-header]");
-            const body = card.querySelector("[data-body]");
-            header.textContent = user.firstName + user.lastName;
-            body.textContent = user.email + "<br>" + user.dateOfBirth;
+            const email = card.querySelector("[data-email]");
+            const dob = card.querySelector("[data-dob]");
+            header.textContent = user.firstName + ' ' + user.lastName;
+            email.textContent += user.email;
+            dob.textContent += user.dateOfBirth;
             userCardContainer.append(card);
             return {firstName: user.firstName, lastName: user.lastName, email: user.email, dateOfBirth: user.dateOfBirth, element: card}
         })

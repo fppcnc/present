@@ -21,7 +21,6 @@
     </div>
 </div>
 <?php include "includes/footer.php";?>
-<script src="js/js.js"></script>
 <script src="js/welcome.js"></script>
 </body>
 </html><?php

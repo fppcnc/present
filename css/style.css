@@ -335,9 +335,9 @@ footer {
     left: 0;
     right: 0;
     background: #ffffff;
-    height: auto;
+    height: 105px;
     width: 100vw;
-    padding-top: 40px;
+    padding-top: 10px;
     color: black;
     border-top: 1px solid black;
 }
@@ -357,38 +357,36 @@ Sidebar Menu
 __________________________________*/
 
 .menu {
-    /*background: #fff;*/
-    height: 100vh;
+    height: calc(100vh - 183px);
     width: 10%;
     position: fixed;
     display: flex;
     top: 67px;
     left: 0;
     flex-direction: column;
-    /*z-index: 5;*/
     outline: none;
     background-color: #faf2e6;
     border-right: 1px solid #e09a5b;
+
 }
 
 /*__________________________________
 Sidebar Search
 __________________________________*/
 
-.search-sideBar {
+.search-sideBar-container {
     background: #fff;
-    height: 100vh;
+    height: calc(100vh - 183px);
     width: 15%;
     position: fixed;
     display: flex;
     top: 67px;
     left: 85%;
     flex-direction: column;
-    /*z-index: 5;*/
     outline: none;
-    /*background-color: #faf2e6;*/
     border-left: 1px solid black;
 }
+
 
 .search-wrapper {
     display:flex;
@@ -405,6 +403,8 @@ __________________________________*/
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: .25rem;
     margin-top: 1rem;
+    overflow: auto;
+    padding: 5px;
 }
 
 .card {

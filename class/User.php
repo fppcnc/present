@@ -117,7 +117,7 @@ class User implements JsonSerializable
     function updateInfo($column, $newValue): void
     {
 //          handle Db using user_update, which can only update data
-            $dbh = Db::getConnectionSelect();
+            $dbh = Db::getConnectionUpdate();
             $sql = "UPDATE user SET $column=:newValue WHERE id =:id";
             $stmt = $dbh->prepare($sql);
             $stmt->bindParam(':id', $this->id);
@@ -125,11 +125,19 @@ class User implements JsonSerializable
             $stmt->execute();
     }
 
-    public function jsonSerialize() {
-        return ['firstName' => $this->firstName,
-            'lastName' => $this->lastName,
-            'dateOfBirth' => $this->dateOfBirth,
-            'email' => $this->email];
+    public function jsonSerialize(): array {
+        return ['firstName' => $this->getFirstName(),
+            'lastName' => $this->getLastName(),
+            'dateOfBirth' => $this->getDateOfBirth(),
+            'email' => $this->getEmail()];
+    }
+
+    public function search(): array|null {
+        $dbh = Db::getConnectionSelect();
+        $sql = "SELECT * FROM user ORDER BY lastName ASC";
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, 'User');
     }
 
 
