@@ -13,6 +13,7 @@ spl_autoload_register(function ($class) {
 });
 //start session and carry values over next pages
 session_start();
+$userInfos = $_SESSION['user'];
 
 //get choice from hidden input from pages
 $choice = $_REQUEST['choice'] ?? 'toHome';
@@ -22,6 +23,8 @@ $loggedIn = $_REQUEST['loggedIn'] ?? 'false';
 $area = $_REQUEST['area'] ?? '';
 // get UserId
 $id = $_REQUEST['id'] ?? '';
+// get friendId
+$idFriend = $_REQUEST['friend'] ?? '';
 
 //get data from signup page
 $firstName = $_POST['firstName'] ?? '';
@@ -69,10 +72,18 @@ switch ($choice) {
     case 'toLegalTerms':
         $page = 'toLegalTerms';
         break;
-        case 'toEventMaker':
+    case 'toEventMaker':
         $page = 'toEventMaker';
         break;
-        case 'toFriendList':
+    case 'toFriendList':
+        $c = new Connections();
+        $list = $c->getConnections($userInfos);
+        $u = [];
+        foreach ($list as $value) {
+            $connectedTo = $value->connectedTo;
+            $cUser = new User;
+            $u[] = $cUser->getObjectFromId($value->connectedTo);
+        }
         $page = 'toFriendList';
         break;
     case 'toWelcome':
@@ -84,6 +95,10 @@ switch ($choice) {
             $page = 'toHome';
             $_SESSION['error'] = 'Your session has expired. Please try again';
         }
+        break;
+    case 'toFriendsProfile':
+        $f = (new User())->getObjectFromId($idFriend);
+        $page = 'toFriendsProfile';
         break;
     case 'register':
         //if password fields match, data is stored in database

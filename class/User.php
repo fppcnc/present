@@ -126,7 +126,8 @@ class User implements JsonSerializable
     }
 
     public function jsonSerialize(): array {
-        return ['firstName' => $this->getFirstName(),
+        return ['id' => $this->getId(),
+            'firstName' => $this->getFirstName(),
             'lastName' => $this->getLastName(),
             'dateOfBirth' => $this->getDateOfBirth(),
             'email' => $this->getEmail()];
@@ -134,7 +135,7 @@ class User implements JsonSerializable
 
     public function search(): array|null {
         $dbh = Db::getConnectionSelect();
-        $sql = "SELECT * FROM user ORDER BY RAND() LIMIT 15";
+        $sql = "SELECT * FROM user ORDER BY RAND()";
         $stmt = $dbh->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'User');

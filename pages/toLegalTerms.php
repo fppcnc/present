@@ -12,9 +12,13 @@
 <body>
 <div class="limiter">
     <div class="mainContainer">
+        <?php include "includes/header.php"; ?>
         <div class="wrapContainer">
+            <div class="centralArea">
+                <?php include "includes/sideMenu.php";?>
+                <?php include "includes/sidebarSearch.php";?>
             Here goes Legal stuff
-            <button type="button" onclick="window.location.href='index.php?choice=toHome';">
+            <button type="button" onclick="window.location.href='index.php?choice=toWelcome';">
                 Back to Home
             </button>
         </div>
