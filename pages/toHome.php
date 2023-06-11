@@ -121,6 +121,6 @@
         </div>
     </div>
 </div>
-<script src="../js/js.js"></script>
+<script src="js/homepage.js"></script>
 </body>
 </html><?php

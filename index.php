@@ -44,6 +44,7 @@ $newValue = $_POST["$column"] ?? '';
 
 //access toHome.php
 switch ($choice) {
+    //playground page
     case 'doublecheck':
         $page = 'doublecheck';
         break;
@@ -70,6 +71,9 @@ switch ($choice) {
         break;
         case 'toEventMaker':
         $page = 'toEventMaker';
+        break;
+        case 'toFriendList':
+        $page = 'toFriendList';
         break;
     case 'toWelcome':
 //        if session is lost for any reason trying to reach toWelcome, user is redirected to homepage

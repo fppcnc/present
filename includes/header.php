@@ -1,3 +1,4 @@
+<script src="js/dropdownHeader.js" defer></script>
 <header class="site-header">
     <div class="site-header__wrapper">
         <div class="site-header__start">
@@ -12,7 +13,7 @@
                         </button>
                         <div id="areaDropdown" class="dropdown-content">
                             <a href="index.php?choice=toProfile&area=personal" class="button-nav">Edit Profile</a>
-                            <a href="index.php?choice=doublecheck" class="button-nav" style="color: darkred">Friends</a>
+                            <a href="index.php?choice=toFriendList" class="button-nav">Friends</a>
                             <a href="index.php?choice=logout" class="button-nav" style="color: darkred">Logout</a>
                         </div>
                     </div>

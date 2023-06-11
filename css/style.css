@@ -57,7 +57,6 @@ ___________________________________*/
     color: #333333;
     line-height: 1.2;
     text-align: center;
-    /*font-family: "alex_brushregular", Arial, sans-serif;*/
 }
 
 
@@ -93,6 +92,10 @@ __________________________*/
     justify-content: center;
 }
 
+/*__________________________
+Home
+__________________________*/
+
 .homeSelection {
     width: 450px;
     height: 300px;
@@ -126,34 +129,6 @@ __________________________*/
     padding: 5px;
     justify-content: center;
     align-items: center;
-}
-
-.personalArea-container {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-.personalArea-content {
-    background: #fff;
-    padding: 5px;
-    min-height: 500px;
-    min-width: 400px;
-}
-
-.personalArea-sideBar {
-    display: inline-block;
-    /*background: #fff;*/
-    position: relative;
-    justify-self: flex-start;
-    align-self: flex-start;
-    border-radius: 8px;
-    margin-right: -3px;
-    z-index: 1;
-    /*box-shadow: rgba(255, 235, 205, .5) 0 -1px 0 0 inset, rgba(0, 44, 97, .1) 0 3px 0 0;*/
-    min-width: 100px;
-    padding: 10px 13px 10px 10px;
 }
 
 .homeInputsContainer {
@@ -194,6 +169,10 @@ __________________________*/
     position: relative;
 }
 
+/*__________________________
+T & C
+__________________________*/
+
 .tAndC {
     padding: 20px;
     display: flex;
@@ -203,6 +182,57 @@ __________________________*/
     justify-items: center;
     font-size: 10px;
 }
+
+/*__________________________
+Central Container
+__________________________*/
+
+.centralArea {
+    position: absolute;
+    display: inline-flex;
+    top: 67px;
+    left: 193px;
+    height: calc(100vh - 283px);
+    width: calc(100% - 582px);
+    overflow: auto;
+    padding: 50px;
+justify-content: center;
+    align-content: center;
+}
+
+/*__________________________
+Personal Area
+__________________________*/
+
+.personalArea-container {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.personalArea-content {
+    background: #fff;
+    padding: 5px;
+    min-height: 500px;
+    min-width: 400px;
+    justify-self: flex-start;
+    align-self: flex-start;
+}
+
+.personalArea-sideBar {
+    display: inline-block;
+    position: relative;
+    justify-self: flex-start;
+    align-self: flex-start;
+    border-radius: 8px;
+    margin-right: -3px;
+    z-index: 1;
+    min-width: 100px;
+    padding: 30px 13px 10px 10px;
+}
+
+
 
 /*___________________________
 Header
@@ -394,9 +424,7 @@ __________________________________*/
     gap: .25rem;
 }
 
-/*input {*/
-/*    font-size: 1rem;*/
-/*}*/
+
 
 .user-cards {
     display: grid;
@@ -619,48 +647,6 @@ ___________________________________*/
     background: #fff;
 }
 
-/*.search {*/
-/*    display: flex;*/
-/*    margin-left: 1rem;*/
-/*}*/
-
-/*.search__form {*/
-/*    display: block;*/
-
-/*}*/
-
-/*.search__form.active {*/
-/*    display: block;*/
-/*}*/
-
-/*@media (max-width: 799px) {*/
-/*    .search__form {*/
-/*        position: absolute;*/
-/*        left: 0;*/
-/*        right: 0;*/
-/*        top: 100%;*/
-/*    }*/
-
-/*    .search__form input {*/
-/*        width: 100%;*/
-/*    }*/
-/*}*/
-
-/*.search__form input {*/
-/*    min-width: 200px;*/
-/*    appearance: none;*/
-/*    border: 0;*/
-/*    background-color: #fff;*/
-/*    border-radius: 0;*/
-/*    font-size: 16px;*/
-/*    padding: 0.5rem;*/
-/*}*/
-
-/*@media (max-width: 799px) {*/
-/*    .search__form input {*/
-/*        border-bottom: 1px solid #979797;*/
-/*    }*/
-/*}*/
 
 /*___________________________________
 Elements used for JS

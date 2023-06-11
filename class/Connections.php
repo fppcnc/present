@@ -10,7 +10,7 @@ class Connections
     public function getConnections(User $user): array
     {
         $dbh = Db::getConnectionSelect();
-        $sql = "SELECT * FROM connections WHERE userId =:userId";
+        $sql = "SELECT connectedTo FROM connections WHERE userId =:userId";
         $stmt = $dbh->prepare($sql);
         $uId = $user->getId();
         $stmt->bindParam(':userId', $uId);

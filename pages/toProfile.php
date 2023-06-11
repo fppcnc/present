@@ -16,6 +16,7 @@
     <div class="mainContainer">
         <?php include "includes/header.php"; ?>
         <div class="wrapContainer">
+            <div class="centralArea">
             <?php include "includes/sideMenu.php";?>
             <?php include "includes/sidebarSearch.php";?>
             <div class="personalArea-container">
@@ -97,12 +98,12 @@ Zone 4
                     </form>
 
                 </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <?php include "includes/footer.php";?>
-<script src="js/welcome.js"></script>
 <script src="js/personalArea.js"></script>
 </body>
 </html><?php

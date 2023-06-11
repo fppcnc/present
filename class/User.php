@@ -134,10 +134,20 @@ class User implements JsonSerializable
 
     public function search(): array|null {
         $dbh = Db::getConnectionSelect();
-        $sql = "SELECT * FROM user ORDER BY lastName ASC";
+        $sql = "SELECT * FROM user ORDER BY RAND() LIMIT 15";
         $stmt = $dbh->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'User');
+    }
+
+    public function getObjectFromId(int $id): User
+    {
+        $dbh = Db::getConnectionSelect();
+        $sql = "SELECT * FROM user WHERE id =:id";
+        $stmt = $dbh->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetchObject('User');
     }
 
 

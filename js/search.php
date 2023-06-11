@@ -5,7 +5,4 @@ spl_autoload_register(function ($class) {
 });
 
 $u = (new User())->search();
-//echo '<pre>';
-//print_r($u);
-//echo '</pre>';
 echo json_encode($u);

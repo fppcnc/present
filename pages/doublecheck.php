@@ -1,27 +1,28 @@
-<?php
-//echo '<pre>';
-//print_r($_SESSION);
-//echo '</pre>';
-//echo '<pre>';
-//print_r($_POST);
-//echo '</pre>';
-//
-//$column=$_POST['column'];
-//echo $_POST['column'];
-//
-////print_r ($_SESSION['user']);
-//
-////echo $_REQUEST['column'];
-//
-//echo $_POST["$column"];
-$userInfo = $_SESSION['user'];
-$c = new Connections();
-echo '<pre>';
-print_r($userInfo);
-echo '</pre>';
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Connect</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/utility.css">
+</head>
+<body>
+<?php $userInfos = $_SESSION['user']; ?>
+<div class="limiter">
+    <div class="mainContainer">
+        <?php include "includes/header.php"; ?>
+        <div class="wrapContainer">
+            <div class="centralArea">
+            <?php include "includes/sideMenu.php";?>
+            <?php include "includes/sidebarSearch.php";?>
+            </div>
+<?php include "includes/footer.php";?>
 
-$list = $c->getConnections($userInfo);
-
-echo '<pre>';
-print_r($list);
-echo '</pre>';
+        </div>
+        </div>
+        </div>
+</body>
+</html>
