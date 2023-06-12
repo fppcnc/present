@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/utility.css">
 </head>
 <body>
+<?php $userInfos = $_SESSION['user'];?>
 <div class="limiter">
     <div class="mainContainer">
         <?php include "includes/header.php"; ?>
@@ -18,9 +19,9 @@
                 <?php include "includes/sideMenu.php"; ?>
                 <?php include "includes/sidebarSearch.php"; ?>
                 <div class="friendsList">
-                    <h1>
-                        <div class="presentBigTitle">Friend´s List</div>
-                    </h1>
+                    <div class="presentSubTitle">
+                        <h1>Friend´s List</h1>
+                    </div>
                     <h3>Here´s the list of people you are currently following</h3>
                     <?php
                     foreach ($u as $user) { ?>

@@ -17,6 +17,10 @@ const DB_USER_SELECT = 'user_select';
 const DB_PASSWD_SELECT = 'select_user';
 
 
-// USER with UPDATE and SELECT privilege
+// USER with UPDATE and SELECT privileges
 const DB_USER_UPDATE = 'user_update';
 const DB_PASSWD_UPDATE = 'update_user';
+
+// USER with DELETE privilege
+const DB_USER_DELETE = 'user_delete';
+const DB_PASSWD_DELETE = 'delete_user';

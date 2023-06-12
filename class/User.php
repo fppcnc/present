@@ -11,12 +11,11 @@ class User implements JsonSerializable
     private string $registrationTime;
 
     /**
-     * @param $email
-     * @return array
+     * @return User|false
      */
     public function getObject(): User|false
     {
-        $dbh = Db::getConnectionSelect();
+        $dbh = Db::getConnection();
         $sql = "SELECT * from user WHERE id = :id";
         $stmt = $dbh->prepare($sql);
         $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
@@ -39,7 +38,7 @@ class User implements JsonSerializable
     function registerNewUser(string $firstName, string $lastName, string $dateOfBirth, string $email, string $password): User
     {
         // handle DB using strictly privileges we need. INSERT in this case
-        $dbh = Db::getConnectionInsert();
+        $dbh = Db::getConnection();
         //query
         $sql = "INSERT INTO user (id, firstName, lastName, dateOfBirth, email, password, registrationTime)
                 VALUES (NULL, :firstName, :lastName, :dateOfBirth, :email, :password, :registrationTime)";
@@ -72,14 +71,16 @@ class User implements JsonSerializable
     function checkForEmail(string $email): bool
     {
         // handle DB using strictly privileges we need. SELECT in this case
-        $dbh = Db::getConnectionSelect();
+        $dbh = Db::getConnection();
         // Check if email already exists in database
         $sql = "SELECT id FROM user WHERE email = :email";
         $stmt = $dbh->prepare($sql);
         $stmt->bindParam(':email', $email);
         $stmt->execute();
         // return true or false if find something or not
+        $dbh = null;
         return $stmt->rowCount() > 0;
+
     }
 
     public
@@ -89,19 +90,21 @@ class User implements JsonSerializable
         // if checkForEmail finds something, then stores it in $checkEmail
         if ($checkEmail === true && isset($password)) {
             // search if input passwd matches the one associated to email in Db
-            $dbh = Db::getConnectionSelect();
+            $dbh = Db::getConnection();
             $sql = "SELECT * FROM user WHERE email =:email AND password = :password";
             $stmt = $dbh->prepare($sql);
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':password', $password);
             $stmt->execute();
+            $dbh = null;
             return $stmt->fetchObject('User');
         } elseif ($checkEmail === true && !isset($password)) {
-            $dbh = Db::getConnectionSelect();
+            $dbh = Db::getConnection();
             $sql = "SELECT * FROM user WHERE email =:email";
             $stmt = $dbh->prepare($sql);
             $stmt->bindParam(':email', $email);
             $stmt->execute();
+            $dbh = null;
             return $stmt->fetchObject('User');
         } else {
             return false;
@@ -117,12 +120,13 @@ class User implements JsonSerializable
     function updateInfo($column, $newValue): void
     {
 //          handle Db using user_update, which can only update data
-            $dbh = Db::getConnectionUpdate();
+            $dbh = Db::getConnection();
             $sql = "UPDATE user SET $column=:newValue WHERE id =:id";
             $stmt = $dbh->prepare($sql);
             $stmt->bindParam(':id', $this->id);
             $stmt->bindParam(':newValue', $newValue);
             $stmt->execute();
+        $dbh = null;
     }
 
     public function jsonSerialize(): array {
@@ -133,22 +137,38 @@ class User implements JsonSerializable
             'email' => $this->getEmail()];
     }
 
-    public function search(): array|null {
-        $dbh = Db::getConnectionSelect();
+    public function search(): array|null
+    {
+        $dbh = Db::getConnection();
         $sql = "SELECT * FROM user ORDER BY RAND()";
         $stmt = $dbh->prepare($sql);
         $stmt->execute();
+        $dbh = null;
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'User');
     }
 
     public function getObjectFromId(int $id): User
     {
-        $dbh = Db::getConnectionSelect();
+        $dbh = Db::getConnection();
         $sql = "SELECT * FROM user WHERE id =:id";
         $stmt = $dbh->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
+        $dbh = null;
         return $stmt->fetchObject('User');
+    }
+
+    public function delete(int $id):void {
+        $dbh = Db::getConnection();
+        // disable foreign key checks
+        $dbh->exec('SET FOREIGN_KEY_CHECKS = 0');
+        $sql = "DELETE FROM users WHERE id=:id";
+        $stmt = $dbh->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        // enable foreign key checks again
+        $dbh->exec('SET FOREIGN_KEY_CHECKS = 1');
+        $dbh = null;
     }
 
 

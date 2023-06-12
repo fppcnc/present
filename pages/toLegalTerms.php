@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/utility.css">
 </head>
 <body>
+<?php $userInfos = $_SESSION['user'];?>
 <div class="limiter">
     <div class="mainContainer">
         <?php include "includes/header.php"; ?>

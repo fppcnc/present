@@ -1,8 +1,6 @@
 <?php
 
 // 0p3
-
-
 //dbCredentials.php for db credentials
 include 'includes/dbCredentials.php';
 //include class User
@@ -13,7 +11,8 @@ spl_autoload_register(function ($class) {
 });
 //start session and carry values over next pages
 session_start();
-$userInfos = $_SESSION['user'];
+$userInfos = new User;
+$userInfos = $_SESSION['user'] ?? '';
 
 //get choice from hidden input from pages
 $choice = $_REQUEST['choice'] ?? 'toHome';
@@ -24,7 +23,10 @@ $area = $_REQUEST['area'] ?? '';
 // get UserId
 $id = $_REQUEST['id'] ?? '';
 // get friendId
-$idFriend = $_REQUEST['friend'] ?? '';
+$idFriend = $_REQUEST['idFriend'] ?? '';
+// get connectionsId
+$idConn = $_REQUEST['idConn'] ?? '';
+
 
 //get data from signup page
 $firstName = $_POST['firstName'] ?? '';
@@ -43,6 +45,9 @@ $newValue = $_POST["$column"] ?? '';
 //echo '</pre>';
 //echo '<pre>';
 //print_r($_REQUEST);
+//echo '</pre>';
+//echo '<pre>';
+//print_r($_SESSION);
 //echo '</pre>';
 
 //access toHome.php
@@ -98,29 +103,8 @@ switch ($choice) {
         break;
     case 'toFriendsProfile':
         $f = (new User())->getObjectFromId($idFriend);
+        $connExists = (new Connections())->checkIfConnected($userInfos->getId(), $f->getId());
         $page = 'toFriendsProfile';
-        break;
-    case 'register':
-        //if password fields match, data is stored in database
-        if ($password === $confirmPassword) {
-            // check if email already exists in Db
-            $checkEmail = (new User())->checkForEmail($email);
-            // if method checkForDoubleEmail returns false, aka no identical email on database,
-            // then go on with registration
-            if ($checkEmail === false) {
-                $_SESSION['error'] = '';
-                (new User())->registerNewUser($firstName, $lastName, $dateOfBirth, $email, $password);
-                $page = "toHome";
-            } else {
-                // if email is found in Db
-                $_SESSION['error'] = 'This email is associated to another User';
-                $page = 'toSignUp';
-            }
-            // if password fields don´t match, send back
-        } else {
-            $_SESSION['error'] = "Given Passwords don´t match";
-            $page = 'toSignUp';
-        }
         break;
     case 'login':
         //grant access to next page if email and password match data in Db
@@ -175,6 +159,54 @@ switch ($choice) {
         $user = $u->getObject();
         $_SESSION['user'] = $user;
         $page = 'toProfile';
+        break;
+    case 'delete':
+        if ($area === 'connections') {
+            $c = new Connections();
+            $c->delete($idConn);
+            $f = (new User())->getObjectFromId($idFriend);
+            $connExists = (new Connections())->checkIfConnected($userInfos->getId(), $f->getId());
+            $page = 'toFriendsProfile';
+        } elseif ($area === 'user') {
+            $u = new User();
+            $u->delete($userInfos->getId());
+            // unset all the session variables
+            session_unset();
+            // destroy the session.
+            session_destroy();
+            $page = 'toHome';
+        }
+        break;
+    case 'create':
+        //user follows another user. Connection created
+        if ($area === 'connections') {
+            $c = new Connections();
+            $c->createNewConnection($userInfos->getId(), $idFriend);
+            $f = (new User())->getObjectFromId($idFriend);
+            $connExists = (new Connections())->checkIfConnected($userInfos->getId(), $f->getId());
+            $page = 'toFriendsProfile';
+        } elseif ($area === 'user') {
+            //if password fields match, data is stored in database
+            if ($password === $confirmPassword) {
+                // check if email already exists in Db
+                $checkEmail = (new User())->checkForEmail($email);
+                // if method checkForDoubleEmail returns false, aka no identical email on database,
+                // then go on with registration
+                if ($checkEmail === false) {
+                    $_SESSION['error'] = '';
+                    (new User())->registerNewUser($firstName, $lastName, $dateOfBirth, $email, $password);
+                    $page = "toHome";
+                } else {
+                    // if email is found in Db
+                    $_SESSION['error'] = 'This email is associated to another User';
+                    $page = 'toSignUp';
+                }
+                // if password fields don´t match, send back
+            } else {
+                $_SESSION['error'] = "Given Passwords don´t match";
+                $page = 'toSignUp';
+            }
+        }
         break;
     case 'logout':
 // unset all the session variables

@@ -55,7 +55,8 @@
                         src="../img/transparent-x-logo.png" alt="Back">
                     </div>
                     <div class="homeInputsContainer">
-                        <input type="hidden" name="choice" value="register">
+                        <input type="hidden" name="choice" value="create">
+                        <input type="hidden" name="area" value="user">
                         <div class="presentBigTitle">
                             Sign Up
                         </div>
