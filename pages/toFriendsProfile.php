@@ -52,7 +52,7 @@
                                         </button>
                                     </div>
                                 <?php } else { ?>
-                                    You can follow this user and get updates on coming up events
+                                    You can follow this user and get updates on upcoming events
                                     <div class="homeButtonsContainer">
                                         <button type="button" class="button-home bordersRules"
                                         onclick="window.location.href='index.php?choice=create&area=connections&idFriend=<?php echo $f->getId(); ?>';">

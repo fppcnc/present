@@ -49,7 +49,7 @@ $newValue = $_POST["$column"] ?? '';
 //echo '<pre>';
 //print_r($_SESSION);
 //echo '</pre>';
-
+try {
 //access toHome.php
 switch ($choice) {
     //playground page
@@ -70,8 +70,12 @@ switch ($choice) {
         $page = 'toResetPasswd';
         break;
     case 'toProfile':
-        if ($area === 'personal') {
+        if ($area === 'user') {
             $page = 'toProfile';
+        } elseif ($area === 'friend') {
+            $f = (new User())->getObjectFromId($idFriend);
+            $connExists = (new Connections())->checkIfConnected($userInfos->getId(), $f->getId());
+            $page = 'toFriendsProfile';
         }
         break;
     case 'toLegalTerms':
@@ -100,11 +104,6 @@ switch ($choice) {
             $page = 'toHome';
             $_SESSION['error'] = 'Your session has expired. Please try again';
         }
-        break;
-    case 'toFriendsProfile':
-        $f = (new User())->getObjectFromId($idFriend);
-        $connExists = (new Connections())->checkIfConnected($userInfos->getId(), $f->getId());
-        $page = 'toFriendsProfile';
         break;
     case 'login':
         //grant access to next page if email and password match data in Db
@@ -161,6 +160,8 @@ switch ($choice) {
         $page = 'toProfile';
         break;
     case 'delete':
+//        echo 'AAAAA';
+//        print_r($userInfos);
         if ($area === 'connections') {
             $c = new Connections();
             $c->delete($idConn);
@@ -168,13 +169,18 @@ switch ($choice) {
             $connExists = (new Connections())->checkIfConnected($userInfos->getId(), $f->getId());
             $page = 'toFriendsProfile';
         } elseif ($area === 'user') {
+            echo 'AAAAA';
+            print_r($userInfos);
             $u = new User();
             $u->delete($userInfos->getId());
-            // unset all the session variables
-            session_unset();
-            // destroy the session.
-            session_destroy();
-            $page = 'toHome';
+//            $userInfos->delete($this->id);
+//            // unset all the session variables
+//            session_unset();
+//            // destroy the session.
+//            session_destroy();
+//            print_r($userInfos);
+//            print_r($u);
+            $page = 'doublecheck';
         }
         break;
     case 'create':
@@ -218,6 +224,10 @@ switch ($choice) {
     default :
         $page = $choice;
         break;
+}
+} catch (Exception $e) {
+    $choice = 'doublecheck';
+    $area = '';
 }
 
 //echo '<pre>';

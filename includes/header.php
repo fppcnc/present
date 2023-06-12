@@ -12,7 +12,7 @@
                             <?php echo $userInfos->getFirstName(); ?>´s area
                         </button>
                         <div id="areaDropdown" class="dropdown-content">
-                            <a href="index.php?choice=toProfile&area=personal" class="button-nav">Edit Profile</a>
+                            <a href="index.php?choice=toProfile&area=user" class="button-nav">Edit Profile</a>
                             <a href="index.php?choice=toFriendList" class="button-nav">Friends</a>
                             <a href="index.php?choice=logout" class="button-nav" style="color: darkred">Logout</a>
                         </div>

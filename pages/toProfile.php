@@ -109,7 +109,7 @@
 
                         </div>
                         <div class="personalArea-content bordersRules" id="zone4">
-                            <form class="welcome-form" method="post" action="index.php">
+                            <div class="welcome-form">
                                 <div class="homeInputsContainer">
                                     By clicking on this button you can delete your Account.<br>
                                     Be careful thought, as this action is irreversible.
@@ -118,7 +118,7 @@
                                     Delete Account
                                     </button>
                                 </div>
-                            </form>
+                            </div>
 
                         </div>
                     </div>

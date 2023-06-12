@@ -39,7 +39,7 @@ fetch("js/search.php")
             userCardContainer.append(card);
             //button redirects to friend´s page
             searchButton.addEventListener("click", function() {
-                window.location.href = "index.php?choice=toFriendsProfile&idFriend="+encodeURIComponent(id);
+                window.location.href = "index.php?choice=toProfile&area=friend&idFriend="+encodeURIComponent(id);
             });
             return {id: user.id, firstName: user.firstName, lastName: user.lastName, email: user.email, dateOfBirth: user.dateOfBirth, element: card}
         })

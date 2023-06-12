@@ -15,6 +15,7 @@ class User implements JsonSerializable
      */
     public function getObject(): User|false
     {
+        try {
         $dbh = Db::getConnection();
         $sql = "SELECT * from user WHERE id = :id";
         $stmt = $dbh->prepare($sql);
@@ -22,6 +23,9 @@ class User implements JsonSerializable
         $stmt->execute();
         $user = $stmt->fetchObject('User');
         $dbh = null;
+        } catch (PDOException $e) {
+            throw new Exception($e->getMessage() . ' ' . $e->getFile() . ' ' . $e->getCode() . ' ' . $e->getLine());
+        }
         return $user;
     }
 
@@ -37,6 +41,7 @@ class User implements JsonSerializable
     public
     function registerNewUser(string $firstName, string $lastName, string $dateOfBirth, string $email, string $password): User
     {
+        try {
         // handle DB using strictly privileges we need. INSERT in this case
         $dbh = Db::getConnection();
         //query
@@ -59,6 +64,9 @@ class User implements JsonSerializable
         $id = $dbh->lastInsertId();
         //close connection to database
         $dbh = null;
+        } catch (PDOException $e) {
+            throw new Exception($e->getMessage() . ' ' . $e->getFile() . ' ' . $e->getCode() . ' ' . $e->getLine());
+        }
         // return as result of this function a new object User
         return new User($id, $firstName, $lastName, $dateOfBirth, $email, $password, $registrationTime);
     }
@@ -70,6 +78,7 @@ class User implements JsonSerializable
     public
     function checkForEmail(string $email): bool
     {
+        try {
         // handle DB using strictly privileges we need. SELECT in this case
         $dbh = Db::getConnection();
         // Check if email already exists in database
@@ -79,6 +88,9 @@ class User implements JsonSerializable
         $stmt->execute();
         // return true or false if find something or not
         $dbh = null;
+        } catch (PDOException $e) {
+            throw new Exception($e->getMessage() . ' ' . $e->getFile() . ' ' . $e->getCode() . ' ' . $e->getLine());
+        }
         return $stmt->rowCount() > 0;
 
     }
@@ -86,6 +98,7 @@ class User implements JsonSerializable
     public
     function grantAccess(string $email, string|null $password): User|false
     {
+        try {
         $checkEmail = (new User())->checkForEmail($email);
         // if checkForEmail finds something, then stores it in $checkEmail
         if ($checkEmail === true && isset($password)) {
@@ -109,6 +122,9 @@ class User implements JsonSerializable
         } else {
             return false;
         }
+        } catch (PDOException $e) {
+            throw new Exception($e->getMessage() . ' ' . $e->getFile() . ' ' . $e->getCode() . ' ' . $e->getLine());
+        }
     }
 
     /**
@@ -119,6 +135,7 @@ class User implements JsonSerializable
     public
     function updateInfo($column, $newValue): void
     {
+        try {
 //          handle Db using user_update, which can only update data
             $dbh = Db::getConnection();
             $sql = "UPDATE user SET $column=:newValue WHERE id =:id";
@@ -127,6 +144,9 @@ class User implements JsonSerializable
             $stmt->bindParam(':newValue', $newValue);
             $stmt->execute();
         $dbh = null;
+        } catch (PDOException $e) {
+            throw new Exception($e->getMessage() . ' ' . $e->getFile() . ' ' . $e->getCode() . ' ' . $e->getLine());
+        }
     }
 
     public function jsonSerialize(): array {
@@ -139,36 +159,49 @@ class User implements JsonSerializable
 
     public function search(): array|null
     {
+        try {
         $dbh = Db::getConnection();
         $sql = "SELECT * FROM user ORDER BY RAND()";
         $stmt = $dbh->prepare($sql);
         $stmt->execute();
         $dbh = null;
+        } catch (PDOException $e) {
+            throw new Exception($e->getMessage() . ' ' . $e->getFile() . ' ' . $e->getCode() . ' ' . $e->getLine());
+        }
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'User');
     }
 
     public function getObjectFromId(int $id): User
     {
+        try {
         $dbh = Db::getConnection();
         $sql = "SELECT * FROM user WHERE id =:id";
         $stmt = $dbh->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         $dbh = null;
+        } catch (PDOException $e) {
+            throw new Exception($e->getMessage() . ' ' . $e->getFile() . ' ' . $e->getCode() . ' ' . $e->getLine());
+        }
         return $stmt->fetchObject('User');
     }
 
-    public function delete(int $id):void {
+    public function delete(int $id):void
+    {
+        try {
         $dbh = Db::getConnection();
         // disable foreign key checks
-        $dbh->exec('SET FOREIGN_KEY_CHECKS = 0');
+//        $dbh->exec("SET FOREIGN_KEY_CHECKS = 0");
         $sql = "DELETE FROM users WHERE id=:id";
         $stmt = $dbh->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         // enable foreign key checks again
-        $dbh->exec('SET FOREIGN_KEY_CHECKS = 1');
+//        $dbh->exec("SET FOREIGN_KEY_CHECKS = 1");
         $dbh = null;
+        } catch (PDOException $e) {
+            throw new Exception($e->getMessage() . ' ' . $e->getFile() . ' ' . $e->getCode() . ' ' . $e->getLine());
+        }
     }
 
 

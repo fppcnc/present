@@ -9,37 +9,45 @@ class Connections
 
     public function createNewConnection(int $userId, int $connectedTo): Connections
     {
-        $dbh = Db::getConnection();
-        //query
-        $sql = "INSERT INTO connections (id, userId, connectedTo, connectedOn)
+        try {
+            $dbh = Db::getConnection();
+            //query
+            $sql = "INSERT INTO connections (id, userId, connectedTo, connectedOn)
                 VALUES (NULL, :userId, :connectedTo, :connectedOn)";
-        //prepare query
-        $stmt = $dbh->prepare($sql);
-        //get actual time of when Connection is created
-        $connectedOn = date("Y-m-d H:i:s");
-        //binding parameters to avoid injections
-        $stmt->bindParam(':userId', $userId);
-        $stmt->bindParam(':connectedTo', $connectedTo);
-        $stmt->bindParam(':connectedOn', $connectedOn);
-        //execute prepared statement filled with parameters
-        $stmt->execute();
-        //store in $id the last id inserted in Db
-        $id = $dbh->lastInsertId();
-        // return as result of this function a new object User
-        $dbh = null;
+            //prepare query
+            $stmt = $dbh->prepare($sql);
+            //get actual time of when Connection is created
+            $connectedOn = date("Y-m-d H:i:s");
+            //binding parameters to avoid injections
+            $stmt->bindParam(':userId', $userId);
+            $stmt->bindParam(':connectedTo', $connectedTo);
+            $stmt->bindParam(':connectedOn', $connectedOn);
+            //execute prepared statement filled with parameters
+            $stmt->execute();
+            //store in $id the last id inserted in Db
+            $id = $dbh->lastInsertId();
+            // return as result of this function a new object User
+            $dbh = null;
+        } catch (PDOException $e) {
+            throw new Exception($e->getMessage() . ' ' . $e->getFile() . ' ' . $e->getCode() . ' ' . $e->getLine());
+        }
         return new Connections($id, $userId, $connectedTo, $connectedOn);
 
     }
 
     public function getConnections(User $user): array
     {
-        $dbh = Db::getConnection();
-        $sql = "SELECT connectedTo FROM connections WHERE userId =:userId";
-        $stmt = $dbh->prepare($sql);
-        $uId = $user->getId();
-        $stmt->bindParam(':userId', $uId);
-        $stmt->execute();
-        $dbh = null;
+        try {
+            $dbh = Db::getConnection();
+            $sql = "SELECT connectedTo FROM connections WHERE userId =:userId";
+            $stmt = $dbh->prepare($sql);
+            $uId = $user->getId();
+            $stmt->bindParam(':userId', $uId);
+            $stmt->execute();
+            $dbh = null;
+        } catch (PDOException $c) {
+            throw new Exception($c->getMessage() . ' ' . $c->getFile() . ' ' . $c->getCode() . ' ' . $c->getLine());
+        }
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'User');
     }
 
@@ -62,13 +70,20 @@ class Connections
         }
     }
 
-    public function delete(int $id):void {
-        $dbh = Db::getConnection();
-        $sql = "DELETE FROM connections WHERE id=:id";
-        $stmt = $dbh->prepare($sql);
-        $stmt->bindParam(':id', $id);
-        $stmt->execute();
-        $dbh = null;
+
+    public
+    function delete(int $id): void
+    {
+        try {
+            $dbh = Db::getConnection();
+            $sql = "DELETE FROM connections WHERE id=:id";
+            $stmt = $dbh->prepare($sql);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            $dbh = null;
+        } catch (PDOException $e) {
+            throw new Exception($e->getMessage() . ' ' . $e->getFile() . ' ' . $e->getCode() . ' ' . $e->getLine());
+        }
     }
 
     /**
@@ -77,7 +92,8 @@ class Connections
      * @param int|null $connectedTo
      * @param string|null $connectedOn
      */
-    public function __construct(int|null $id = null, int|null $userId = null, int|null $connectedTo = null, string|null $connectedOn = null)
+    public
+    function __construct(int|null $id = null, int|null $userId = null, int|null $connectedTo = null, string|null $connectedOn = null)
     {
         if (isset ($id) && isset($this->userId) && isset($connectedTo) && isset($this->connectedOn)) {
             $this->id = $id;
@@ -90,7 +106,8 @@ class Connections
     /**
      * @return int
      */
-    public function getId(): int
+    public
+    function getId(): int
     {
         return $this->id;
     }
@@ -98,7 +115,8 @@ class Connections
     /**
      * @return int
      */
-    public function getUserId(): int
+    public
+    function getUserId(): int
     {
         return $this->userId;
     }
@@ -106,7 +124,8 @@ class Connections
     /**
      * @return int
      */
-    public function getConnectedTo(): int
+    public
+    function getConnectedTo(): int
     {
         return $this->connectedTo;
     }
@@ -114,7 +133,8 @@ class Connections
     /**
      * @return string
      */
-    public function getConnectedOn(): string
+    public
+    function getConnectedOn(): string
     {
         return $this->connectedOn;
     }

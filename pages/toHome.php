@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/utility.css">
 </head>
-<input type="hidden" name="choice" value="register">
+<!--<input type="hidden" name="choice" value="register">-->
 <body>
 <!--everything inside body element is enclosed in a limiter-->
 <div class="limiter">
