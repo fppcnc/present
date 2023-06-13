@@ -38,8 +38,7 @@ class User implements JsonSerializable
      * @return User
      */
     // get all info from input fields to create a new User in DB
-    public
-    function registerNewUser(string $firstName, string $lastName, string $dateOfBirth, string $email, string $password): User
+    public function createNew(string $firstName, string $lastName, string $dateOfBirth, string $email, string $password): User
     {
         try {
         // handle DB using strictly privileges we need. INSERT in this case

@@ -10,35 +10,60 @@
     <link rel="stylesheet" href="css/utility.css">
 </head>
 <body>
-<?php $userInfos = $_SESSION['user'];?>
+<?php $userInfos = $_SESSION['user']; ?>
 <div class="limiter">
     <div class="mainContainer">
         <?php include "includes/header.php"; ?>
         <div class="wrapContainer">
             <div class="centralArea">
-            <?php include "includes/sideMenu.php";?>
-            <?php include "includes/sidebarSearch.php";?>
-<div class="eventMaker-container">
-    <div class="presentText">With Present EventMaker you can create events for all occasions and
-        share it with your friends. Let everyone know the next time there will be something to celebrate
-        and help them in making this day truly special!</div>
-<!--    <div class="eventMaker-zone bordersRules">-->
-<!--        <h1>Event</h1>-->
-<!--        <h3>What are we Celebrating?</h3>-->
-<!--    </div>-->
-<!--    <div class="eventMaker-zone bordersRules">-->
-<!--        <h1>Wishlist</h1>-->
-<!--        <h3>What´s in your mind?</h3>-->
-<!--    </div>-->
-<!--    <div class="eventMaker-zone bordersRules">-->
-<!--        <h1>More Details</h1>-->
-<!--        <h3></h3>-->
-<!--    </div>-->
-</div>
+                <?php include "includes/sideMenu.php"; ?>
+                <?php include "includes/sidebarSearch.php"; ?>
+                <div class="friendsList">
+                    <div class="presentSubTitle">
+                        <h1>
+                            Event Maker
+                        </h1>
+                    </div>
+                    <h3>Here you can create events for all occasions and share it with your friends.</h3>
+                    <div class="presentText m-b-8">Let everyone know the next time there will be something to celebrate
+                        and help them in making this day truly special!
+                    </div>
+                </div>
+                <div class="personalArea-content bordersRules">
+                    <form class="welcome-form" method="post" action="index.php">
+                        <div class="homeInputsContainer">
+                            <input type="hidden" name="choice" value="create">
+                            <input type="hidden" name="area" value="event">
+                            <span>
+                                <label for="eventName">What are we celebrating? Give it a name, so it will
+                                        be easier to stand out on your contacts!</label>
+                                <input type="text" class="input-home bordersRules" id="eventName"
+                                       placeholder="Mario Rossi´s Birthday Party!" name="name">
+                            </span>
+                            <span>
+                            <label for="eventDate">When will we celebrate it? And when will the celebrations start?</label>
+                                <input type="datetime-local" class="input-home bordersRules" id="eventDate"
+                                       name="date">
+                            </span>
+                            <span>
+                                <label for="eventPlace">Where will we celebrate? Try to make it easy for your guests
+                                to attend it giving concise, but clear indications</label>
+                                <input type="text" class="input-home bordersRules" id="eventPlace"
+                                placeholder="Restaurant X  -  My place!  -  Park Y  -  Example Street, nr.15" name="place">
+                            </span>
+                            You prefer to make it public, or you rather invite your own guests?
+                            <div style="display: inline-block">
+                                <input type="radio" class="bordersRules" id="eventPublicY" name="public" value="true">
+                                <label for="eventPublicY">Public</label>
+                                <input type="radio" class=" bordersRules" id="eventPublicN" name="public" value="false">
+                                <label for="eventPublicY">Private</label>
+                            </div>
+                            <button type="submit" class="button-home bordersRules m-t-20" style="width: 100px">Create Event!</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        </div>
-    </div>
-</div>
-<?php include "includes/footer.php";?>
+        <?php include "includes/footer.php"; ?>
 </body>
 </html>

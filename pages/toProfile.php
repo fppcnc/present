@@ -18,7 +18,7 @@
             <div class="centralArea">
                 <?php include "includes/sideMenu.php"; ?>
                 <?php include "includes/sidebarSearch.php"; ?>
-                <div class="friendsList">
+<!--                <div class="friendsList">-->
                     <div class="presentSubTitle">
                         <h1>
                             Profile
@@ -99,14 +99,14 @@
                                 </div>
                             </form>
                         </div>
-
+                        <!--zone 3-->
                         <div class="personalArea-content bordersRules" id="zone3">
                             <form class="welcome-form" method="post" action="index.php">
                                 <div class="homeInputsContainer">
-                                    Zone 3
+                                    Here goes legal stuff
                                 </div>
                             </form>
-
+                            <!--zone 4-->
                         </div>
                         <div class="personalArea-content bordersRules" id="zone4">
                             <div class="welcome-form">
@@ -114,8 +114,8 @@
                                     By clicking on this button you can delete your Account.<br>
                                     Be careful thought, as this action is irreversible.
                                     <button class="button-home bordersRules m-b-5 m-t-50" style="color:darkred"
-                                    onclick="window.location.href='index.php?choice=delete&area=user';">
-                                    Delete Account
+                                            onclick="window.location.href='index.php?choice=delete&area=user';">
+                                        Delete Account
                                     </button>
                                 </div>
                             </div>
@@ -123,7 +123,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+<!--            </div>-->
         </div>
     </div>
     <?php include "includes/footer.php"; ?>

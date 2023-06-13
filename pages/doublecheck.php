@@ -1,4 +1,7 @@
 <?php
 
-echo $e->getMessage();
-?>
+//echo $e->getMessage();
+//
+
+
+print_r($_POST);

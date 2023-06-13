@@ -20,19 +20,18 @@ CREATE TABLE event
 (
     id           INT PRIMARY KEY AUTO_INCREMENT,
     organizedBy  INT,
+    name         VARCHAR(255),
     FOREIGN KEY (organizedBy) REFERENCES user (id) ON DELETE CASCADE,
-    date         DATE,
-    country      VARCHAR(255),
-    city         VARCHAR(255),
-    postcode     VARCHAR(5),
-    streetNr     VARCHAR(10),
-    street       VARCHAR(255),
+    date         DATETIME,
+    place        LONGTEXT,
+    public       VARCHAR(5),
     creationTime DATE
 );
 
 CREATE TABLE wishlist
 (
     id           INT PRIMARY KEY AUTO_INCREMENT,
+    name         VARCHAR(255),
     createdBy    INT,
     FOREIGN KEY (createdBy) REFERENCES user (id) ON DELETE CASCADE,
     creationTime DATE

@@ -189,7 +189,7 @@ __________________________*/
 
 .centralArea {
     position: absolute;
-    display: inline-flex;
+    display: inline-block;
     top: 67px;
     left: 193px;
     height: calc(100vh - 283px);
@@ -205,8 +205,10 @@ Personal Area
 __________________________*/
 
 .personalArea-container {
-    display: inline-flex;
+    display: flex;
     justify-content: center;
+    justify-items: center;
+    align-content: center;
     align-items: center;
 }
 
@@ -390,14 +392,14 @@ __________________________________*/
     height: calc(100vh - 183px);
     width: 10%;
     position: fixed;
-    display: flex;
+    display: block;
     top: 67px;
     left: 0;
     flex-direction: column;
     outline: none;
     background-color: #faf2e6;
     border-right: 1px solid #e09a5b;
-
+    align-items: center;
 }
 
 /*__________________________________

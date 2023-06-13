@@ -28,13 +28,19 @@ $idFriend = $_REQUEST['idFriend'] ?? '';
 $idConn = $_REQUEST['idConn'] ?? '';
 
 
-//get data from signup page
+//retrieve data from signup page input fields
 $firstName = $_POST['firstName'] ?? '';
 $lastName = $_POST['lastName'] ?? '';
 $dateOfBirth = $_POST['dateOfBirth'] ?? '';
 $email = $_POST['email'] ?? '';
 $password = $_POST['password'] ?? '';
 $confirmPassword = $_POST['confirmPassword'] ?? '';
+
+//retrieve data from Event Maker input fields
+$name = $_POST['name'] ?? '';
+$date = $_POST['date'] ?? '';
+$place = $_POST['place'] ?? '';
+$public = $_POST['public'] ?? '';
 
 // parameters to upload info
 $column = $_POST['column'] ?? '';
@@ -51,177 +57,181 @@ $newValue = $_POST["$column"] ?? '';
 //echo '</pre>';
 try {
 //access toHome.php
-switch ($choice) {
-    //playground page
-    case 'doublecheck':
-        $page = 'doublecheck';
-        break;
+    switch ($choice) {
+        //playground page
+        case 'doublecheck':
+            $page = 'doublecheck';
+            break;
 //connected to pages
-    case 'toHome':
-        $page = 'toHome';
-        break;
-    case 'toLogin':
-        $page = 'toLogin';
-        break;
-    case 'toSignUp';
-        $page = 'toSignUp';
-        break;
-    case 'toResetPasswd':
-        $page = 'toResetPasswd';
-        break;
-    case 'toProfile':
-        if ($area === 'user') {
-            $page = 'toProfile';
-        } elseif ($area === 'friend') {
-            $f = (new User())->getObjectFromId($idFriend);
-            $connExists = (new Connections())->checkIfConnected($userInfos->getId(), $f->getId());
-            $page = 'toFriendsProfile';
-        }
-        break;
-    case 'toLegalTerms':
-        $page = 'toLegalTerms';
-        break;
-    case 'toEventMaker':
-        $page = 'toEventMaker';
-        break;
-    case 'toFriendList':
-        $c = new Connections();
-        $list = $c->getConnections($userInfos);
-        $u = [];
-        foreach ($list as $value) {
-            $connectedTo = $value->connectedTo;
-            $cUser = new User;
-            $u[] = $cUser->getObjectFromId($value->connectedTo);
-        }
-        $page = 'toFriendList';
-        break;
-    case 'toWelcome':
-//        if session is lost for any reason trying to reach toWelcome, user is redirected to homepage
-        if (isset($_SESSION['user'])) {
-            $_SESSION['error'] = '';
-            $page = 'toWelcome';
-        } else {
+        case 'toHome':
             $page = 'toHome';
-            $_SESSION['error'] = 'Your session has expired. Please try again';
-        }
-        break;
-    case 'login':
-        //grant access to next page if email and password match data in Db
-        $log = (new User())->grantAccess($email, $password);
-        if ($log === false) {
+            break;
+        case 'toLogin':
             $page = 'toLogin';
-            $_SESSION['error'] = "Email and Password dont´t match";
-        } else {
-            // here user is logged in
-            $_SESSION['error'] = '';
-            $user = $log->getObject();
-            $_SESSION['user'] = $user;
-            $page = 'toWelcome';
-        }
-        break;
-    case 'resetPasswd':
-        if ($loggedIn === 'true') {
-            $u = new User();
-            $u = $_SESSION['user'];
-            if ($password === $confirmPassword) {
-                $u->updateInfo($column, $newValue);
-                $user = $u->getObject();
-                $_SESSION['user'] = $user;
-                $_SESSION['error'] = '';
+            break;
+        case 'toSignUp';
+            $page = 'toSignUp';
+            break;
+        case 'toResetPasswd':
+            $page = 'toResetPasswd';
+            break;
+        case 'toLegalTerms':
+            $page = 'toLegalTerms';
+            break;
+        case 'toEventMaker':
+            $page = 'toEventMaker';
+            break;
+        case 'toProfile':
+            if ($area === 'user') {
                 $page = 'toProfile';
+            } elseif ($area === 'friend') {
+                $f = (new User())->getObjectFromId($idFriend);
+                $connExists = (new Connections())->checkIfConnected($userInfos->getId(), $f->getId());
+                $page = 'toFriendsProfile';
+            }
+            break;
+        case 'toFriendList':
+            $c = new Connections();
+            $list = $c->getConnections($userInfos);
+            $u = [];
+            foreach ($list as $value) {
+                $connectedTo = $value->connectedTo;
+                $cUser = new User;
+                $u[] = $cUser->getObjectFromId($value->connectedTo);
+            }
+            $page = 'toFriendList';
+            break;
+        case 'toWelcome':
+//        if session is lost for any reason trying to reach toWelcome, user is redirected to homepage
+            if (isset($_SESSION['user'])) {
+                $_SESSION['error'] = '';
+                $page = 'toWelcome';
             } else {
-                $_SESSION['error'] = "Given Passwords don´t match";
+                $page = 'toHome';
+                $_SESSION['error'] = 'Your session has expired. Please try again';
+            }
+            break;
+        case 'login':
+            //grant access to next page if email and password match data in Db
+            $log = (new User())->grantAccess($email, $password);
+            if ($log === false) {
+                $page = 'toLogin';
+                $_SESSION['error'] = "Email and Password dont´t match";
+            } else {
+                // here user is logged in
+                $_SESSION['error'] = '';
+                $user = $log->getObject();
+                $_SESSION['user'] = $user;
                 $page = 'toWelcome';
             }
-        } elseif ($loggedIn === 'false') {
-            if ($password === $confirmPassword) {
-                $resPwd = new User();
-                $u = $resPwd->grantAccess($email, null);
-                if ($u === false) {
-                    $_SESSION['error'] = 'Email not found';
-                    $page = 'toResetPasswd';
-                } else {
+            break;
+        case 'resetPasswd':
+            if ($loggedIn === 'true') {
+                $u = new User();
+                $u = $_SESSION['user'];
+                if ($password === $confirmPassword) {
                     $u->updateInfo($column, $newValue);
+                    $user = $u->getObject();
+                    $_SESSION['user'] = $user;
                     $_SESSION['error'] = '';
-                    $page = 'toHome';
+                    $page = 'toProfile';
+                } else {
+                    $_SESSION['error'] = "Given Passwords don´t match";
+                    $page = 'toWelcome';
                 }
-            } else {
-                $_SESSION['error'] = "Given Passwords don´t match";
-                $page = 'toResetPasswd';
+            } elseif ($loggedIn === 'false') {
+                if ($password === $confirmPassword) {
+                    $resPwd = new User();
+                    $u = $resPwd->grantAccess($email, null);
+                    if ($u === false) {
+                        $_SESSION['error'] = 'Email not found';
+                        $page = 'toResetPasswd';
+                    } else {
+                        $u->updateInfo($column, $newValue);
+                        $_SESSION['error'] = '';
+                        $page = 'toHome';
+                    }
+                } else {
+                    $_SESSION['error'] = "Given Passwords don´t match";
+                    $page = 'toResetPasswd';
+                }
             }
-        }
-        break;
-    case 'updateInfo':
-        $u = new User();
-        $u = $_SESSION['user'];
-        $u->updateInfo($column, $newValue);
-        $user = $u->getObject();
-        $_SESSION['user'] = $user;
-        $page = 'toProfile';
-        break;
-    case 'delete':
-//        echo 'AAAAA';
-//        print_r($userInfos);
-        if ($area === 'connections') {
-            $c = new Connections();
-            $c->delete($idConn);
-            $f = (new User())->getObjectFromId($idFriend);
-            $connExists = (new Connections())->checkIfConnected($userInfos->getId(), $f->getId());
-            $page = 'toFriendsProfile';
-        } elseif ($area === 'user') {
-
+            break;
+        case 'updateInfo':
             $u = new User();
-            $u->delete($userInfos->getId());
-            // unset all the session variables
+            $u = $_SESSION['user'];
+            $u->updateInfo($column, $newValue);
+            $user = $u->getObject();
+            $_SESSION['user'] = $user;
+            $page = 'toProfile';
+            break;
+        case 'delete':
+            if ($area === 'connections') {
+                $c = new Connections();
+                $c->delete($idConn);
+                $f = (new User())->getObjectFromId($idFriend);
+                $connExists = (new Connections())->checkIfConnected($userInfos->getId(), $f->getId());
+                $page = 'toFriendsProfile';
+            } elseif ($area === 'user') {
+                $u = new User();
+                $u->delete($userInfos->getId());
+                // unset all the session variables
+                session_unset();
+                // destroy the session.
+                session_destroy();
+                $page = 'toHome';
+            }
+            break;
+        case 'create':
+            //user follows another user. Connection created
+            if ($area === 'connections') {
+                $c = new Connections();
+                $c->createNew($userInfos->getId(), $idFriend);
+                $f = (new User())->getObjectFromId($idFriend);
+                $connExists = (new Connections())->checkIfConnected($userInfos->getId(), $f->getId());
+                $page = 'toFriendsProfile';
+            } elseif ($area === 'user') {
+                //if password fields match, data is stored in database
+                if ($password === $confirmPassword) {
+                    // check if email already exists in Db
+                    $checkEmail = (new User())->checkForEmail($email);
+                    // if method checkForDoubleEmail returns false, aka no identical email on database,
+                    // then go on with registration
+                    if ($checkEmail === false) {
+                        $_SESSION['error'] = '';
+                        (new User())->createNew($firstName, $lastName, $dateOfBirth, $email, $password);
+                        $page = "toHome";
+                    } else {
+                        // if email is found in Db
+                        $_SESSION['error'] = 'This email is associated to another User';
+                        $page = 'toSignUp';
+                    }
+                    // if password fields don´t match, send back
+                } else {
+                    $_SESSION['error'] = "Given Passwords don´t match";
+                    $page = 'toSignUp';
+                }
+            } elseif ($area === 'event') {
+
+                print_r($_POST);
+                print_r($userInfos);
+                $ev = new Event();
+                $ev->createNew($userInfos->getId(), $name, $date, $place, $public);
+                echo 'LOL';
+                $page = 'doublecheck';
+            }
+            break;
+        case 'logout':
+// unset all the session variables
             session_unset();
             // destroy the session.
             session_destroy();
-
             $page = 'toHome';
-        }
-        break;
-    case 'create':
-        //user follows another user. Connection created
-        if ($area === 'connections') {
-            $c = new Connections();
-            $c->createNewConnection($userInfos->getId(), $idFriend);
-            $f = (new User())->getObjectFromId($idFriend);
-            $connExists = (new Connections())->checkIfConnected($userInfos->getId(), $f->getId());
-            $page = 'toFriendsProfile';
-        } elseif ($area === 'user') {
-            //if password fields match, data is stored in database
-            if ($password === $confirmPassword) {
-                // check if email already exists in Db
-                $checkEmail = (new User())->checkForEmail($email);
-                // if method checkForDoubleEmail returns false, aka no identical email on database,
-                // then go on with registration
-                if ($checkEmail === false) {
-                    $_SESSION['error'] = '';
-                    (new User())->registerNewUser($firstName, $lastName, $dateOfBirth, $email, $password);
-                    $page = "toHome";
-                } else {
-                    // if email is found in Db
-                    $_SESSION['error'] = 'This email is associated to another User';
-                    $page = 'toSignUp';
-                }
-                // if password fields don´t match, send back
-            } else {
-                $_SESSION['error'] = "Given Passwords don´t match";
-                $page = 'toSignUp';
-            }
-        }
-        break;
-    case 'logout':
-// unset all the session variables
-        session_unset();
-        // destroy the session.
-        session_destroy();
-        $page = 'toHome';
-        break;
-    default :
-        $page = $choice;
-        break;
-}
+            break;
+        default :
+            $page = $choice;
+            break;
+    }
 } catch (Exception $e) {
     $choice = 'doublecheck';
     $area = '';

@@ -7,7 +7,7 @@ class Connections
     private int $connectedTo;
     private string $connectedOn;
 
-    public function createNewConnection(int $userId, int $connectedTo): Connections
+    public function createNew(int $userId, int $connectedTo): Connections
     {
         try {
             $dbh = Db::getConnection();
