@@ -20,7 +20,7 @@ CREATE TABLE event
 (
     id           INT PRIMARY KEY AUTO_INCREMENT,
     organizedBy  INT,
-    FOREIGN KEY (organizedBy) REFERENCES user (id),
+    FOREIGN KEY (organizedBy) REFERENCES user (id) ON DELETE CASCADE,
     date         DATE,
     country      VARCHAR(255),
     city         VARCHAR(255),
@@ -34,7 +34,7 @@ CREATE TABLE wishlist
 (
     id           INT PRIMARY KEY AUTO_INCREMENT,
     createdBy    INT,
-    FOREIGN KEY (createdBy) REFERENCES user (id),
+    FOREIGN KEY (createdBy) REFERENCES user (id) ON DELETE CASCADE,
     creationTime DATE
 );
 
@@ -42,7 +42,7 @@ CREATE TABLE wishlistItems
 (
     id           INT PRIMARY KEY AUTO_INCREMENT,
     wishlistId   INT,
-    FOREIGN KEY (wishlistId) REFERENCES wishlist (id),
+    FOREIGN KEY (wishlistId) REFERENCES wishlist (id) ON DELETE CASCADE,
     description  LONGTEXT NULL,
     externalLink LONGTEXT NULL
 );
@@ -51,9 +51,9 @@ CREATE TABLE connections
 (
     id          INT PRIMARY KEY AUTO_INCREMENT,
     userId      INT,
-    FOREIGN KEY (userId) REFERENCES user (id),
+    FOREIGN KEY (userId) REFERENCES user (id) ON DELETE CASCADE,
     connectedTo INT,
-    FOREIGN KEY (connectedTo) REFERENCES user (id),
+    FOREIGN KEY (connectedTo) REFERENCES user (id) ON DELETE CASCADE,
     connectedOn DATE
 );
 
@@ -61,9 +61,9 @@ CREATE TABLE fullEvent
 (
     id         INT PRIMARY KEY AUTO_INCREMENT,
     wishlistId INT,
-    FOREIGN KEY (wishlistId) REFERENCES wishlist (id),
+    FOREIGN KEY (wishlistId) REFERENCES wishlist (id) ON DELETE CASCADE,
     eventId    INT,
-    FOREIGN KEY (eventId) REFERENCES event (id)
+    FOREIGN KEY (eventId) REFERENCES event (id) ON DELETE CASCADE
 );
 
 CREATE TABLE guests
@@ -71,6 +71,6 @@ CREATE TABLE guests
     connectedToId INT,
     fullEventId   INT,
     PRIMARY KEY (connectedToId, fullEventId),
-    FOREIGN KEY (connectedToId) REFERENCES connections (connectedTo),
-    FOREIGN KEY (fullEventId) REFERENCES fullEvent (id)
+    FOREIGN KEY (connectedToId) REFERENCES connections (connectedTo) ON DELETE CASCADE,
+    FOREIGN KEY (fullEventId) REFERENCES fullEvent (id) ON DELETE CASCADE
 )

@@ -169,18 +169,15 @@ switch ($choice) {
             $connExists = (new Connections())->checkIfConnected($userInfos->getId(), $f->getId());
             $page = 'toFriendsProfile';
         } elseif ($area === 'user') {
-            echo 'AAAAA';
-            print_r($userInfos);
+
             $u = new User();
             $u->delete($userInfos->getId());
-//            $userInfos->delete($this->id);
-//            // unset all the session variables
-//            session_unset();
-//            // destroy the session.
-//            session_destroy();
-//            print_r($userInfos);
-//            print_r($u);
-            $page = 'doublecheck';
+            // unset all the session variables
+            session_unset();
+            // destroy the session.
+            session_destroy();
+
+            $page = 'toHome';
         }
         break;
     case 'create':
