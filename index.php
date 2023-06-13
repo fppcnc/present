@@ -78,6 +78,9 @@ try {
         case 'toLegalTerms':
             $page = 'toLegalTerms';
             break;
+        case 'toWishlist' :
+            $page = 'toWishlist';
+            break;
         case 'toEventMaker':
             $page = 'toEventMaker';
             break;
@@ -111,6 +114,7 @@ try {
                 $_SESSION['error'] = 'Your session has expired. Please try again';
             }
             break;
+
         case 'login':
             //grant access to next page if email and password match data in Db
             $log = (new User())->grantAccess($email, $password);
@@ -212,13 +216,17 @@ try {
                     $page = 'toSignUp';
                 }
             } elseif ($area === 'event') {
-
-                print_r($_POST);
-                print_r($userInfos);
                 $ev = new Event();
-                $ev->createNew($userInfos->getId(), $name, $date, $place, $public);
-                echo 'LOL';
-                $page = 'doublecheck';
+                $ev = $ev->createNew($userInfos->getId(), $name, $date, $place, $public);
+                if ($public === 'false') {
+                    $g = New Guests();
+                    $gIds = $_POST['guest'];
+//                    echo 'lol';'<br>';
+//                    print_r($gIds);'<br>';
+//                    echo $ev->getId();'<br>';
+                    $g->createNew($gIds, $ev->getId());
+                }
+                $page = 'toMyEvents';
             }
             break;
         case 'logout':

@@ -1,4 +1,4 @@
-# populater table user
+-- # populater table user
 INSERT INTO present.user (firstName, lastName, dateOfBirth, password, email, registrationTime) VALUES ('Anna', 'Annalisi', '1991-01-01', 'aaa', 'aaa@aaa.aaa', '2023-06-09');
 INSERT INTO present.user (firstName, lastName, dateOfBirth, password, email, registrationTime) VALUES ('Alex', 'Alexandria', '1992-02-02', 'bbb', 'bbb@bbb.bbb', '2023-06-09');
 INSERT INTO present.user (firstName, lastName, dateOfBirth, password, email, registrationTime) VALUES ('Francesco', 'Dries', '1993-03-03', 'ccc', 'ccc@ccc.ccc', '2023-06-09');
@@ -19,8 +19,13 @@ INSERT INTO present.user (firstName, lastName, dateOfBirth, password, email, reg
 INSERT INTO present.user (firstName, lastName, dateOfBirth, password, email, registrationTime) VALUES ('Trevis', 'Scott', '1995-06-06', 'rrr', 'rrr@rrr.rrr', '2023-06-09');
 INSERT INTO present.user (firstName, lastName, dateOfBirth, password, email, registrationTime) VALUES ('Trevor', 'Tremble', '1997-07-07', 'sss', 'sss@sss.sss', '2023-06-09');
 INSERT INTO present.user (firstName, lastName, dateOfBirth, password, email, registrationTime) VALUES ('Katharina', 'Holland', '2002-08-08', 'ttt', 'ttt@ttt.ttt', '2023-06-09');
-
-# populate table connections
+INSERT INTO present.user (firstName, lastName, dateOfBirth, password, email, registrationTime) VALUES ('Sophia', 'Sullivan', '1998-09-09', 'uuu', 'uuu@uuu.uuu', '2023-06-09');
+INSERT INTO present.user (firstName, lastName, dateOfBirth, password, email, registrationTime) VALUES ('Oliver', 'Oliverson', '1999-10-10', 'vvv', 'vvv@vvv.vvv', '2023-06-09');
+INSERT INTO present.user (firstName, lastName, dateOfBirth, password, email, registrationTime) VALUES ('Emma', 'Emmerson', '2000-11-11', 'www', 'www@www.www', '2023-06-09');
+INSERT INTO present.user (firstName, lastName, dateOfBirth, password, email, registrationTime) VALUES ('Noah', 'Nolan', '2001-12-12', 'xxx', 'xxx@xxx.xxx', '2023-06-09');
+INSERT INTO present.user (firstName, lastName, dateOfBirth, password, email, registrationTime) VALUES ('Liam', 'Liamson', '2002-01-01', 'yyy', 'yyy@yyy.yyy', '2023-06-09');
+INSERT INTO present.user (firstName, lastName, dateOfBirth, password, email, registrationTime) VALUES ('Ava', 'Anderson', '1996-02-02', 'zzz', 'zzz@zzz.zzz', '2023-06-09');
+-- # populate table connections
 INSERT INTO present.connections (userId, connectedTo, connectedOn) VALUES (1, 5, '2023-06-09');
 INSERT INTO present.connections (userId, connectedTo, connectedOn) VALUES (1, 7, '2023-06-09');
 INSERT INTO present.connections (userId, connectedTo, connectedOn) VALUES (1, 3, '2023-06-09');
@@ -101,3 +106,21 @@ INSERT INTO present.connections (userId, connectedTo, connectedOn) VALUES (16, 1
 INSERT INTO present.connections (userId, connectedTo, connectedOn) VALUES (17, 2, '2023-06-09');
 INSERT INTO present.connections (userId, connectedTo, connectedOn) VALUES (17, 1, '2023-06-09');
 INSERT INTO present.connections (userId, connectedTo, connectedOn) VALUES (17, 3, '2023-06-09');
+
+-- populate table event
+INSERT INTO present.event (organizedBy, name, date, place, public, creationTime) VALUES (1, 'My Birthday', '2023-10-10 12:00:00', 'Restaurant XY in Exampletown', 'false', '2023-06-13');
+INSERT INTO present.event (organizedBy, name, date, place, public, creationTime) VALUES (2, 'House Warming', '2023-07-10 18:30:00', 'My new place in Example Street', 'false', '2023-06-13');
+INSERT INTO present.event (organizedBy, name, date, place, public, creationTime) VALUES (3, 'Baby Shower! Little Leslie will soon be with us', '2023-07-25 10:45:00', 'My parent´s farm outside the city. Follow directions for "Beetroot Paradise"', 'false', '2023-06-13');
+INSERT INTO present.event (organizedBy, name, date, place, public, creationTime) VALUES (4, 'Celebrate our Team´s promotion to the higher league', '2023-06-20 12:00:00', 'Botanical Garden in Pleasantville', 'true', '2023-06-13');
+INSERT INTO present.event (organizedBy, name, date, place, public, creationTime) VALUES (5, 'Charity Fundraiser Gala', '2023-09-15 19:00:00', 'Grand Hotel Ballroom', 'true', '2023-06-13');
+INSERT INTO present.event (organizedBy, name, date, place, public, creationTime) VALUES (6, 'Annual Boys get Together', '2023-07-15 19:00:00', 'My Flat', 'false', '2023-06-13');
+INSERT INTO present.event (organizedBy, name, date, place, public, creationTime) VALUES (8, 'Outdoor Music Festival', '2023-07-30 14:00:00', 'Greenfield Park', 'true', '2023-06-13');
+INSERT INTO present.event (organizedBy, name, date, place, public, creationTime) VALUES (7, 'Me and Jolie are finally getting married', '2023-08-05 17:30:00', 'Luxury Resort', 'false', '2023-06-13');
+INSERT INTO present.event (organizedBy, name, date, place, public, creationTime) VALUES (9, 'Art Workshop', '2023-07-30 14:00:00', 'Community Art Studio', 'true', '2023-06-13');
+INSERT INTO present.event (organizedBy, name, date, place, public, creationTime) VALUES (10, 'Family Reunion BBQ', '2023-09-02 12:00:00', 'Smith Family Farm', 'false', '2023-06-13');
+INSERT INTO present.event (organizedBy, name, date, place, public, creationTime) VALUES (11, 'Tech Startup Demo Day', '2023-09-02 09:00:00', 'Innovation Hub', 'true', '2023-06-13');
+INSERT INTO present.event (organizedBy, name, date, place, public, creationTime) VALUES (12, 'Sports Tournament Finals', '2023-08-27 15:00:00', 'Main Stadium', 'true', '2023-06-13');
+INSERT INTO present.event (organizedBy, name, date, place, public, creationTime) VALUES (13, 'Condo monthly meeting', '2023-08-27 20:00:00', 'Conference Room - ground floor', 'false', '2023-06-13');
+INSERT INTO present.event (organizedBy, name, date, place, public, creationTime) VALUES (14, 'Fix the public gardens', '2023-09-10 14:00:00', 'Park down the street', 'true', '2023-06-13');
+INSERT INTO present.event (organizedBy, name, date, place, public, creationTime) VALUES (15, 'Community Volunteer Day', '2023-07-17 09:00:00', 'Local Community Center', 'true', '2023-06-13');
+INSERT INTO present.event (organizedBy, name, date, place, public, creationTime) VALUES (16, 'Lord of the Rings Marathon Night', '2023-08-12 18:00:00', 'Filippo`s House', 'false', '2023-06-13');

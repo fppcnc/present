@@ -41,28 +41,28 @@ class User implements JsonSerializable
     public function createNew(string $firstName, string $lastName, string $dateOfBirth, string $email, string $password): User
     {
         try {
-        // handle DB using strictly privileges we need. INSERT in this case
-        $dbh = Db::getConnection();
-        //query
-        $sql = "INSERT INTO user (id, firstName, lastName, dateOfBirth, email, password, registrationTime)
+            // handle DB using strictly privileges we need. INSERT in this case
+            $dbh = Db::getConnection();
+            //query
+            $sql = "INSERT INTO user (id, firstName, lastName, dateOfBirth, email, password, registrationTime)
                 VALUES (NULL, :firstName, :lastName, :dateOfBirth, :email, :password, :registrationTime)";
-        //prepare query
-        $stmt = $dbh->prepare($sql);
-        //get actual time of when User is created
-        $registrationTime = date("Y-m-d H:i:s");
-        //binding parameters to avoid injections
-        $stmt->bindParam(':firstName', $firstName);
-        $stmt->bindParam(':lastName', $lastName);
-        $stmt->bindParam(':dateOfBirth', $dateOfBirth);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':password', $password);
-        $stmt->bindParam(':registrationTime', $registrationTime);
-        //execute prepared statement filled with parameters
-        $stmt->execute();
-        //store in $id the last id inserted in Db
-        $id = $dbh->lastInsertId();
-        //close connection to database
-        $dbh = null;
+            //prepare query
+            $stmt = $dbh->prepare($sql);
+            //get actual time of when User is created
+            $registrationTime = date("Y-m-d H:i:s");
+            //binding parameters to avoid injections
+            $stmt->bindParam(':firstName', $firstName);
+            $stmt->bindParam(':lastName', $lastName);
+            $stmt->bindParam(':dateOfBirth', $dateOfBirth);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':password', $password);
+            $stmt->bindParam(':registrationTime', $registrationTime);
+            //execute prepared statement filled with parameters
+            $stmt->execute();
+            //store in $id the last id inserted in Db
+            $id = $dbh->lastInsertId();
+            //close connection to database
+            $dbh = null;
         } catch (PDOException $e) {
             throw new Exception($e->getMessage() . ' ' . $e->getFile() . ' ' . $e->getCode() . ' ' . $e->getLine());
         }

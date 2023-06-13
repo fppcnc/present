@@ -426,8 +426,6 @@ __________________________________*/
     gap: .25rem;
 }
 
-
-
 .user-cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -455,6 +453,23 @@ __________________________________*/
 .hide {
     display: none;
 }
+
+.search-wrapper-guests {
+    display:flex;
+    flex-direction: row;
+    gap: .25rem;
+}
+
+.guest-cards {
+    display: flex;
+    flex-wrap: wrap;
+    grid-template-rows: repeat(auto-fill, minmax(150px, 1fr));
+    gap: .25rem;
+    margin-top: 1rem;
+    overflow: auto;
+    padding: 5px;
+}
+
 
 /*__________________________________
 Single Elements

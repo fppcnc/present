@@ -23,16 +23,23 @@
                         <h1>Friend´s List</h1>
                     </div>
                     <h3>Here´s the list of people you are currently following</h3>
+                    <div class="user-cards">
                     <?php
                     foreach ($u as $user) { ?>
+
                         <div class="user-cards">
                             <div class="card">
                                 <div class="header"><?php echo $user->getFirstName(), ' ', $user->getLastName() ?></div>
                                 <div class="body">Email : <?php echo $user->getEmail(); ?> </div>
                                 <div class="body" data-dob>Birthday : <?php echo $user->getDateOfBirth(); ?> </div>
+                                <button type="button"
+                                        onclick="window.location.href='index.php?choice=toProfile&area=friend&idFriend=<?php echo $user->getId()?>';">
+                                    Go to Profile
+                                </button>
                             </div>
                         </div>
                         <?php } ?>
+                </div>
                 </div>
             </div>
         </div>

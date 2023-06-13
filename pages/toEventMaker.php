@@ -38,32 +38,54 @@
                                 <label for="eventName">What are we celebrating? Give it a name, so it will
                                         be easier to stand out on your contacts!</label>
                                 <input type="text" class="input-home bordersRules" id="eventName"
-                                       placeholder="Mario Rossi´s Birthday Party!" name="name">
+                                       placeholder="Mario Rossi´s Birthday Party!" name="name" required>
                             </span>
                             <span>
                             <label for="eventDate">When will we celebrate it? And when will the celebrations start?</label>
                                 <input type="datetime-local" class="input-home bordersRules" id="eventDate"
-                                       name="date">
+                                       name="date" required>
                             </span>
                             <span>
                                 <label for="eventPlace">Where will we celebrate? Try to make it easy for your guests
-                                to attend it giving concise, but clear indications</label>
+                                to attend it by giving concise, but clear indications</label>
                                 <input type="text" class="input-home bordersRules" id="eventPlace"
-                                placeholder="Restaurant X  -  My place!  -  Park Y  -  Example Street, nr.15" name="place">
+                                placeholder="Restaurant X  -  My place!  -  Park Y  -  Example Street, nr.15" name="place" required>
                             </span>
                             You prefer to make it public, or you rather invite your own guests?
                             <div style="display: inline-block">
-                                <input type="radio" class="bordersRules" id="eventPublicY" name="public" value="true">
+                                <input type="radio" class="bordersRules" id="eventPublicY" name="public" value="true" required>
                                 <label for="eventPublicY">Public</label>
-                                <input type="radio" class=" bordersRules" id="eventPublicN" name="public" value="false">
+                                <input type="radio" class=" bordersRules" id="eventPublicN" name="public" value="false" required>
                                 <label for="eventPublicY">Private</label>
+                            </div>
+                            <div id="showGuests" style="display: none;">
+
+                                <label for="search">Search Users to invite</label>
+                                <input type="search" id="search" data-searchGuest>
+                                    <div class="search-wrapper-guest">
+
+                                    </div>
+                                    <div class="guest-cards" data-guest-cards-container></div>
+                                    <template data-guest-template>
+                                        <div class="card">
+                                            <input type="checkbox" name="guest[]" data-guest-invite>
+                                                <div class="header" data-guestHeader></div>
+                                                <div class="body" data-guestEmail>Email : </div>
+                                        </div>
+                                    </template>
+
+
                             </div>
                             <button type="submit" class="button-home bordersRules m-t-20" style="width: 100px">Create Event!</button>
                         </div>
                     </form>
                 </div>
             </div>
+            </div>
+            </div>
         </div>
         <?php include "includes/footer.php"; ?>
+<script src="js/publicYorN.js"></script>
+<script src="../js/inviteGuests.js"></script>
 </body>
 </html>

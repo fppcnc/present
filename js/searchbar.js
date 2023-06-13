@@ -24,7 +24,6 @@ searchInput.addEventListener("input", e => {
 fetch("js/search.php")
     .then(res => res.json())
     .then(data => {
-        console.log(data)
         users = data.map(user => {
             //gets single element of User "cards"
             const card = userCardTemplate.content.cloneNode(true).children[0];
