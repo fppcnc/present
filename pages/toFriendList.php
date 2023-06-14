@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/utility.css">
 </head>
 <body>
-<?php $userInfos = $_SESSION['user'];?>
+<?php $userInfos = $_SESSION['user']; ?>
 <div class="limiter">
     <div class="mainContainer">
         <?php include "includes/header.php"; ?>
@@ -24,22 +24,22 @@
                     </div>
                     <h3>Here´s the list of people you are currently following</h3>
                     <div class="user-cards">
-                    <?php
-                    foreach ($u as $user) { ?>
+                        <?php
+                        foreach ($u as $user) { ?>
 
-                        <div class="user-cards">
-                            <div class="card">
-                                <div class="header"><?php echo $user->getFirstName(), ' ', $user->getLastName() ?></div>
-                                <div class="body">Email : <?php echo $user->getEmail(); ?> </div>
-                                <div class="body" data-dob>Birthday : <?php echo $user->getDateOfBirth(); ?> </div>
-                                <button type="button"
-                                        onclick="window.location.href='index.php?choice=toProfile&area=friend&idFriend=<?php echo $user->getId()?>';">
-                                    Go to Profile
-                                </button>
+                            <div class="user-cards">
+                                <div class="card">
+                                    <div class="header"><?php echo $user->getFirstName(), ' ', $user->getLastName() ?></div>
+                                    <div class="body">Email : <?php echo $user->getEmail(); ?> </div>
+                                    <div class="body" data-dob>Birthday : <?php echo $user->getDateOfBirth(); ?> </div>
+                                    <button type="button"
+                                            onclick="window.location.href='index.php?choice=toProfile&area=friend&idFriend=<?php echo $user->getId() ?>';">
+                                        Go to Profile
+                                    </button>
+                                </div>
                             </div>
-                        </div>
                         <?php } ?>
-                </div>
+                    </div>
                 </div>
             </div>
         </div>

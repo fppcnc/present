@@ -4,7 +4,6 @@ const userCardContainer = document.querySelector("[data-user-cards-container]");
 const searchInput = document.querySelector("[data-search]");
 
 
-
 let users = [];
 
 // search criteria. hide what doesn't match search input.
@@ -37,10 +36,17 @@ fetch("js/search.php")
             dob.textContent += user.dateOfBirth;
             userCardContainer.append(card);
             //button redirects to friend´s page
-            searchButton.addEventListener("click", function() {
-                window.location.href = "index.php?choice=toProfile&area=friend&idFriend="+encodeURIComponent(id);
+            searchButton.addEventListener("click", function () {
+                window.location.href = "index.php?choice=toProfile&area=friend&idFriend=" + encodeURIComponent(id);
             });
-            return {id: user.id, firstName: user.firstName, lastName: user.lastName, email: user.email, dateOfBirth: user.dateOfBirth, element: card}
+            return {
+                id: user.id,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+                dateOfBirth: user.dateOfBirth,
+                element: card
+            }
         })
     })
 

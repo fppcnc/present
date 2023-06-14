@@ -1,0 +1,14 @@
+Present ist ein Dienst, der Menschen miteinander verbindet.
+
+Der Zweck von Present ist es, Klarheit darüber zu schaffen, was am Tag der Feierlichkeiten willkommen ist.
+Es ist nützlich für diejenigen, die sich auf einer Veranstaltung präsentieren müssen und nicht sicher sind,
+was sie mitbringen sollen, aber es wird auch ausgiebig von denjenigen genutzt, die eine Veranstaltung organisieren
+und zusätzliche Informationen wie Ort und Datum sowie eine Wunschliste bereitstellen möchten.
+
+Es ist auch ideal, um sich an die Geburtstage unserer Lieben zu erinnern!
+
+
+
+Momentan befindet sich Present noch in der Entwicklung.
+Den Dienst ist jedoch bereits um zu nutzen und sich mit anderen Nutzern um zu verbinden,
+Veranstaltungen erstellen und Freunde und Bekannte einladen.

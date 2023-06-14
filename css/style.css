@@ -196,7 +196,7 @@ __________________________*/
     width: calc(100% - 582px);
     overflow: auto;
     padding: 50px;
-justify-content: center;
+    justify-content: center;
     align-content: center;
 }
 
@@ -233,7 +233,6 @@ __________________________*/
     min-width: 100px;
     padding: 30px 13px 10px 10px;
 }
-
 
 
 /*___________________________
@@ -421,7 +420,7 @@ __________________________________*/
 
 
 .search-wrapper {
-    display:flex;
+    display: flex;
     flex-direction: column;
     gap: .25rem;
 }
@@ -455,7 +454,7 @@ __________________________________*/
 }
 
 .search-wrapper-guests {
-    display:flex;
+    display: flex;
     flex-direction: row;
     gap: .25rem;
 }

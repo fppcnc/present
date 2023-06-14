@@ -68,7 +68,7 @@ CREATE TABLE fullEvent
 CREATE TABLE guests
 (
     guestId INT,
-    eventId   INT,
+    eventId INT,
     PRIMARY KEY (guestId, eventId),
     FOREIGN KEY (guestId) REFERENCES user (id) ON DELETE CASCADE,
     FOREIGN KEY (eventId) REFERENCES event (id) ON DELETE CASCADE

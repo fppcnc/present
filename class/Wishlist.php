@@ -2,9 +2,9 @@
 
 class Wishlist
 {
-private int $id;
-private int $createdBy;
-private string $creationTime;
+    private int $id;
+    private int $createdBy;
+    private string $creationTime;
 
     /**
      * @param int $id

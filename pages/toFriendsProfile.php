@@ -89,7 +89,7 @@
                                         foreach ($guestList as $guest) {
                                             $uGuest = $uGuest->getObjectFromId($guest->getGuestId());
                                             if ($guest->getGuestId() === $userInfos->getId()) {
-                                                 ?>
+                                                ?>
                                                 <div class="input-home bordersRules m-r-5"
                                                      id="eventName"><?php echo $frEv->getName(), ' on: ', $frEv->getDate(), ' at: ', $frEv->getPlace(); ?></div>
                                                 <select id="guests" class="m-r-5">

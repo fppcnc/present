@@ -10,14 +10,14 @@
     <link rel="stylesheet" href="css/utility.css">
 </head>
 <body>
-<?php $userInfos = $_SESSION['user'];?>
+<?php $userInfos = $_SESSION['user']; ?>
 <div class="limiter">
     <div class="mainContainer">
         <?php include "includes/header.php"; ?>
         <div class="wrapContainer">
             <div class="centralArea">
-                <?php include "includes/sideMenu.php";?>
-                <?php include "includes/sidebarSearch.php";?>
+                <?php include "includes/sideMenu.php"; ?>
+                <?php include "includes/sidebarSearch.php"; ?>
                 <div class="friendsList">
                     <div class="presentSubTitle">
                         <h1>
@@ -37,6 +37,6 @@
         </div>
     </div>
 </div>
-<?php include "includes/footer.php";?>
+<?php include "includes/footer.php"; ?>
 </body>
 </html>

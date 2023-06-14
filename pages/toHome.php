@@ -52,7 +52,7 @@
                 <form class="welcome-form" method="post" action="index.php">
                     <div class="x">
                         <input type="image" id="homeSignUpBack" class="image-button"
-                        src="../img/transparent-x-logo.png" alt="Back">
+                               src="../img/transparent-x-logo.png" alt="Back">
                     </div>
                     <div class="homeInputsContainer">
                         <input type="hidden" name="choice" value="create">
@@ -74,10 +74,12 @@
                                placeholder="Confirm Password" name="confirmPassword" required>
                     </div>
                     <div class="tAndC">
-                        By clicking "Register", you agree to our <a href="index.php?choice=toLegalTerms"> Terms of Use</a>.
+                        By clicking "Register", you agree to our <a href="index.php?choice=toLegalTerms"> Terms of
+                            Use</a>.
                     </div>
                     <div class="tAndC">
-                        Our <a href="index.php?choice=toLegalTerms"> Privacy Policy </a> explains how we collect, use, and share your information.
+                        Our <a href="index.php?choice=toLegalTerms"> Privacy Policy </a> explains how we collect, use,
+                        and share your information.
                     </div>
                     <div class="homeButtonsContainer">
                         <button type="submit" class="button-home bordersRules" id="homeSignUpSubmit">Register</button>

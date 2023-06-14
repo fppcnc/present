@@ -36,7 +36,8 @@
                                        name="column" value="name">Update</button>
                             </span>
                                 <span><label for="eventDate">Date</label>
-                                <input type="datetime-local" id="eventDate" class="input-home bordersRules" style="width: 600px"
+                                <input type="datetime-local" id="eventDate" class="input-home bordersRules"
+                                       style="width: 600px"
                                        name="date" value="<?php echo $e->getDate() ?>" required>
                                <button type="submit" class="button-personalArea bordersRules m-t-5"
                                        name="column" value="date">Update</button>

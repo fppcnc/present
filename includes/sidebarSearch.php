@@ -5,16 +5,16 @@
         <input type="search" id="search" data-search>
     </div>
     <div class="user-cards" data-user-cards-container></div>
-        <template data-user-template>
+    <template data-user-template>
 
         <div class="card">
             <button data-user-seeProfile>
-            <div class="header" data-header></div>
-            <div class="body" data-email>Email : </div>
-            <div class="body" data-dob>Birthday : </div>
-            </div>
-            </button>
+                <div class="header" data-header></div>
+                <div class="body" data-email>Email :</div>
+                <div class="body" data-dob>Birthday :</div>
+        </div>
+        </button>
 
-        </template>
+    </template>
 
 </nav>

@@ -32,25 +32,28 @@
                                 <?php foreach ($myEvs as $myEv) { ?>
 
                                     <div style="display: inline-flex">
-                                    <div  class="input-home bordersRules m-r-5" id="eventName"><?php echo $myEv->getName(); ?></div>
-                                    <?php if ($myEv->getPublic() === 'true') { ?>
-                                        Public
-                                    <?php } else {
-                                        $guestList = new Guests;
-                                        $uGuest = new User;
-                                        $guestList = $guestList->getGuestsByEventId($myEv->getId()); ?>
-                                        <select id="guests" class="m-r-5" >
-                                            <option>-- Here´s a list of invited Guests --</option>
-                                            <?php foreach ($guestList as $guest) {
-                                                $uGuest = $uGuest->getObjectFromId($guest->getGuestId()); ?>
-                                                <option disabled><?php echo $uGuest->getFirstName(), ' ', $uGuest->getLastName(); ?></option>
-                                            <?php } ?>
-                                        </select>
+                                        <div class="input-home bordersRules m-r-5"
+                                             id="eventName"><?php echo $myEv->getName(); ?></div>
+                                        <?php if ($myEv->getPublic() === 'true') { ?>
+                                            Public
+                                        <?php } else {
+                                            $guestList = new Guests;
+                                            $uGuest = new User;
+                                            $guestList = $guestList->getGuestsByEventId($myEv->getId()); ?>
+                                            <select id="guests" class="m-r-5">
+                                                <option>-- Here´s a list of invited Guests --</option>
+                                                <?php foreach ($guestList as $guest) {
+                                                    $uGuest = $uGuest->getObjectFromId($guest->getGuestId()); ?>
+                                                    <option disabled><?php echo $uGuest->getFirstName(), ' ', $uGuest->getLastName(); ?></option>
+                                                <?php } ?>
+                                            </select>
 
-                                    <?php } ?>
-                                        <button onclick="window.location.href='index.php?choice=toUpdateEvent&idEv=<?php echo $myEv->getId();?>';">Update Event</button>
+                                        <?php } ?>
+                                        <button onclick="window.location.href='index.php?choice=toUpdateEvent&idEv=<?php echo $myEv->getId(); ?>';">
+                                            Update Event
+                                        </button>
                                     </div>
-                               <?php } ?>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -58,7 +61,7 @@
             </div>
         </div>
     </div>
-    </div>
-    <?php include "includes/footer.php"; ?>
+</div>
+<?php include "includes/footer.php"; ?>
 </body>
 </html><?php

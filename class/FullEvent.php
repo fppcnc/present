@@ -2,9 +2,9 @@
 
 class FullEvent
 {
-private int $id;
-private int $wishlistId;
-private int $eventId;
+    private int $id;
+    private int $wishlistId;
+    private int $eventId;
 
     /**
      * @param int $id

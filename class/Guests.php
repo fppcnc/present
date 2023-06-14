@@ -2,8 +2,8 @@
 
 class Guests implements JsonSerializable
 {
-private int $guestId;
-private int $eventId;
+    private int $guestId;
+    private int $eventId;
 
     /**
      * @param array $guestIds
@@ -19,11 +19,11 @@ private int $eventId;
             $sql = "INSERT INTO guests (guestId, eventId) VALUES (:guestId, :eventId)";
             $stmt = $dbh->prepare($sql);
             foreach ($guestIds as $guestId) {
-            $stmt->bindParam(':guestId', $guestId);
-            $stmt->bindParam(':eventId', $eventId);
-            $stmt->execute();
-            $guests[] = new Guests($guestId, $eventId);
-        }
+                $stmt->bindParam(':guestId', $guestId);
+                $stmt->bindParam(':eventId', $eventId);
+                $stmt->execute();
+                $guests[] = new Guests($guestId, $eventId);
+            }
             $dbh = null;
         } catch (PDOException $e) {
             throw new Exception($e->getMessage() . ' ' . $e->getFile() . ' ' . $e->getCode() . ' ' . $e->getLine());
@@ -56,26 +56,27 @@ private int $eventId;
         return $guests;
     }
 
-    public function jsonSerialize(): array {
+    public function jsonSerialize(): array
+    {
         return ['guestId' => $this->getGuestId()];
     }
 
     public function search(int $eventId, int $guestId): array|null
     {
-            try {
-                $dbh = Db::getConnection();
-                $sql = "SELECT * FROM guests WHERE eventId = :eventId AND guestId =:guestId";
-                $stmt = $dbh->prepare($sql);
-                $stmt->bindParam(':eventId', $eventId);
-                $stmt->bindParam(':guestId', $guestId);
-                $stmt->execute();
-                $dbh = null;
+        try {
+            $dbh = Db::getConnection();
+            $sql = "SELECT * FROM guests WHERE eventId = :eventId AND guestId =:guestId";
+            $stmt = $dbh->prepare($sql);
+            $stmt->bindParam(':eventId', $eventId);
+            $stmt->bindParam(':guestId', $guestId);
+            $stmt->execute();
+            $dbh = null;
 
-            } catch (PDOException $e) {
-                throw new Exception($e->getMessage() . ' ' . $e->getFile() . ' ' . $e->getCode() . ' ' . $e->getLine());
-            }
-        return $stmt->fetchAll(PDO::FETCH_CLASS, 'Guests');
+        } catch (PDOException $e) {
+            throw new Exception($e->getMessage() . ' ' . $e->getFile() . ' ' . $e->getCode() . ' ' . $e->getLine());
         }
+        return $stmt->fetchAll(PDO::FETCH_CLASS, 'Guests');
+    }
 
     /**
      * @param int|null $guestId

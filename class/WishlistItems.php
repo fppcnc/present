@@ -2,10 +2,10 @@
 
 class WishlistItems
 {
-private int $id;
-private int $wishlistId;
-private string $description;
-private string $externalLink;
+    private int $id;
+    private int $wishlistId;
+    private string $description;
+    private string $externalLink;
 
     /**
      * @param int|null $id
@@ -16,7 +16,7 @@ private string $externalLink;
     public function __construct(int|null $id = null, int|null $wishlistId = null, string|null $description = null, string|null $externalLink = null)
     {
         if (isset($id) && isset($wishlistId) && isset($description) && isset($externalLink))
-        $this->id = $id;
+            $this->id = $id;
         $this->wishlistId = $wishlistId;
         $this->description = $description;
         $this->externalLink = $externalLink;

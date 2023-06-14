@@ -59,7 +59,7 @@ class Connections
         $stmt->bindParam(':myId', $myId);
         $stmt->bindParam(':friendsId', $friendsId);
         $stmt->execute();
-        $result = $stmt->fetchObject( Connections::class);
+        $result = $stmt->fetchObject(Connections::class);
         if ($result) {
             //if a row is found, create an Object and return it
             $dbh = null;
