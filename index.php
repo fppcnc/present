@@ -26,6 +26,8 @@ $id = $_REQUEST['id'] ?? '';
 $idFriend = $_REQUEST['idFriend'] ?? '';
 // get connectionsId
 $idConn = $_REQUEST['idConn'] ?? '';
+// get eventId
+$idEv = $_REQUEST['idEv'] ?? '';
 
 
 //retrieve data from signup page input fields
@@ -36,7 +38,8 @@ $email = $_POST['email'] ?? '';
 $password = $_POST['password'] ?? '';
 $confirmPassword = $_POST['confirmPassword'] ?? '';
 
-//retrieve data from Event Maker input fields
+//retrieve data from Event Maker input fields or modify
+$eventId = $_POST['eventId'] ?? '';
 $name = $_POST['name'] ?? '';
 $date = $_POST['date'] ?? '';
 $place = $_POST['place'] ?? '';
@@ -84,6 +87,14 @@ try {
         case 'toEventMaker':
             $page = 'toEventMaker';
             break;
+        case 'toMyEvents':
+            $page = 'toMyEvents';
+            break;
+        case 'toUpdateEvent':
+            $e = new Event;
+            $e = $e->getObjectFromId($idEv);
+            $page = 'toUpdateEvent';
+            break;
         case 'toProfile':
             if ($area === 'user') {
                 $page = 'toProfile';
@@ -114,7 +125,6 @@ try {
                 $_SESSION['error'] = 'Your session has expired. Please try again';
             }
             break;
-
         case 'login':
             //grant access to next page if email and password match data in Db
             $log = (new User())->grantAccess($email, $password);
@@ -162,12 +172,20 @@ try {
             }
             break;
         case 'updateInfo':
-            $u = new User();
-            $u = $_SESSION['user'];
-            $u->updateInfo($column, $newValue);
-            $user = $u->getObject();
-            $_SESSION['user'] = $user;
-            $page = 'toProfile';
+            if ($area === 'user') {
+                $u = new User();
+                $u = $_SESSION['user'];
+                $u->updateInfo($column, $newValue);
+                $user = $u->getObject();
+                $_SESSION['user'] = $user;
+                $page = 'toProfile';
+            } elseif ($area === 'event') {
+                $e = new Event();
+                $e = $e->getObjectFromId($eventId);
+                $e->updateInfo($column, $newValue);
+                $e = $e->getObjectFromId($eventId);
+                $page = 'toUpdateEvent';
+            }
             break;
         case 'delete':
             if ($area === 'connections') {
@@ -219,13 +237,11 @@ try {
                 $ev = new Event();
                 $ev = $ev->createNew($userInfos->getId(), $name, $date, $place, $public);
                 if ($public === 'false') {
-                    $g = New Guests();
+                    $g = new Guests();
                     $gIds = $_POST['guest'];
-//                    echo 'lol';'<br>';
-//                    print_r($gIds);'<br>';
-//                    echo $ev->getId();'<br>';
                     $g->createNew($gIds, $ev->getId());
                 }
+                unset ($_POST);
                 $page = 'toMyEvents';
             }
             break;

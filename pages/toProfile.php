@@ -18,7 +18,7 @@
             <div class="centralArea">
                 <?php include "includes/sideMenu.php"; ?>
                 <?php include "includes/sidebarSearch.php"; ?>
-<!--                <div class="friendsList">-->
+                <div class="friendsList">
                     <div class="presentSubTitle">
                         <h1>
                             Profile
@@ -44,14 +44,13 @@
                                 LogOut
                             </button>
                         </nav>
-                        <nav class="personalArea-sideBarBottom">
 
-                        </nav>
                         <!--zone 1-->
                         <div class="personalArea-content bordersRules" id="zone1">
                             <form class="welcome-form" method="post" action="index.php">
                                 <div class="homeInputsContainer">
                                     <input type="hidden" name="choice" value="updateInfo">
+                                    <input type="hidden" name="area" value="user">
                                     <span><label for="personalAreaFirstName">First Name</label>
                                 <input type="text" id="personalAreaFirstName" class="input-home bordersRules"
                                        name="firstName" value="<?php echo $userInfos->getFirstName() ?>" required>
@@ -123,7 +122,7 @@
                         </div>
                     </div>
                 </div>
-<!--            </div>-->
+            </div>
         </div>
     </div>
     <?php include "includes/footer.php"; ?>

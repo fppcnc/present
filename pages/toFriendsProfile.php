@@ -18,9 +18,9 @@
             <div class="centralArea">
                 <?php include "includes/sideMenu.php"; ?>
                 <?php include "includes/sidebarSearch.php"; ?>
-                <div class="friendsList">
+                <div class="friendsList" style="overflow: auto">
                     <div class="presentSubTitle">
-                        <h1>Friend´s Profile</h1>
+                        <h1>User´s Profile</h1>
                     </div>
                     <h3>Here´s personal info about a User</h3>
                     <div class="personalArea-content bordersRules">
@@ -55,7 +55,7 @@
                                     You can follow this user and get updates on upcoming events
                                     <div class="homeButtonsContainer">
                                         <button type="button" class="button-home bordersRules"
-                                        onclick="window.location.href='index.php?choice=create&area=connections&idFriend=<?php echo $f->getId(); ?>';">
+                                                onclick="window.location.href='index.php?choice=create&area=connections&idFriend=<?php echo $f->getId(); ?>';">
                                             Follow
                                         </button>
                                     </div>
@@ -64,11 +64,51 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="presentSubTitle m-t-20">
+                        <h1>User´s Event</h1>
+                    </div>
+                    <h3>Here there are User´s public events and private events to which you have been invited</h3>
+                    <div class="personalArea-content bordersRules">
+                        <div class="welcome-form">
+                        </div>
+                        <?php
+                        $frEvs = new Event();
+                        $frEvs = $frEvs->getEventsFromUserId($f->getId()); ?>
+                        <div class="homeInputsContainer">
+                            <?php foreach ($frEvs as $frEv) { ?>
+                                <div style="display: inline-flex">
+                                    <?php if ($frEv->getPublic() === 'true') { ?>
+                                        <div class="input-home bordersRules m-r-5"
+                                             id="eventName"><?php echo $frEv->getName(), ' on: ', $frEv->getDate(), ' at: ', $frEv->getPlace(); ?> </div>
+                                        Public Event
+                                    <?php } else {
+                                        $guestList = new Guests;
+                                        $uGuest = new User;
+                                        $guestList = $guestList->getGuestsByEventId($frEv->getId());
+                                        foreach ($guestList as $guest) {
+                                            $uGuest = $uGuest->getObjectFromId($guest->getGuestId());
+                                            if ($guest->getGuestId() === $userInfos->getId()) {
+                                                 ?>
+                                                <div class="input-home bordersRules m-r-5"
+                                                     id="eventName"><?php echo $frEv->getName(), ' on: ', $frEv->getDate(), ' at: ', $frEv->getPlace(); ?></div>
+                                                <select id="guests" class="m-r-5">
+                                                <option disabled selected value>-- Here´s a list of invited Guests --
+                                                </option>
+
+                                                <option disabled><?php echo $uGuest->getFirstName(), ' ', $uGuest->getLastName(); ?></option>
+                                            <?php } ?>
+                                            </select>
+                                        <?php }
+                                    } ?>
+                                </div>
+                            <?php } ?>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<?php include "includes/footer.php"; ?>
+        <?php include "includes/footer.php"; ?>
 </body>
 </html><?php

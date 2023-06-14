@@ -36,6 +36,91 @@ class Event
 
 
     /**
+     * @param $column
+     * @param $newValue
+     * @return void
+     */
+    public function updateInfo($column, $newValue): void
+    {
+        try {
+//          handle Db using user_update, which can only update data
+            $dbh = Db::getConnection();
+            $sql = "UPDATE event SET $column=:newValue WHERE id =:id";
+            $stmt = $dbh->prepare($sql);
+            $stmt->bindParam(':id', $this->id);
+            $stmt->bindParam(':newValue', $newValue);
+            $stmt->execute();
+            $dbh = null;
+        } catch (PDOException $e) {
+            throw new Exception($e->getMessage() . ' ' . $e->getFile() . ' ' . $e->getCode() . ' ' . $e->getLine());
+        }
+    }
+    /**
+     * @param int $id
+     * @return User
+     * @throws Exception
+     */
+    public function getObjectFromId(int $id): Event
+    {
+        try {
+            $dbh = Db::getConnection();
+            $sql = "SELECT * FROM event WHERE id =:id";
+            $stmt = $dbh->prepare($sql);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            $dbh = null;
+        } catch (PDOException $e) {
+            throw new Exception($e->getMessage() . ' ' . $e->getFile() . ' ' . $e->getCode() . ' ' . $e->getLine());
+        }
+        return $stmt->fetchObject('Event');
+    }
+
+    /**
+     * @param int $uId
+     * @return array|false
+     * @throws Exception
+     */
+    public function getEventsFromUserId(int $uId): array|false
+    {
+        try {
+            $dbh = Db::getConnection();
+            $sql = "SELECT * FROM event WHERE organizedBy =:uId";
+            $stmt = $dbh->prepare($sql);
+            $stmt->bindParam(':uId', $uId);
+            $stmt->execute();
+            $events = [];
+            while ($row = $stmt->fetchObject('Event')) {
+                $events[] = $row;
+            }
+            $dbh = null;
+        } catch (PDOException $e) {
+            throw new Exception($e->getMessage() . ' ' . $e->getFile() . ' ' . $e->getCode() . ' ' . $e->getLine());
+        }
+        return $events;
+    }
+
+    public function invitedGuest($guestId):bool
+    {
+        try {
+            $dbh = Db::getConnection();
+            $sql = "SELECT * FROM guests WHERE guestId = :guestId AND eventId = :eventId";
+            $stmt = $dbh->prepare($sql);
+            $stmt->bindParam(':guestId', $guestId);
+            $stmt->bindParam(':eventId', $this->eventId);
+            $stmt->execute();
+            $count = $stmt->fetchColumn();
+            $dbh = null;
+            // return true if count is greater than 0, false otherwise
+            return $count > 0;
+        } catch (PDOException $e) {
+            throw new Exception($e->getMessage() . ' ' . $e->getFile() . ' ' . $e->getCode() . ' ' . $e->getLine());
+        }
+    }
+
+
+
+
+    /**
      * @param int|null $id
      * @param int|null $organizedBy
      * @param string|null $name

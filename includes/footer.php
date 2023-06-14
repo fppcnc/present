@@ -4,5 +4,6 @@
         <a href="index.php?choice=toEventMaker">Event Maker</a>
         <a href="index.php?choice=toProfile&area=personal">Personal Area</a>
         <a href="index.php?choice=toLegalTerms">Terms and Conditions</a>
+        <a href="index.php?choice=toMyEvents">My Events</a>
     </div>
 </footer>

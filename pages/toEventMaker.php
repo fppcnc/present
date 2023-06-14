@@ -86,6 +86,6 @@
         </div>
         <?php include "includes/footer.php"; ?>
 <script src="js/publicYorN.js"></script>
-<script src="../js/inviteGuests.js"></script>
+<script src="js/inviteGuests.js"></script>
 </body>
 </html>
