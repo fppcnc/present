@@ -101,7 +101,7 @@
                         <!--zone 3-->
                         <div class="personalArea-content bordersRules" id="zone3">
                             <form class="welcome-form" method="post" action="index.php">
-                                <div class="homeInputsContainer">
+                                <div class="homeInputsContainer" style="overflow: auto;">
                                     Here goes legal stuff
                                 </div>
                             </form>

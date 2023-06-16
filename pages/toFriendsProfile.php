@@ -80,7 +80,7 @@
                                 <div style="display: inline-flex">
                                     <?php if ($frEv->getPublic() === 'true') { ?>
                                         <div class="input-home bordersRules m-r-5"
-                                             id="eventName"><?php echo $frEv->getName(), ' on: ', $frEv->getDate(), ' at: ', $frEv->getPlace(); ?> </div>
+                                             id="eventName"><?php echo $frEv->getName(), '<br>' , ' On: ', $frEv->getDate(), '<br>' ,  ' At: ', $frEv->getPlace(); ?> </div>
                                         Public Event
                                     <?php } else {
                                         $guestList = new Guests;
@@ -91,7 +91,7 @@
                                             if ($guest->getGuestId() === $userInfos->getId()) {
                                                 ?>
                                                 <div class="input-home bordersRules m-r-5"
-                                                     id="eventName"><?php echo $frEv->getName(), ' on: ', $frEv->getDate(), ' at: ', $frEv->getPlace(); ?></div>
+                                                     id="eventName"><?php echo $frEv->getName(), '<br>' , ' On: ', $frEv->getDate(), '<br>' ,  ' At: ', $frEv->getPlace(); ?></div>
                                                 <select id="guests" class="m-r-5">
                                                 <option disabled selected value>-- Here´s a list of invited Guests --
                                                 </option>

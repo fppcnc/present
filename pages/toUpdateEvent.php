@@ -48,6 +48,11 @@
                                 <button type="submit" class="button-personalArea bordersRules m-t-5"
                                         name="column" value="place">Update</button>
                             </span>
+                                <button onclick="window.location.href='index.php?choice=delete&area=event&idEv=<?php echo $e->getId(); ?>';"
+                                        class="m-l-10" style="color: darkred">
+                                    Delete Event
+                                </button>
+
                             </div>
                         </form>
                     </div>

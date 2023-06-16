@@ -189,12 +189,10 @@ class User implements JsonSerializable
     {
         try {
         $dbh = Db::getConnection();
-        // disable foreign key checks
         $sql = "DELETE FROM user WHERE id=:id";
         $stmt = $dbh->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
-        // enable foreign key checks again
         $dbh = null;
         } catch (PDOException $e) {
             throw new Exception($e->getMessage() . ' ' . $e->getFile() . ' ' . $e->getCode() . ' ' . $e->getLine());

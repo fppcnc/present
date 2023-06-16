@@ -55,6 +55,7 @@ class Event
             throw new Exception($e->getMessage() . ' ' . $e->getFile() . ' ' . $e->getCode() . ' ' . $e->getLine());
         }
     }
+
     /**
      * @param int $id
      * @return User
@@ -99,7 +100,7 @@ class Event
         return $events;
     }
 
-    public function invitedGuest($guestId):bool
+    public function invitedGuest($guestId): bool
     {
         try {
             $dbh = Db::getConnection();
@@ -117,8 +118,46 @@ class Event
         }
     }
 
+    public function getEventsByUserId(int $userId): array
+    {
+        try {
+            $dbh = Db::getConnection();
+            $sql = "SELECT DISTINCT * FROM event AS e
+              LEFT JOIN guests AS g ON g.eventId = e.id
+              WHERE (e.public = 'true' AND EXISTS (
+                  SELECT 1
+                  FROM connections AS c
+                  WHERE c.connectedTo = e.organizedBy AND c.userId = :userId
+              ))
+              OR (e.public = 'false' AND g.guestId = :userId)
+              ORDER BY e.date ASC";
+            $stmt = $dbh->prepare($sql);
+            $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+            $stmt->execute();
+            $events = [];
+            while ($row = $stmt->fetchObject('Event')) {
+                $events[] = $row;
+            }
+        } catch
+        (PDOException $e) {
+            throw new Exception($e->getMessage() . ' ' . $e->getFile() . ' ' . $e->getCode() . ' ' . $e->getLine());
+        }
+        return $events;
+    }
 
-
+    public function delete(int $id):void
+    {
+        try {
+            $dbh = Db::getConnection();
+            $sql = "DELETE FROM event WHERE id=:id";
+            $stmt = $dbh->prepare($sql);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            $dbh = null;
+        } catch (PDOException $e) {
+            throw new Exception($e->getMessage() . ' ' . $e->getFile() . ' ' . $e->getCode() . ' ' . $e->getLine());
+        }
+    }
 
     /**
      * @param int|null $id
@@ -141,49 +180,63 @@ class Event
             $this->public = $public;
             $this->creationTime = $creationTime;
         }
-    }/**
- * @return int
- */
-public function getId(): int
-{
-    return $this->id;
-}/**
- * @return int
- */
-public function getOrganizedBy(): int
-{
-    return $this->organizedBy;
-}/**
- * @return string
- */
-public function getName(): string
-{
-    return $this->name;
-}/**
- * @return string
- */
-public function getDate(): string
-{
-    return $this->date;
-}/**
- * @return string
- */
-public function getPlace(): string
-{
-    return $this->place;
-}/**
- * @return string
- */
-public function getPublic(): string
-{
-    return $this->public;
-}/**
- * @return string
- */
-public function getCreationTime(): string
-{
-    return $this->creationTime;
-}
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getOrganizedBy(): int
+    {
+        return $this->organizedBy;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDate(): string
+    {
+        return $this->date;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPlace(): string
+    {
+        return $this->place;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPublic(): string
+    {
+        return $this->public;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCreationTime(): string
+    {
+        return $this->creationTime;
+    }
 
 
 }

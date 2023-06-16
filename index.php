@@ -88,6 +88,8 @@ try {
             $page = 'toEventMaker';
             break;
         case 'toMyEvents':
+            $myEvs = new Event();
+            $myEvs = $myEvs->getEventsFromUserId($userInfos->getId());
             $page = 'toMyEvents';
             break;
         case 'toUpdateEvent':
@@ -118,6 +120,8 @@ try {
         case 'toWelcome':
 //        if session is lost for any reason trying to reach toWelcome, user is redirected to homepage
             if (isset($_SESSION['user'])) {
+                $e = new Event();
+                $upcomingEvents = $e->getEventsByUserId($userInfos->getId());
                 $_SESSION['error'] = '';
                 $page = 'toWelcome';
             } else {
@@ -136,6 +140,8 @@ try {
                 $_SESSION['error'] = '';
                 $user = $log->getObject();
                 $_SESSION['user'] = $user;
+                $e = new Event();
+                $upcomingEvents = $e->getEventsByUserId($userInfos->getId());
                 $page = 'toWelcome';
             }
             break;
@@ -202,6 +208,12 @@ try {
                 // destroy the session.
                 session_destroy();
                 $page = 'toHome';
+            } elseif ($area === 'event') {
+                $e = new Event();
+                $e->delete($idEv);
+                $myEvs = new Event();
+                $myEvs = $myEvs->getEventsFromUserId($userInfos->getId());
+                $page = 'toMyEvents';
             }
             break;
         case 'create':
@@ -242,6 +254,8 @@ try {
                     $g->createNew($gIds, $ev->getId());
                 }
                 unset ($_POST);
+                $myEvs = new Event();
+                $myEvs = $myEvs->getEventsFromUserId($userInfos->getId());
                 $page = 'toMyEvents';
             }
             break;

@@ -25,9 +25,6 @@
                     <h3>Here you can look at your events</h3>
                     <div class="personalArea-content bordersRules">
                         <div class="welcome-form">
-                            <?php
-                            $myEvs = new Event();
-                            $myEvs = $myEvs->getEventsFromUserId($userInfos->getId()); ?>
                             <div class="homeInputsContainer">
                                 <?php foreach ($myEvs as $myEv) { ?>
 
@@ -51,6 +48,10 @@
                                         <?php } ?>
                                         <button onclick="window.location.href='index.php?choice=toUpdateEvent&idEv=<?php echo $myEv->getId(); ?>';">
                                             Update Event
+                                        </button>
+                                        <button onclick="window.location.href='index.php?choice=delete&area=event&idEv=<?php echo $myEv->getId(); ?>';"
+                                                class="m-l-10" style="color: darkred">
+                                            Delete Event
                                         </button>
                                     </div>
                                 <?php } ?>

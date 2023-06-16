@@ -15,10 +15,33 @@
     <div class="mainContainer">
         <?php include "includes/header.php"; ?>
         <div class="wrapContainer">
-            <?php include "includes/sideMenu.php"; ?>
-            <?php include "includes/sidebarSearch.php"; ?>
+            <div class="centralArea">
+                <?php include "includes/sideMenu.php"; ?>
+                <?php include "includes/sidebarSearch.php"; ?>
+                <div class="friendsList">
+                    <div class="presentSubTitle">
+                        <h1>What`s going on</h1>
+                    </div>
+                    <div class="personalArea-content bordersRules">
+                        <div class="welcome-form">
+                            <div class="homeInputsContainer">
+                                <?php foreach ($upcomingEvents as $upcomingEvent) { ?>
+                                <div style="display: inline-flex">
+                                    <?php echo $upcomingEvent->getName(); ?><br>
+                                    Organized by : <?php $orgBy = new User;
+                                    $orgBy = $orgBy->getObjectFromId($upcomingEvent->getOrganizedBy());
+                                    echo $orgBy->getFirstName(), ' ', $orgBy->getLastName(); ?>
+                                    On : <?php echo $upcomingEvent->getDate(); ?>
+                                </div>
+                            <?php } ?>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</div>
 </div>
 <?php include "includes/footer.php"; ?>
 
