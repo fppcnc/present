@@ -26,22 +26,14 @@
                     <div class="personalArea-content bordersRules">
                         <div class="welcome-form">
                             <div class="homeInputsContainer">
-                                <span><label for="friendFirstName">First Name</label>
-                                <input type="text" class="input-home bordersRules" id="friendFirstName"
-                                       value="<?php echo $f->getFirstName() ?>" readonly>
-                            </span>
-                                <span><label for="friendLastName">Last Name</label>
-                                <input type="text" class="input-home bordersRules" id="friendLastName"
-                                       value="<?php echo $f->getLastName() ?>" readonly>
-                            </span>
-                                <span><label for="friendEmail">Email</label>
-                                <input type="email" class="input-home bordersRules" id="friendEmail"
-                                       value="<?php echo $f->getEmail() ?>" readonly>
-                            </span>
-                                <span><label for="friendDoB">Date of Birth</label>
-                                <input type="date" class="input-home bordersRules" id="friendDoB"
-                                       value="<?php echo $f->getDateOfBirth() ?>" readonly>
-                            </span>
+                                <label for="friendFirstName">First Name</label>
+                                <div class="input-home-noPointer bordersRules" id="friendFirstName"><?php echo $f->getFirstName() ?></div>
+                                <label for="friendLastName">Last Name</label>
+                                <div class="input-home-noPointer bordersRules" id="friendLastName"><?php echo $f->getLastName() ?></div>
+                                <label for="friendEmail">Email</label>
+                                <div class="input-home-noPointer bordersRules" id="friendEmail"><?php echo $f->getEmail() ?></div>
+                                <label for="friendDoB">Date of Birth</label>
+                                <div class="input-home-noPointer bordersRules" id="friendDoB"><?php echo $f->getDateOfBirth() ?></div>
                                 <?php if ($connExists) { ?>
                                     You started following this User on <?php $date = $connExists->getConnectedOn();
                                     echo date("d-m-Y", strtotime($date)); ?>
@@ -79,7 +71,7 @@
                             <?php foreach ($frEvs as $frEv) { ?>
                                 <div style="display: inline-flex">
                                     <?php if ($frEv->getPublic() === 'true') { ?>
-                                        <div class="input-home bordersRules m-r-5"
+                                        <div class="input-home-noPointer bordersRules m-r-5"
                                              id="eventName"><?php echo $frEv->getName(), '<br>' , ' On: ', $frEv->getDate(), '<br>' ,  ' At: ', $frEv->getPlace(); ?> </div>
                                         Public Event
                                     <?php } else {
@@ -90,7 +82,7 @@
                                             $uGuest = $uGuest->getObjectFromId($guest->getGuestId());
                                             if ($guest->getGuestId() === $userInfos->getId()) {
                                                 ?>
-                                                <div class="input-home bordersRules m-r-5"
+                                                <div class="input-home-noPointer bordersRules m-r-5"
                                                      id="eventName"><?php echo $frEv->getName(), '<br>' , ' On: ', $frEv->getDate(), '<br>' ,  ' At: ', $frEv->getPlace(); ?></div>
                                                 <select id="guests" class="m-r-5">
                                                 <option disabled selected value>-- Here´s a list of invited Guests --

@@ -25,16 +25,23 @@
                     <div class="personalArea-content bordersRules">
                         <div class="welcome-form">
                             <div class="homeInputsContainer">
+                                <table>
+                                    <tr>
+                                        <th>Coming up</th>
+                                        <th>Organised By</th>
+                                        <th>On</th>
+                                    </tr>
                                 <?php foreach ($upcomingEvents as $upcomingEvent) { ?>
-                                <div style="display: inline-flex">
-                                    <?php echo $upcomingEvent->getName(); ?><br>
-                                    Organized by : <?php $orgBy = new User;
-                                    $orgBy = $orgBy->getObjectFromId($upcomingEvent->getOrganizedBy());
-                                    echo $orgBy->getFirstName(), ' ', $orgBy->getLastName(); ?>
-                                    On : <?php echo $upcomingEvent->getDate(); ?>
-                                </div>
+                                    <tr>
+                                        <td><?php echo $upcomingEvent->getName(); ?></td>
+                                    <?php $orgBy = new User;
+                                    $orgBy = $orgBy->getObjectFromId($upcomingEvent->getOrganizedBy()); ?>
+                                    <td><?php echo $orgBy->getFirstName(), ' ', $orgBy->getLastName(); ?></td>
+                                        <td><?php echo $upcomingEvent->getDate(); ?></td>
+                                        <td></td>
+                                    </tr>
                             <?php } ?>
-
+                                </table>
                         </div>
                     </div>
                 </div>

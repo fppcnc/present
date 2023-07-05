@@ -3,8 +3,6 @@
 // 0p3
 //dbCredentials.php for db credentials
 include 'includes/dbCredentials.php';
-//include class User
-//include 'class/User.php';
 //include used class
 spl_autoload_register(function ($class) {
     include 'class/' . $class . '.php';
@@ -49,15 +47,6 @@ $public = $_POST['public'] ?? '';
 $column = $_POST['column'] ?? '';
 $newValue = $_POST["$column"] ?? '';
 
-//echo '<pre>';
-//print_r($_POST);
-//echo '</pre>';
-//echo '<pre>';
-//print_r($_REQUEST);
-//echo '</pre>';
-//echo '<pre>';
-//print_r($_SESSION);
-//echo '</pre>';
 try {
 //access toHome.php
     switch ($choice) {
@@ -138,8 +127,8 @@ try {
             } else {
                 // here user is logged in
                 $_SESSION['error'] = '';
-                $user = $log->getObject();
-                $_SESSION['user'] = $user;
+                $userInfos = $log->getObject();
+                $_SESSION['user'] = $userInfos;
                 $e = new Event();
                 $upcomingEvents = $e->getEventsByUserId($userInfos->getId());
                 $page = 'toWelcome';

@@ -29,7 +29,7 @@
                                 <?php foreach ($myEvs as $myEv) { ?>
 
                                     <div style="display: inline-flex">
-                                        <div class="input-home bordersRules m-r-5"
+                                        <div class="input-home-noPointer bordersRules m-r-5"
                                              id="eventName"><?php echo $myEv->getName(); ?></div>
                                         <?php if ($myEv->getPublic() === 'true') { ?>
                                             Public
