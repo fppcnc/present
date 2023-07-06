@@ -61,10 +61,10 @@
                                        required>
                                 <label for="eventPublicY">Private</label>
                             </div>
-                            <div id="showGuests" style="display: none;">
+                            <div id="showGuests" style="display: none; justify-self: center">
 
                                 <label for="search">Search Users to invite</label>
-                                <input type="search" id="search" data-searchGuest>
+                                <input type="search" id="searchGuest" data-searchGuest>
                                 <div class="search-wrapper-guest">
 
                                 </div>
@@ -74,9 +74,9 @@
                                         <input type="checkbox" name="guest[]" data-guest-invite>
                                         <div class="header" data-guestHeader></div>
                                         <div class="body" data-guestEmail>Email :</div>
+                                        <div class="body" data-guest-dob></div>
                                     </div>
                                 </template>
-
 
                             </div>
                             <button type="submit" class="button-home bordersRules m-t-20" style="width: 100px">Create
