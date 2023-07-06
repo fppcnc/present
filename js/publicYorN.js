@@ -28,10 +28,20 @@ let guests = [];
 // search criteria. hide what doesn't match search input.
 searchInputGuest.addEventListener("input", e => {
     const value = e.target.value.toLowerCase();
+    let count = 0;
     guests.forEach(guest => {
         const isVisible = guest.firstName.toLowerCase().includes(value) ||
             guest.lastName.toLowerCase().includes(value);
         guest.element.classList.toggle("hide", !isVisible);
+
+        if (isVisible) {
+            if (count < 10) {
+                user.element.classList.remove("hide");
+                count++;
+            } else {
+                user.element.classList.add("hide");
+            }
+        }
     })
 });
 
@@ -68,4 +78,11 @@ fetch("js/search.php")
                 element: card
             }
         })
+        users.forEach((user, index) => {
+            if (index < 10) {
+                user.element.classList.remove("hide");
+            } else {
+                user.element.classList.add("hide");
+            }
+        });
     });

@@ -242,7 +242,7 @@ try {
                     $gIds = $_POST['guest'];
                     $g->createNew($gIds, $ev->getId());
                 }
-                unset ($_POST);
+                unset ($_POST['choice']);
                 $myEvs = new Event();
                 $myEvs = $myEvs->getEventsFromUserId($userInfos->getId());
                 $page = 'toMyEvents';

@@ -12,10 +12,20 @@ searchInput.addEventListener("input", e => {
     //event will hide everything that doesn't match input field.
     //if input field is empty, display a random list of users
     const value = e.target.value.toLowerCase();
+    //counter for displayed cards
+    let count = 0;
     users.forEach(user => {
         const isVisible = user.firstName.toLowerCase().includes(value) ||
             user.lastName.toLowerCase().includes(value);
         user.element.classList.toggle("hide", !isVisible);
+        if (isVisible) {
+            if (count < 15) {
+                user.element.classList.remove("hide");
+                count++;
+            } else {
+                user.element.classList.add("hide");
+            }
+        }
     })
 })
 
@@ -47,6 +57,14 @@ fetch("js/search.php")
                 dateOfBirth: user.dateOfBirth,
                 element: card
             }
-        })
+        });
+        // hide all cards initially except the first 10
+        users.forEach((user, index) => {
+            if (index < 15) {
+                user.element.classList.remove("hide");
+            } else {
+                user.element.classList.add("hide");
+            }
+        });
     })
 
