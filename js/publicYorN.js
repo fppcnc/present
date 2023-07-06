@@ -36,10 +36,10 @@ searchInputGuest.addEventListener("input", e => {
 
         if (isVisible) {
             if (count < 10) {
-                user.element.classList.remove("hide");
+                guest.element.classList.remove("hide");
                 count++;
             } else {
-                user.element.classList.add("hide");
+                guest.element.classList.add("hide");
             }
         }
     })
@@ -78,11 +78,11 @@ fetch("js/search.php")
                 element: card
             }
         })
-        users.forEach((user, index) => {
+        guests.forEach((guest, index) => {
             if (index < 10) {
-                user.element.classList.remove("hide");
+                guest.element.classList.remove("hide");
             } else {
-                user.element.classList.add("hide");
+                guest.element.classList.add("hide");
             }
         });
     });
