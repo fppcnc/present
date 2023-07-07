@@ -1,0 +1,2 @@
+@todo
+ - update event should display checkbox already flagged for invited guests

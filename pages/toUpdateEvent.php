@@ -50,11 +50,13 @@
                             </span>
                                 You prefer to make it public, or you rather invite your own guests?
                                 <div style="display: inline-block">
-                                    <input type="radio" class="bordersRules" id="eventPublicY" name="public" value="true"
-                                           required>
+                                    <input type="radio" class="bordersRules" id="eventPublicY" name="public"
+                                           value="true"
+                                           required <?php if ($e->getPublic() === 'true') { ?> checked <?php } ?> >
                                     <label for="eventPublicY">Public</label>
-                                    <input type="radio" class=" bordersRules" id="eventPublicN" name="public" value="false"
-                                           required>
+                                    <input type="radio" class=" bordersRules" id="eventPublicN" name="public"
+                                           value="false"
+                                           required <?php if ($e->getPublic() === 'false') { ?> checked <?php } ?> >
                                     <label for="eventPublicY">Private</label>
                                 </div>
                                 <div id="showGuests" style="display: none; justify-self: center">
@@ -73,14 +75,11 @@
                                             <div class="body" data-guest-dob></div>
                                         </div>
                                     </template>
-
                                 </div>
-                                <button onclick="window.location.href='index.php?choice=delete&area=event&idEv=<?php echo $e->getId(); ?>';"
-                                        class="m-l-10" style="color: darkred">
-                                    Delete Event
-                                </button>
-
                             </div>
+                            <button type="submit" class="button-personalArea bordersRules m-t-5"
+                                    name="column" value="name">Update
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -89,6 +88,6 @@
     </div>
 </div>
 <?php include "includes/footer.php"; ?>
-<script src="js/publicYorN.js"></script>
+<script src="js/editPublicYorN.js"></script>
 </body>
 </html><?php

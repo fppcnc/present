@@ -179,6 +179,11 @@ try {
                 $e = $e->getObjectFromId($eventId);
                 $e->updateInfo($column, $newValue);
                 $e = $e->getObjectFromId($eventId);
+//                if ($public === 'false') {
+//                    $g = new Guests();
+//                    $gIds = $_POST['guest'];
+//                    $g->createNew($gIds, $e->getId());
+//                }
                 $page = 'toUpdateEvent';
             }
             break;

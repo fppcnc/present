@@ -2,7 +2,14 @@ window.addEventListener('DOMContentLoaded', function () {
     const publicN = document.getElementById('eventPublicN');
     const publicY = document.getElementById('eventPublicY');
     const div = document.getElementById('showGuests');
+    console.log(publicY)
+    console.log(publicN)
 
+    if (publicN.checked) {
+        div.style.display = 'block';
+    } else {
+        div.style.display = 'none';
+    }
     publicN.addEventListener('change', function () {
         if (publicN.checked) {
             div.style.display = 'block';
@@ -63,10 +70,8 @@ fetch("js/search.php")
 
             guestCardContainer.append(card);
 
-            // Assign guest ID as the checkbox value
+            // assign guest ID as the checkbox value
             checkbox.value = id;
-
-            // Modify event listener for checkbox change
 
 
             return {
